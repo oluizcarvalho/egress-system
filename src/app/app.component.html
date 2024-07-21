@@ -1,11 +1,12 @@
-<br-header
-  [signature]="signature"
-  [title]="title"
-  container-fluid="true"
-  has-menu
-  has-title-link="true"
-  id="header"
-  title-link-url="/"
->
-</br-header>
-
+<app-header />
+<main>
+	<div class="container-fluid">
+		<div class="row">
+			<app-menu />
+			<div class="pt-4 pb-5 col">
+				TESTE Content
+				<router-outlet />
+			</div>
+		</div>
+	</div>
+</main>

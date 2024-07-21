@@ -1,17 +1,16 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {FormsModule} from "@angular/forms";
+import { CoreModule } from './core/core.module';
+import { HeaderComponent } from './shared/components/header/header.component';
+import {MenuComponent} from "./shared/components/menu/menu.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, FormsModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+	selector: 'app-root',
+	standalone: true,
+	imports: [RouterOutlet, CoreModule, HeaderComponent, MenuComponent],
+	templateUrl: './app.component.html',
+	styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'egress-system';
-  sobrenome = ''
-  public signature: string = 'Padrão Digital de Governo'
+	public signature: string = 'Padrão Digital de Governo';
 }
