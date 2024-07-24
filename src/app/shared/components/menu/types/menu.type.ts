@@ -1,7 +1,7 @@
 export type IMenu = {
 	id?: number;
 	icon: string;
-	name: string;
+	label: string;
 	url?: string;
-  list?: Array<IMenu>;
+  children?: Array<IMenu>;
 };

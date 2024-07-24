@@ -1,48 +1,23 @@
-import { AfterContentInit, afterNextRender, Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LIST_MENU } from './const/list-menu';
-import { MenuStateService } from './state/menu-state.service';
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import BRMenu from '@govbr-ds/core/dist/components/menu/menu';
 
 @Component({
 	selector: 'app-menu',
 	standalone: true,
-	imports: [NgClass],
-	host: {
-		'[class.col-xl-2]': 'state.expanded()',
-		'[class.col-lg-3]': 'state.expanded()',
-		'[class.col-md-4]': 'state.expanded()',
-		'[class.col-sm-5]': 'state.expanded()',
-    '[class.d-none]': '!state.expanded()',
-	},
+	imports: [NgClass, NgTemplateOutlet],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './menu.component.html',
 	styleUrl: './menu.component.scss',
 })
-export class MenuComponent implements AfterContentInit {
+export class MenuComponent implements AfterViewInit {
 	list = LIST_MENU;
-	state = inject(MenuStateService);
-	value = false;
+	instance: any;
 
-	constructor() {
-		afterNextRender(() => {
-			const menu = document.getElementById('main-navigation');
-			console.log(menu);
-			if (!menu) return;
+	constructor() {}
 
-			const navigation = menu.shadowRoot.getElementById('main-navigation');
-			this.subscribeEvent(navigation);
-		});
-	}
-
-	ngAfterContentInit(): void {}
-
-	private subscribeEvent(navigation: HTMLElement) {
-		console.log(navigation);
-		this.state.expanded$.pipe().subscribe({
-			next: value => {
-				console.log(value);
-				value ? navigation.classList.add('active') : navigation.classList.remove('active');
-			},
-		});
+	ngAfterViewInit() {
+		this.instance = new BRMenu('.br-menu', document.querySelector('.br-menu'));
 	}
 }

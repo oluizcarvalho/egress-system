@@ -1,12 +1,21 @@
-<app-header />
-<main>
-	<div class="container-fluid">
-		<div class="row">
-			<app-menu />
-			<div class="pt-4 pb-5 col">
-				TESTE Content
-				<router-outlet />
+<div class="template-base">
+	<app-header></app-header>
+	<main class="d-flex flex-fill mb-5" id="main">
+		<div class="container-lg">
+			<div class="row">
+				<app-menu
+					class="br-menu push active col-sm-4 col-lg-2 px-0"
+					id="main-navigation"
+					data-breakpoints="col-sm-4 col-lg-2"
+				></app-menu>
+				<div class="col mb-5">
+					<app-breadcrumb></app-breadcrumb>
+					<div class="main-content pl-sm-3 mt-4" id="main-content">
+						<router-outlet></router-outlet>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</main>
+	</main>
+	<app-footer></app-footer>
+</div>

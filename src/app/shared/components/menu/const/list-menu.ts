@@ -1,29 +1,29 @@
 import { IMenu } from '../types/menu.type';
 
 export const LIST_MENU: IMenu[] = [
-  {
-    name: 'Página inicial',
-    icon: 'home',
-    url: '/home'
-  },
-  {
-    name: 'Informações acadêmicas',
-    icon: 'home',
-    url: '/informacoes-academicas'
-  },
-  {
-    name: 'Informações profissionais',
-    icon: 'home',
-    url: '/informacoes-profissionais'
-  },
-  {
-    name: 'Depoimentos',
-    icon: 'home',
-    url: '/depoimentos'
-  },
-  {
-    name: 'Perfil',
-    icon: 'user',
-    url: '/perfil'
-  },
+	{
+		label: 'Página inicial',
+		icon: 'fa-home',
+		url: '/home',
+	},
+	{
+		label: 'Informações acadêmicas',
+		icon: 'fa-home',
+		url: '/informacoes-academicas',
+	},
+	{
+		label: 'Informações profissionais',
+		icon: 'fa-home',
+		url: '/informacoes-profissionais',
+	},
+	{
+		label: 'Depoimentos',
+		icon: 'fa-home',
+		url: '/depoimentos',
+	},
+	{
+		label: 'Perfil',
+		icon: 'fa-user',
+		url: '/perfil',
+	},
 ];
