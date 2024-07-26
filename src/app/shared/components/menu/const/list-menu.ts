@@ -8,17 +8,17 @@ export const LIST_MENU: IMenu[] = [
 	},
 	{
 		label: 'Informações acadêmicas',
-		icon: 'fa-home',
+		icon: 'fa-book',
 		url: '/informacoes-academicas',
 	},
 	{
 		label: 'Informações profissionais',
-		icon: 'fa-home',
+		icon: 'fa-briefcase',
 		url: '/informacoes-profissionais',
 	},
 	{
 		label: 'Depoimentos',
-		icon: 'fa-home',
+		icon: 'fa-comments',
 		url: '/depoimentos',
 	},
 	{
