@@ -1,7 +1,7 @@
 import { booleanAttribute, Directive, Input } from '@angular/core';
 
 @Directive({
-	selector: '[appButton]',
+	selector: 'button[br-button], a[br-button]',
 	host: {
 		'[class.primary]': 'type === "primary"',
 		'[class.secondary]': 'type === "secondary"',
@@ -19,7 +19,7 @@ import { booleanAttribute, Directive, Input } from '@angular/core';
 		'[class.br-button]': 'true',
 		role: 'button',
 	},
-  inputs: ['type', 'size', 'disabled', 'block', 'loading', 'active', 'circle', 'inverted'],
+	inputs: ['type', 'size', 'disabled', 'block', 'loading', 'active', 'circle', 'inverted'],
 	standalone: true,
 })
 export class ButtonDirective {

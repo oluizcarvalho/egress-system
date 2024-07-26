@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {ButtonComponent} from "../../shared/components/button/button.component";
-import {ButtonDirective} from "../../shared/directives/button.directive";
+import { ButtonDirective } from '../../shared/directives/button.directive';
+import { InputComponent } from '../../shared/components/input/input.component';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [ButtonComponent, ButtonDirective],
+	imports: [ButtonDirective, InputComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
 })
