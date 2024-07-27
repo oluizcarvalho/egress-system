@@ -1,49 +1,58 @@
-<div class="br-input" [ngClass]="[size, hasButton ? 'input-button' : '', state]">
+<div
+	class="br-input"
+	[ngClass]="[
+		size,
+		hasButton ? 'input-button' : '',
+		state,
+		disabled ? 'disabled' : '',
+		highlight ? 'input-highlight' : '',
+	]"
+>
 	<label for="input-{{ id }}">
 		{{ label }}
 	</label>
 	@if (hasIcon) {
 		<div class="input-group">
 			<div class="input-icon"><i [class]="icon" aria-hidden="true"></i></div>
-			<input [disabled]="disabled" id="input-{{ id }}" [type]="type" [placeholder]="placeholder" />
+			<ng-container *ngTemplateOutlet="input"></ng-container>
 		</div>
 	} @else {
-		<input [disabled]="disabled" id="input-{{ id }}" [type]="type" [placeholder]="placeholder" />
+		<ng-container *ngTemplateOutlet="input"></ng-container>
 		@if (hasButton) {
-			<button (click)="clickButton.emit()" class="br-button" type="button" aria-label="Botão">
+			<button (click)="onClickButton($event)" class="br-button" type="button" aria-label="Botão">
 				<i [class]="icon" aria-hidden="true"></i>
 			</button>
 		}
 	}
-	@if (hint) {
-		<p>{{ hint }}</p>
-	}
+	<ng-template #input>
+		<input
+			id="input-{{ id }}"
+			[autocomplete]="autocomplete"
+			[name]="name"
+			[disabled]="disabled"
+			[type]="type"
+			[readonly]="readonly"
+			[attr.maxLength]="maxLength"
+			[attr.min]="min"
+			[attr.max]="max"
+			[attr.pattern]="pattern"
+			[attr.placeholder]="placeholder"
+			[attr.step]="step"
+			[attr.required]="required"
+			[(ngModel)]="value"
+			(change)="onChangeInput($event)"
+			(blur)="onBlur()"
+		/>
+	</ng-template>
 	@if (disabled) {
 		<span class="feedback warning" role="alert"
-			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo Desabilitado</span
-		>
+			>Campo Desabilitado <i class="fas fa-exclamation-triangle" aria-hidden="true"></i
+		></span>
 	} @else {
-		@switch (state) {
-			@case ('info') {
-				<span class="feedback info" role="alert" id="info"
-					><i class="fas fa-info-circle" aria-hidden="true"></i>{{ feedback }}</span
-				>
-			}
-			@case ('success') {
-				<span class="feedback success" role="alert" id="success"
-					><i class="fas fa-check-circle" aria-hidden="true"></i> {{ feedback }}
-				</span>
-			}
-			@case ('danger') {
-				<span class="feedback danger" role="alert" id="danger"
-					><i class="fas fa-times-circle" aria-hidden="true"></i>{{ feedback }}</span
-				>
-			}
-			@case ('warning') {
-				<span class="feedback warning" role="alert" id="warning"
-					><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ feedback }}</span
-				>
-			}
+		@if (hint) {
+			<p>{{ hint }}</p>
 		}
+
+		<ng-content></ng-content>
 	}
 </div>

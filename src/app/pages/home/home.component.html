@@ -5,4 +5,19 @@
 	Teste
 </button>
 
-<app-input feedback="teste" state="danger" hasButton icon="fas fa-user" id="teste" label="Teste"></app-input>
+<app-input
+	[formControl]="inputControl"
+	required
+	type="password"
+	id="teste"
+	label="Teste"
+	hasButton
+	icon="fas fa-eye"
+	hint="teste"
+>
+	@if (inputControl.invalid && inputControl.dirty) {
+		<span br-feedback state="danger">Campo obrigatório</span>
+	}
+</app-input>
+
+<app-textarea id="text" [formControl]="inputControl" label="teste" maxLength="300"> </app-textarea>
