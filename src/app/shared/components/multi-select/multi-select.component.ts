@@ -12,34 +12,42 @@ import {
 } from '@angular/core';
 import BRSelect from '@govbr-ds/core/dist/components/select/select';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectOptions } from '../../types/select.type';
+
+export interface SelectOption {
+	value: string | number;
+	text: string;
+	selected?: boolean;
+}
 
 @Component({
-	selector: 'app-select',
+	selector: 'app-multi-select',
 	standalone: true,
 	imports: [],
-	templateUrl: './select.component.html',
-	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true }],
+	templateUrl: './multi-select.component.html',
+	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MultiSelectComponent), multi: true }],
 })
-export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
+export class MultiSelectComponent implements AfterViewChecked, ControlValueAccessor {
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input() placeholder = 'Selecione o item';
 	@Input() hint: string = '';
 	@Input({ transform: booleanAttribute }) disabled: boolean = false;
-	@Input() data: SelectOptions = [];
-	@Output() selectedEvent = new EventEmitter<string>();
+	@Input() data: SelectOption[] = [];
+	@Output() selectedEvent = new EventEmitter<Array<string>>();
 
 	instance: any;
 
-	protected _value: string;
+	protected _value: Array<string>;
 
-	get value(): string {
+	get value(): Array<string> {
 		return this._value;
 	}
 
-	set value(val: string) {
+	set value(val: Array<string>) {
 		if (this.disabled) return;
+		if (!Array.isArray(val)) {
+			val = [val];
+		}
 		this._value = val;
 		this._change(val);
 		this.selectedEvent.emit(val);
@@ -47,7 +55,7 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 
 	protected _touched: () => void = () => void undefined;
 
-	protected _change: (value: string) => void = () => void undefined;
+	protected _change: (value: Array<string>) => void = () => void undefined;
 
 	constructor(
 		private brSelect: ElementRef,
@@ -55,23 +63,26 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 	) {
 		afterNextRender(() => {
 			this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
-			this._populateItemSelected();
+			this._populateItensSelected();
 		});
 	}
 
-	private _populateItemSelected(): void {
-		if (this.value)
-			this.renderer.addClass(
-				this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}"]`),
-				'selected'
+	private _populateItensSelected(): void {
+		const values = this.value;
+		values.forEach(value => {
+			this.renderer.setAttribute(
+				this.brSelect.nativeElement.querySelector(`input[type="checkbox"][value="${value}"]`),
+				'checked',
+				''
 			);
+		});
 	}
 
 	setSelected() {
 		this.value = this.instance.selected;
 	}
 
-	writeValue(value: string): void {
+	writeValue(value: Array<string>): void {
 		this.value = value;
 	}
 
@@ -79,7 +90,7 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 		this.disabled = disabled;
 	}
 
-	registerOnChange(fn: (value: string) => void): void {
+	registerOnChange(fn: (value: Array<string>) => void): void {
 		this._change = fn;
 	}
 

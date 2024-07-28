@@ -61,7 +61,7 @@
 							"node_modules/@govbr-ds/core/dist/core.min.css",
 							"src/styles.scss"
 						],
-						"scripts": ["node_modules/@govbr-ds/core/dist/core.min.js"],
+						"scripts": [],
 						"server": "src/main.server.ts",
 						"prerender": true,
 						"ssr": {

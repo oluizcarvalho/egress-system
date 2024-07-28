@@ -4,7 +4,9 @@ import { InputComponent } from '../../shared/components/input/input.component';
 import { FeedbackDirective } from '../../shared/directives/feedback.directive';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TextareaComponent } from '../../shared/components/textarea/textarea.component';
-import { SelectComponent, SelectOptions } from '../../shared/components/select/select.component';
+import { SelectComponent } from '../../shared/components/select/select.component';
+import { SelectOptions } from '../../shared/types/select.type';
+import { MultiSelectComponent } from '../../shared/components/multi-select/multi-select.component';
 
 @Component({
 	selector: 'app-home',
@@ -16,6 +18,7 @@ import { SelectComponent, SelectOptions } from '../../shared/components/select/s
 		ReactiveFormsModule,
 		TextareaComponent,
 		SelectComponent,
+		MultiSelectComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
@@ -27,8 +30,13 @@ export class HomeComponent {
 		{ value: '3', text: 'Option 3' },
 	];
 	inputControl = new FormControl('', [Validators.required]);
+	selectControl = new FormControl({ disabled: true, value: '' }, [Validators.required]);
+	multiSelectControl = new FormControl(['1', '2'], [Validators.required]);
 
 	constructor() {
+		this.multiSelectControl.valueChanges.subscribe(value => {
+			console.log(value);
+		});
 		this.inputControl.valueChanges.subscribe(value => {
 			console.log(value);
 		});
