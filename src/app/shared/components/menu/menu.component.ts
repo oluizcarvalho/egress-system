@@ -16,7 +16,7 @@ export class MenuComponent {
 
 	constructor() {
 		afterNextRender(() => {
-			this.instance = new BRMenu('.br-menu', document.querySelector('.br-menu'));
+			this.instance = new BRMenu('br-menu', document.querySelector('.br-menu'));
 		});
 	}
 }

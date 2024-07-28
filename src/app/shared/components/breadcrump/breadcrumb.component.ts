@@ -22,7 +22,7 @@ export class BreadcrumbComponent implements OnInit {
 
 	constructor() {
 		afterNextRender(() => {
-			this.instance = new BRBreadcrumb('.br-breadcrumb', document.querySelector('.br-breadcrumb'));
+			this.instance = new BRBreadcrumb('br-breadcrumb', document.querySelector('.br-breadcrumb'));
 		});
 	}
 

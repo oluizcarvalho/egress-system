@@ -1,0 +1,32 @@
+<div class="br-select" [attr.multiple]="multiple ? '' : null" [attr.disabled]="disabled ? '' : null">
+	<div class="br-input">
+		<label for="{{ id }}">{{ label }}</label>
+		<input autocomplete="off" id="{{ id }}" type="text" [attr.placeholder]="placeholder" class="" />
+		<button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+			<i class="fas fa-angle-up" aria-hidden="true"></i>
+		</button>
+	</div>
+	<div class="br-list" tabindex="0">
+		@if (multiple) {
+			<div class="br-item highlighted" data-all="data-all" tabindex="-1">
+				<div class="br-checkbox">
+					<input id="{{ id + '-all' }}" name="cbsm" type="checkbox" />
+					<label for="{{ id + '-all' }}">Selecionar Todos</label>
+				</div>
+			</div>
+		}
+		@for (option of data; let i = $index; track option.value) {
+			<div class="br-item" tabindex="-1" (click)="setSelected(); getSelected()">
+				<div [class]="multiple ? 'br-checkbox' : 'br-radio'">
+					<input id="{{ id + i }}" [attr.type]="multiple ? 'checkbox' : 'radio'" value="{{ option.value }}" />
+					<label for="{{ id + i }}">{{ option.text }}</label>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+@if (hint) {
+	<span class="feedback warning" role="alert"
+		><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
+	>
+}
