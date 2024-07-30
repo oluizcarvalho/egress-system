@@ -25,3 +25,13 @@
 <app-select [formControl]="selectControl" label="teste" id="asd" [data]="options"> </app-select>
 
 <app-multi-select [formControl]="multiSelectControl" label="teste" id="as" [data]="options"> </app-multi-select>
+
+<app-date-time-picker
+	id="testes"
+	label="data e timer"
+	type="date_time"
+	minDate="20/07/2024"
+	maxDate="30/07/2024"
+	range
+	[formControl]="datePickerControl"
+></app-date-time-picker>

@@ -60,11 +60,13 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 	}
 
 	private _populateItemSelected(): void {
-		if (this.value)
+		if (this.value) {
 			this.renderer.addClass(
 				this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}"]`),
 				'selected'
 			);
+			document.body.click();
+		}
 	}
 
 	setSelected() {

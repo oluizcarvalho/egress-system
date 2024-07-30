@@ -69,13 +69,16 @@ export class MultiSelectComponent implements AfterViewChecked, ControlValueAcces
 
 	private _populateItensSelected(): void {
 		const values = this.value;
-		values.forEach(value => {
-			this.renderer.setAttribute(
-				this.brSelect.nativeElement.querySelector(`input[type="checkbox"][value="${value}"]`),
-				'checked',
-				''
-			);
-		});
+		if (Array.isArray(values) && values.length > 0) {
+			values.forEach(value => {
+				this.renderer.setAttribute(
+					this.brSelect.nativeElement.querySelector(`input[type="checkbox"][value="${value}"]`),
+					'checked',
+					''
+				);
+			});
+			document.body.click();
+		}
 	}
 
 	setSelected() {

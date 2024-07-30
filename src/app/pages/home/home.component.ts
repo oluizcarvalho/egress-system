@@ -7,6 +7,7 @@ import { TextareaComponent } from '../../shared/components/textarea/textarea.com
 import { SelectComponent } from '../../shared/components/select/select.component';
 import { SelectOptions } from '../../shared/types/select.type';
 import { MultiSelectComponent } from '../../shared/components/multi-select/multi-select.component';
+import { DateTimePickerComponent } from '../../shared/components/date-time-picker/date-time-picker.component';
 
 @Component({
 	selector: 'app-home',
@@ -19,6 +20,7 @@ import { MultiSelectComponent } from '../../shared/components/multi-select/multi
 		TextareaComponent,
 		SelectComponent,
 		MultiSelectComponent,
+		DateTimePickerComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
@@ -32,12 +34,16 @@ export class HomeComponent {
 	inputControl = new FormControl('', [Validators.required]);
 	selectControl = new FormControl({ disabled: true, value: '' }, [Validators.required]);
 	multiSelectControl = new FormControl(['1', '2'], [Validators.required]);
+	datePickerControl = new FormControl({ value: '', disabled: false }, [Validators.required]);
 
 	constructor() {
 		this.multiSelectControl.valueChanges.subscribe(value => {
 			console.log(value);
 		});
 		this.inputControl.valueChanges.subscribe(value => {
+			console.log(value);
+		});
+		this.datePickerControl.valueChanges.subscribe(value => {
 			console.log(value);
 		});
 	}
