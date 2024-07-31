@@ -27,6 +27,7 @@
 		"@angular/ssr": "^18.1.1",
 		"@fortawesome/fontawesome-free": "^5.15.4",
 		"@govbr-ds/core": "^3.5.1",
+		"@govbr-ds/webcomponents": "^1.21.0",
 		"dayjs": "^1.11.12",
 		"express": "^4.18.2",
 		"rxjs": "~7.8.0",

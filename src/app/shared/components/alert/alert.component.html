@@ -1,0 +1,16 @@
+<div class="br-message {{ state }}">
+	<div class="icon"><i class="fas fa-lg" [ngClass]="state | getIconByState" aria-hidden="true"></i></div>
+	<div class="content" [attr.aria-label]="body" role="alert">
+		@if (title) {
+			<span class="message-title">{{ title }}</span>
+		}
+		><span class="message-body"> {{ body }}</span>
+	</div>
+	@if (closable) {
+		<div class="close">
+			<button class="br-button circle small" type="button" aria-label="Fechar a mensagem alerta">
+				<i class="fas fa-times" aria-hidden="true"></i>
+			</button>
+		</div>
+	}
+</div>

@@ -23,6 +23,41 @@ body {
 	cursor: pointer;
 }
 
+p,
+span {
+	color: var(--pure-100, #000);
+	font-size: 16.8px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+b,
+strong {
+	color: var(--pure-100, #000);
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+h1,
+.title {
+	color: var(--pure-100, #000);
+	font-size: 41.8px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.subtitle {
+	color: var(--gray-70, #555);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
 ::-webkit-scrollbar {
 	background-color: #cacaca;
 	width: 8px;

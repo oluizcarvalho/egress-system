@@ -1,14 +1,5 @@
 import { afterNextRender, Directive, ElementRef, Input, OnDestroy, Renderer2 } from '@angular/core';
-
-const ICONS_BY_STATE = {
-	success: 'fa-check-circle',
-	danger: 'fa-times-circle',
-	warning: 'fa-exclamation-triangle',
-	info: 'fa-info-circle',
-	['']: '',
-};
-
-export type StateType = keyof typeof ICONS_BY_STATE;
+import { getIconByState, StateType } from '../utils/get-icon-by-state';
 
 @Directive({
 	selector: 'span[br-feedback]',
@@ -43,14 +34,10 @@ export class FeedbackDirective implements OnDestroy {
 		const icon = this.renderer.createElement('i');
 
 		this.renderer.addClass(icon, 'fas');
-		this.renderer.addClass(icon, this.getIconClass());
+		this.renderer.addClass(icon, getIconByState(this.state));
 		this.renderer.setAttribute(icon, 'aria-hidden', 'true');
 
 		this.renderer.appendChild(this.el.nativeElement, icon);
-	}
-
-	private getIconClass(): string {
-		return ICONS_BY_STATE[this.state] || '';
 	}
 
 	ngOnDestroy(): void {

@@ -5,3 +5,5 @@ declare module '@govbr-ds/core/dist/components/menu/menu';
 declare module '@govbr-ds/core/dist/components/select/select';
 declare module '@govbr-ds/core/dist/components/input/input';
 declare module '@govbr-ds/core/dist/components/datetimepicker/datetimepicker';
+declare module '@govbr-ds/core/dist/components/message/message';
+declare module '@govbr-ds/core/dist/components/tooltip/tooltip';
