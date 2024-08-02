@@ -8,6 +8,7 @@ import { SelectComponent } from '../../shared/components/select/select.component
 import { SelectOptions } from '../../shared/types/select.type';
 import { MultiSelectComponent } from '../../shared/components/multi-select/multi-select.component';
 import { DateTimePickerComponent } from '../../shared/components/date-time-picker/date-time-picker.component';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
 	selector: 'app-home',
@@ -21,6 +22,7 @@ import { DateTimePickerComponent } from '../../shared/components/date-time-picke
 		SelectComponent,
 		MultiSelectComponent,
 		DateTimePickerComponent,
+		PaginatorComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
