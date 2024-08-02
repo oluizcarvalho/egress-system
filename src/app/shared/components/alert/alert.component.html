@@ -1,16 +1,23 @@
-<div class="br-message {{ state }}">
-	<div class="icon"><i class="fas fa-lg" [ngClass]="state | getIconByState" aria-hidden="true"></i></div>
-	<div class="content" [attr.aria-label]="body" role="alert">
-		@if (title) {
-			<span class="message-title">{{ title }}</span>
-		}
-		><span class="message-body"> {{ body }}</span>
-	</div>
-	@if (closable) {
-		<div class="close">
-			<button class="br-button circle small" type="button" aria-label="Fechar a mensagem alerta">
-				<i class="fas fa-times" aria-hidden="true"></i>
-			</button>
+@if (alert(); as alert) {
+	<div
+		(mouseenter)="onMouseEnter(alert)"
+		(mouseleave)="onMouseDown(alert)"
+		class="br-message {{ alert.type }}"
+		@scaleFadeIn
+	>
+		<div class="icon"><i class="fas fa-lg" [ngClass]="alert.type | getIconByState" aria-hidden="true"></i></div>
+		<div class="content" [attr.aria-label]="alert.message" role="alert">
+			@if (alert.title) {
+				<span class="message-title">{{ alert.title }}</span>
+			}
+			<span class="message-body"> {{ alert.message }}</span>
 		</div>
-	}
-</div>
+		@if (alert.closable) {
+			<div (click)="onHide()" class="close">
+				<button class="br-button circle small" type="button" aria-label="Fechar a mensagem alerta">
+					<i class="fas fa-times" aria-hidden="true"></i>
+				</button>
+			</div>
+		}
+	</div>
+}
