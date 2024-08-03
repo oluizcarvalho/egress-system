@@ -1,0 +1,54 @@
+<table
+	class="br-table {{ size }}"
+	[ngClass]="{ 'no-hover': !hovered }"
+	cdk-table
+	[dataSource]="data"
+	[trackBy]="trackByItem"
+>
+	@for (column of columns; track column.header) {
+		<ng-container [cdkColumnDef]="column.columnDef">
+			<th cdk-header-cell *cdkHeaderCellDef>
+				{{ column.header }}
+			</th>
+			@switch (column.type) {
+				@case ('date') {
+					<td mat-cell *cdkCellDef="let row">
+						{{ column.cell(row) | date: 'dd/MM/yyyy' }}
+					</td>
+				}
+				@case ('link') {
+					<td mat-cell *cdkCellDef="let row">
+						@if (column.value && column.value(row)) {
+							<a [routerLink]="[column.value(row)]">{{ column.cell(row) || '-' }}</a>
+						} @else {
+							{{ column.cell(row) || '-' }}
+						}
+					</td>
+				}
+				@case ('function') {
+					<td mat-cell *cdkCellDef="let row">
+						<a *ngIf="column.value" (click)="column.value(row)">{{ column.cell(row) || '-' }}</a>
+					</td>
+				}
+				@case ('icon') {
+					<td mat-cell *cdkCellDef="let row">
+						<i class="fas {{ column.cell(row) || 'fa-eye' }}" (click)="column.value(row)"></i>
+					</td>
+				}
+				@default {
+					@if (column.mask) {
+						<td mat-cell *cdkCellDef="let row">
+							{{ column.cell(row) | mask: column.mask || '-' }}
+						</td>
+					} @else {
+						<td mat-cell *cdkCellDef="let row">
+							{{ column.cell(row) || '-' }}
+						</td>
+					}
+				}
+			}
+		</ng-container>
+	}
+	<tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+	<tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+</table>

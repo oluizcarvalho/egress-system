@@ -9,6 +9,7 @@ import { SelectOptions } from '../../shared/types/select.type';
 import { MultiSelectComponent } from '../../shared/components/multi-select/multi-select.component';
 import { DateTimePickerComponent } from '../../shared/components/date-time-picker/date-time-picker.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { Columns, TableComponent } from '../../shared/components/table/table.component';
 
 @Component({
 	selector: 'app-home',
@@ -23,6 +24,7 @@ import { PaginatorComponent } from '../../shared/components/paginator/paginator.
 		MultiSelectComponent,
 		DateTimePickerComponent,
 		PaginatorComponent,
+		TableComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
@@ -37,6 +39,41 @@ export class HomeComponent {
 	selectControl = new FormControl({ disabled: true, value: '' }, [Validators.required]);
 	multiSelectControl = new FormControl(['1', '2'], [Validators.required]);
 	datePickerControl = new FormControl({ value: '', disabled: false }, [Validators.required]);
+	columns: Columns[] = [
+		{
+			columnDef: 'name',
+			header: 'Cliente',
+			cell: () => `Luiz Carvalho`,
+		},
+		{
+			columnDef: 'document',
+			header: 'CPF/CNPJ',
+			cell: () => `122.809.706-27`,
+		},
+		{
+			columnDef: 'email',
+			header: 'E-MAIL',
+			type: 'icon',
+			cell: () => `fas fa-eye`,
+			value: () => console.log('chamou'),
+		},
+	];
+	data = [
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+		{ teste: 1 },
+	];
 
 	constructor() {
 		this.multiSelectControl.valueChanges.subscribe(value => {

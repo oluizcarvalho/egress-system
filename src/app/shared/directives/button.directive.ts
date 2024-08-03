@@ -1,4 +1,5 @@
 import { booleanAttribute, Directive, Input } from '@angular/core';
+import { SizeOptions } from '../types/size.type';
 
 @Directive({
 	selector: 'button[br-button], a[br-button]',
@@ -24,7 +25,7 @@ import { booleanAttribute, Directive, Input } from '@angular/core';
 })
 export class ButtonDirective {
 	@Input() type: 'primary' | 'secondary' | 'tertiary' = 'primary';
-	@Input() size: 'small' | 'medium' | 'large' = 'medium';
+	@Input() size: SizeOptions = 'medium';
 	@Input({ transform: booleanAttribute }) disabled = false;
 	@Input({ transform: booleanAttribute }) block = false;
 	@Input({ transform: booleanAttribute }) loading = false;

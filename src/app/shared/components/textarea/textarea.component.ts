@@ -19,6 +19,7 @@ import {
 	Validator,
 	Validators,
 } from '@angular/forms';
+import { SizeOptions } from '../../types/size.type';
 
 @Component({
 	selector: 'app-textarea',
@@ -32,7 +33,7 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
 	@Input({ required: true }) label = '';
 	@Input({ required: true }) id: string;
 	@Input() name = '';
-	@Input() size: 'small' | 'medium' | 'large' = 'medium';
+	@Input() size: SizeOptions = 'medium';
 	@Input() placeholder = '';
 	@Input() hint = '';
 	@Input({ transform: booleanAttribute }) disabled = false;

@@ -11,6 +11,7 @@ import {
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { AbstractControl, ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import BRInput from '@govbr-ds/core/dist/components/input/input';
+import { SizeOptions } from '../../types/size.type';
 
 @Component({
 	selector: 'app-input',
@@ -24,7 +25,7 @@ export class InputComponent implements ControlValueAccessor {
 	@Input({ required: true }) label = '';
 	@Input({ required: true }) id: string;
 	@Input() name = '';
-	@Input() size: 'small' | 'medium' | 'large' = 'medium';
+	@Input() size: SizeOptions = 'medium';
 	@Input() type: 'text' | 'password' | 'email' | 'number' = 'text';
 	@Input() state: 'success' | 'danger' | 'info' | 'warning' | '' = '';
 	@Input() placeholder = '';
