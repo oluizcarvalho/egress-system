@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonDirective } from '../../shared/directives/button.directive';
 import { InputComponent } from '../../shared/components/input/input.component';
 import { FeedbackDirective } from '../../shared/directives/feedback.directive';
@@ -10,6 +10,7 @@ import { MultiSelectComponent } from '../../shared/components/multi-select/multi
 import { DateTimePickerComponent } from '../../shared/components/date-time-picker/date-time-picker.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Columns, TableComponent } from '../../shared/components/table/table.component';
+import { LoadingService } from '../../shared/components/loading/loading.service';
 
 @Component({
 	selector: 'app-home',
@@ -75,6 +76,8 @@ export class HomeComponent {
 		{ teste: 1 },
 	];
 
+	loadingService = inject(LoadingService);
+
 	constructor() {
 		this.multiSelectControl.valueChanges.subscribe(value => {
 			console.log(value);
@@ -85,5 +88,9 @@ export class HomeComponent {
 		this.datePickerControl.valueChanges.subscribe(value => {
 			console.log(value);
 		});
+		this.loadingService.setLoading(true);
+		setTimeout(() => {
+			this.loadingService.setLoading(false);
+		}, 2000);
 	}
 }

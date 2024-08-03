@@ -7,6 +7,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { BreadcrumbComponent } from './shared/components/breadcrump/breadcrumb.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from './shared/components/alert/alert.service';
+import {LoadingComponent} from "./shared/components/loading/loading.component";
 
 @Component({
 	selector: 'app-root',
@@ -19,6 +20,7 @@ import { AlertService } from './shared/components/alert/alert.service';
 		FooterComponent,
 		BreadcrumbComponent,
 		AlertComponent,
+		LoadingComponent,
 	],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
