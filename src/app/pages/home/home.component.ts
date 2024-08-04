@@ -12,6 +12,7 @@ import { PaginatorComponent } from '../../shared/components/paginator/paginator.
 import { Columns, TableComponent } from '../../shared/components/table/table.component';
 import { LoadingService } from '../../shared/components/loading/loading.service';
 import { SwitchComponent } from '../../shared/components/switch/switch.component';
+import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.component';
 
 @Component({
 	selector: 'app-home',
@@ -29,6 +30,7 @@ import { SwitchComponent } from '../../shared/components/switch/switch.component
 		TableComponent,
 		SwitchComponent,
 		FormsModule,
+		CheckboxComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
