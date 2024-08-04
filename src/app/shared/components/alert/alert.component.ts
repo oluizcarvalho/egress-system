@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { GetIconByStatePipe } from '../../pipes/get-icon-by-state.pipe';
 import { AlertEvent, AlertService } from './alert.service';
@@ -34,8 +34,9 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class AlertComponent {
 	alert = signal<AlertEvent | null>(null);
+	private alertService = inject(AlertService);
 
-	constructor(private alertService: AlertService) {
+	constructor() {
 		afterNextRender(() => {
 			this.alertService.alertEvents$.subscribe(event => {
 				this.alert.set(event);

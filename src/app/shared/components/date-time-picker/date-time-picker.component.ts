@@ -4,9 +4,9 @@ import {
 	Component,
 	ElementRef,
 	forwardRef,
+	inject,
 	Input,
 	OnInit,
-	signal,
 } from '@angular/core';
 import BRDateTimePicker from '@govbr-ds/core/dist/components/datetimepicker/datetimepicker';
 import dayjs from 'dayjs';
@@ -81,7 +81,9 @@ export class DateTimePickerComponent implements OnInit, ControlValueAccessor {
 	protected readonly TypeDatePicker = TYPE_DATE_PICKER;
 	instance: unknown;
 
-	constructor(private brInput: ElementRef) {
+	private brDatePicker = inject(ElementRef);
+
+	constructor() {
 		afterNextRender(() => {
 			let dates = {};
 			if (this.maxDate) {
@@ -97,7 +99,7 @@ export class DateTimePickerComponent implements OnInit, ControlValueAccessor {
 			}
 			this.instance = new BRDateTimePicker(
 				'br-datetimepicker',
-				this.brInput.nativeElement.querySelector('.br-datetimepicker'),
+				this.brDatePicker.nativeElement.querySelector('.br-datetimepicker'),
 				{
 					...dates,
 				}
@@ -128,7 +130,7 @@ export class DateTimePickerComponent implements OnInit, ControlValueAccessor {
 					: 'exemplo: 02/02/2024 até 03/02/2025';
 		} else if (this.type === TYPE_DATE_PICKER.date) {
 			this.placeholder = 'exemplo: 02/02/2024';
-		} else if (this.type === TYPE_DATE_PICKER.date_time) {
+		} else if (this.type === TYPE_DATE_PICKER.time) {
 			this.placeholder = 'exemplo: 02:40';
 		} else {
 			this.placeholder = 'exemplo: 02/02/2024 02:02';

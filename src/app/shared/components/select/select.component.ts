@@ -6,6 +6,7 @@ import {
 	ElementRef,
 	EventEmitter,
 	forwardRef,
+	inject,
 	Input,
 	Output,
 	Renderer2,
@@ -49,10 +50,10 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 
 	protected _change: (value: string) => void = () => void undefined;
 
-	constructor(
-		private brSelect: ElementRef,
-		private renderer: Renderer2
-	) {
+	brSelect = inject(ElementRef);
+	renderer = inject(Renderer2);
+
+	constructor() {
 		afterNextRender(() => {
 			this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
 			this._populateItemSelected();

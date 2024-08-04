@@ -5,6 +5,7 @@ import {
 	ElementRef,
 	EventEmitter,
 	forwardRef,
+	inject,
 	Input,
 	Output,
 } from '@angular/core';
@@ -78,8 +79,9 @@ export class InputComponent implements ControlValueAccessor {
 	protected _change: (value: string) => void = () => void undefined;
 
 	instance: unknown;
+	private brInput = inject(ElementRef);
 
-	constructor(private brInput: ElementRef) {
+	constructor() {
 		afterNextRender(() => {
 			this.instance = new BRInput('br-input', this.brInput.nativeElement.querySelector('.br-input'));
 		});

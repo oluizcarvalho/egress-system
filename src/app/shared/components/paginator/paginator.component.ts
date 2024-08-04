@@ -3,6 +3,7 @@ import {
 	Component,
 	ElementRef,
 	EventEmitter,
+	inject,
 	Input,
 	numberAttribute,
 	OnChanges,
@@ -48,7 +49,7 @@ export class PaginatorComponent implements OnChanges {
 	currentPage: number;
 	previousPageIndex: number;
 
-	constructor(private brPaginator: ElementRef) {}
+	private brPaginator = inject(ElementRef);
 
 	ngOnChanges(): void {
 		this.calculatePages();
@@ -69,6 +70,11 @@ export class PaginatorComponent implements OnChanges {
 	private calculatePages() {
 		this.previousPageIndex = this.pageIndex;
 		this.totalPages = Math.ceil(this.length / this.pageSize);
+
+		if (this.totalPages < this.pageIndex) {
+			this.pageIndex = this.totalPages - 1;
+		}
+
 		this.pageIndexOptions = Array.from({ length: this.totalPages }, (_, i) => i + 1);
 	}
 

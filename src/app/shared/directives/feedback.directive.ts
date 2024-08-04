@@ -1,4 +1,4 @@
-import { afterNextRender, Directive, ElementRef, Input, OnDestroy, Renderer2 } from '@angular/core';
+import { afterNextRender, Directive, ElementRef, inject, Input, OnDestroy, Renderer2 } from '@angular/core';
 import { getIconByState, StateType } from '../utils/get-icon-by-state';
 
 @Directive({
@@ -13,10 +13,10 @@ import { getIconByState, StateType } from '../utils/get-icon-by-state';
 export class FeedbackDirective implements OnDestroy {
 	@Input() state: StateType = '';
 	node: HTMLDivElement;
-	constructor(
-		private el: ElementRef,
-		private renderer: Renderer2
-	) {
+	el = inject(ElementRef);
+	renderer = inject(Renderer2);
+
+	constructor() {
 		afterNextRender(() => {
 			this.node = this.renderer.parentNode(this.el.nativeElement) as HTMLDivElement;
 

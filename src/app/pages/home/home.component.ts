@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ButtonDirective } from '../../shared/directives/button.directive';
 import { InputComponent } from '../../shared/components/input/input.component';
 import { FeedbackDirective } from '../../shared/directives/feedback.directive';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TextareaComponent } from '../../shared/components/textarea/textarea.component';
 import { SelectComponent } from '../../shared/components/select/select.component';
 import { SelectOptions } from '../../shared/types/select.type';
@@ -11,6 +11,7 @@ import { DateTimePickerComponent } from '../../shared/components/date-time-picke
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Columns, TableComponent } from '../../shared/components/table/table.component';
 import { LoadingService } from '../../shared/components/loading/loading.service';
+import { SwitchComponent } from '../../shared/components/switch/switch.component';
 
 @Component({
 	selector: 'app-home',
@@ -26,6 +27,8 @@ import { LoadingService } from '../../shared/components/loading/loading.service'
 		DateTimePickerComponent,
 		PaginatorComponent,
 		TableComponent,
+		SwitchComponent,
+		FormsModule,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
@@ -77,6 +80,7 @@ export class HomeComponent {
 	];
 
 	loadingService = inject(LoadingService);
+	checked = false;
 
 	constructor() {
 		this.multiSelectControl.valueChanges.subscribe(value => {

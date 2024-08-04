@@ -15,7 +15,7 @@
 	icon="fas fa-eye"
 	hint="teste"
 >
-	@if (inputControl.invalid && inputControl.dirty) {
+	@if (inputControl.invalid && !inputControl.untouched) {
 		<span br-feedback state="danger">Campo obrigatório</span>
 	}
 </app-input>
@@ -32,9 +32,10 @@
 	type="date_time"
 	minDate="20/07/2024"
 	maxDate="30/07/2024"
-	range
 	[formControl]="datePickerControl"
 ></app-date-time-picker>
+
+<app-switch [(value)]="checked" label="Teste" hintActive="ativo" hintInactive="inativo" id="testa"></app-switch>
 
 <app-table [columns]="columns" [data]="data"></app-table>
 <app-paginator length="100" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[10, 20, 30]"></app-paginator>
