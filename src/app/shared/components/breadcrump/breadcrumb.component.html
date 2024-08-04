@@ -4,7 +4,7 @@
 			@for (crumb of crumbs; track crumb.label; let first = $first; let last = $last) {
 				<li [ngClass]="{ home: first }" class="crumb" [attr.data-active]="last ? 'active' : null">
 					@if (first) {
-						<a class="br-button circle" href="/">
+						<a class="br-button circle" [routerLink]="['/']">
 							<span class="sr-only">Página inicial</span>
 							<i class="fas fa-home"> </i>
 						</a>
