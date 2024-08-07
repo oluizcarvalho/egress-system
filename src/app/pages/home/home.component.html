@@ -10,13 +10,15 @@
 	required
 	type="password"
 	id="teste"
+	placeholder="Teste"
 	label="Teste"
 	hasButton
 	icon="fas fa-eye"
-	hint="teste"
 >
 	@if (inputControl.invalid && !inputControl.untouched) {
 		<span br-feedback state="danger">Campo obrigatório</span>
+	} @else {
+		<span br-feedback noPropagateState state="info">Teste</span>
 	}
 </app-input>
 

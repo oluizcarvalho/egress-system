@@ -1,11 +1,6 @@
-<div
-	class="br-datetimepicker"
-	[attr.data-mode]="range ? 'range' : 'single'"
-	[attr.data-type]="type"
-	[ngClass]="disabled ? 'disabled' : ''"
->
-	<div class="br-input has-icon">
-		<label for="timepicker-{{ id }}">{{ label }}</label>
+<div class="br-datetimepicker" [attr.data-mode]="range ? 'range' : 'single'" [attr.data-type]="type">
+	<label for="timepicker-{{ id }}">{{ label }}</label>
+	<div class="br-input has-icon" [class.disabled]="disabled">
 		<input
 			(blur)="onBlur()"
 			[(ngModel)]="value"
@@ -35,13 +30,13 @@
 			></i>
 		</button>
 	</div>
+	@if (disabled) {
+		<span class="feedback warning" role="alert"
+			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo desabilitado</span
+		>
+	} @else if (hint) {
+		<span class="feedback warning" role="alert"
+			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
+		>
+	}
 </div>
-@if (disabled) {
-	<span class="feedback warning" role="alert"
-		><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo desabilitado</span
-	>
-} @else if (hint) {
-	<span class="feedback warning" role="alert"
-		><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
-	>
-}

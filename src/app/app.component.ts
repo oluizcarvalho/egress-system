@@ -7,7 +7,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { BreadcrumbComponent } from './shared/components/breadcrump/breadcrumb.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from './shared/components/alert/alert.service';
-import {LoadingComponent} from "./shared/components/loading/loading.component";
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 @Component({
 	selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent {
 	alertService = inject(AlertService);
 	constructor() {
 		setTimeout(() => {
-			this.alertService.showAlert('success', 'Sucesso solicitação feita com sucesso', 'Sucesso.', false);
+			this.alertService.showAlert('success', 'Sucesso solicitação feita com sucesso', 'Sucesso.', true, 4000);
 		}, 1000);
 	}
 }

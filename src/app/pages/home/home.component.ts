@@ -41,10 +41,10 @@ export class HomeComponent {
 		{ value: '2', text: 'Option 2' },
 		{ value: '3', text: 'Option 3' },
 	];
-	inputControl = new FormControl('', [Validators.required]);
+	inputControl = new FormControl({ disabled: false, value: '' }, [Validators.required]);
 	selectControl = new FormControl({ disabled: true, value: '' }, [Validators.required]);
 	multiSelectControl = new FormControl(['1', '2'], [Validators.required]);
-	datePickerControl = new FormControl({ value: '', disabled: false }, [Validators.required]);
+	datePickerControl = new FormControl({ value: '', disabled: true }, [Validators.required]);
 	columns: Columns[] = [
 		{
 			columnDef: 'name',

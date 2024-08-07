@@ -1,4 +1,13 @@
-import { afterNextRender, Directive, ElementRef, inject, Input, OnDestroy, Renderer2 } from '@angular/core';
+import {
+	afterNextRender,
+	booleanAttribute,
+	Directive,
+	ElementRef,
+	inject,
+	Input,
+	OnDestroy,
+	Renderer2,
+} from '@angular/core';
 import { getIconByState, StateType } from '../utils/get-icon-by-state';
 
 @Directive({
@@ -12,6 +21,7 @@ import { getIconByState, StateType } from '../utils/get-icon-by-state';
 })
 export class FeedbackDirective implements OnDestroy {
 	@Input() state: StateType = '';
+	@Input({ transform: booleanAttribute }) noPropagateState = false;
 	node: HTMLDivElement;
 	el = inject(ElementRef);
 	renderer = inject(Renderer2);
@@ -26,7 +36,7 @@ export class FeedbackDirective implements OnDestroy {
 	}
 
 	private setState(): void {
-		this.node.classList.add(this.state);
+		if (!this.noPropagateState) this.node.classList.add(this.state);
 		this.renderer.addClass(this.el.nativeElement, this.state);
 	}
 

@@ -1,13 +1,4 @@
-<div
-	class="br-input"
-	[ngClass]="[
-		size,
-		hasButton ? 'input-button' : '',
-		state,
-		disabled ? 'disabled' : '',
-		highlight ? 'input-highlight' : '',
-	]"
->
+<div class="br-input" [ngClass]="[size, hasButton ? 'input-button' : '', state, highlight ? 'input-highlight' : '']">
 	<label for="input-{{ id }}">
 		{{ label }}
 	</label>
@@ -19,7 +10,7 @@
 	} @else {
 		<ng-container *ngTemplateOutlet="input"></ng-container>
 		@if (hasButton) {
-			<button (click)="onClickButton($event)" class="br-button" type="button" aria-label="Botão">
+			<button [disabled]="disabled" (click)="onClickButton($event)" class="br-button" type="button" aria-label="Botão">
 				<i [class]="icon" aria-hidden="true"></i>
 			</button>
 		}
@@ -45,9 +36,9 @@
 		/>
 	</ng-template>
 	@if (disabled) {
-		<span class="feedback warning" role="alert"
-			>Campo Desabilitado <i class="fas fa-exclamation-triangle" aria-hidden="true"></i
-		></span>
+		<span class="feedback warning" role="alert">
+			<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo Desabilitado</span
+		>
 	} @else {
 		@if (hint) {
 			<p>{{ hint }}</p>

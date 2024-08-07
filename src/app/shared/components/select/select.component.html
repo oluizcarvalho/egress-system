@@ -1,6 +1,6 @@
-<div class="br-select mw-100" [attr.disabled]="disabled ? '' : null">
-	<div class="br-input">
-		<label for="{{ id }}">{{ label }}</label>
+<div class="br-select mw-100">
+	<label for="{{ id }}">{{ label }}</label>
+	<div class="br-input" [class.disabled]="disabled">
 		<input (blur)="onBlur()" autocomplete="off" id="{{ id }}" type="text" [attr.placeholder]="placeholder" class="" />
 		<button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
 			<i class="fas fa-angle-up" aria-hidden="true"></i>
@@ -16,13 +16,13 @@
 			</div>
 		}
 	</div>
+	@if (disabled) {
+		<span class="feedback warning" role="alert"
+			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo desabilitado</span
+		>
+	} @else if (hint) {
+		<span class="feedback warning" role="alert"
+			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
+		>
+	}
 </div>
-@if (disabled) {
-	<span class="feedback warning" role="alert"
-		><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo desabilitado</span
-	>
-} @else if (hint) {
-	<span class="feedback warning" role="alert"
-		><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
-	>
-}

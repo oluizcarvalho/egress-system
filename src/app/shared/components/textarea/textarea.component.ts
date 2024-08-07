@@ -1,14 +1,4 @@
-import {
-	afterNextRender,
-	booleanAttribute,
-	Component,
-	ElementRef,
-	EventEmitter,
-	forwardRef,
-	Input,
-	numberAttribute,
-	Output,
-} from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, forwardRef, Input, numberAttribute, Output } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
 	AbstractControl,
