@@ -1,4 +1,4 @@
-import { booleanAttribute, Directive, Input } from '@angular/core';
+import { afterNextRender, booleanAttribute, Directive, ElementRef, inject, Input, Renderer2 } from '@angular/core';
 import { SizeOptions } from '../types/size.type';
 
 @Directive({
@@ -26,11 +26,43 @@ import { SizeOptions } from '../types/size.type';
 export class ButtonDirective {
 	@Input() type: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	@Input() size: SizeOptions = 'medium';
+	@Input() icon = '';
+	@Input() fontSet = 'fas';
+	@Input() positionIcon: 'before' | 'after' = 'before';
 	@Input({ transform: booleanAttribute }) disabled = false;
 	@Input({ transform: booleanAttribute }) block = false;
 	@Input({ transform: booleanAttribute }) loading = false;
 	@Input({ transform: booleanAttribute }) active = false;
 	@Input({ transform: booleanAttribute }) circle = false;
 	@Input({ transform: booleanAttribute }) inverted = false;
-	constructor() {}
+
+	public el = inject(ElementRef);
+	public renderer = inject(Renderer2);
+
+	constructor() {
+		afterNextRender(() => {
+			this.setIcon();
+		});
+	}
+
+	setIcon(): void {
+		if (!this.icon) return;
+
+		const icon = this.createIcon();
+
+		if (this.positionIcon === 'after') {
+			this.renderer.appendChild(this.el.nativeElement, icon);
+		} else {
+			this.renderer.insertBefore(this.el.nativeElement, icon, this.el.nativeElement.firstChild);
+		}
+	}
+
+	createIcon(): HTMLElement {
+		const icon = this.renderer.createElement('i');
+
+		this.renderer.addClass(icon, this.fontSet);
+		this.renderer.addClass(icon, this.icon);
+		this.renderer.setAttribute(icon, 'aria-hidden', 'true');
+		return icon;
+	}
 }

@@ -15,7 +15,6 @@ import { getIconByState, StateType } from '../utils/get-icon-by-state';
 	standalone: true,
 	host: {
 		'[class.feedback]': 'true',
-		'[class.flex-row-reverse]': 'true',
 		role: 'alert',
 	},
 })
@@ -47,7 +46,7 @@ export class FeedbackDirective implements OnDestroy {
 		this.renderer.addClass(icon, getIconByState(this.state));
 		this.renderer.setAttribute(icon, 'aria-hidden', 'true');
 
-		this.renderer.appendChild(this.el.nativeElement, icon);
+		this.renderer.insertBefore(this.el.nativeElement, icon, this.el.nativeElement.firstChild);
 	}
 
 	ngOnDestroy(): void {
