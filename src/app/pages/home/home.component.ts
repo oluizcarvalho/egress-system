@@ -10,9 +10,9 @@ import { MultiSelectComponent } from '../../shared/components/multi-select/multi
 import { DateTimePickerComponent } from '../../shared/components/date-time-picker/date-time-picker.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Columns, TableComponent } from '../../shared/components/table/table.component';
-import { LoadingService } from '../../shared/components/loading/loading.service';
 import { SwitchComponent } from '../../shared/components/switch/switch.component';
 import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.component';
+import {CollapseItemComponent} from "../../shared/components/collapse-item/collapse-item.component";
 
 @Component({
 	selector: 'app-home',
@@ -31,6 +31,7 @@ import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.com
 		SwitchComponent,
 		FormsModule,
 		CheckboxComponent,
+		CollapseItemComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
@@ -81,7 +82,6 @@ export class HomeComponent {
 		{ teste: 1 },
 	];
 
-	loadingService = inject(LoadingService);
 	checked = false;
 
 	constructor() {
@@ -94,9 +94,5 @@ export class HomeComponent {
 		this.datePickerControl.valueChanges.subscribe(value => {
 			console.log(value);
 		});
-		this.loadingService.setLoading(true);
-		setTimeout(() => {
-			this.loadingService.setLoading(false);
-		}, 2000);
 	}
 }

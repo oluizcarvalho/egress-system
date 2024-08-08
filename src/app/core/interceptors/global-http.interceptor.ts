@@ -7,30 +7,19 @@ import {
 	HttpStatusCode,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { catchError, finalize } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { LoadingService } from '../../shared/components/loading/loading.service';
 import { AlertService } from '../../shared/components/alert/alert.service';
 import { StateType } from '../../shared/utils/get-icon-by-state';
 
 export const KEY_HIDE_NOTIFICATION = 'hideNotification';
 export const KEY_NO_AUTH = 'noAuth';
-export const KEY_NO_LOADING = 'noLoading';
 
 export const globalInterceptor: HttpInterceptorFn = (
 	req: HttpRequest<any>,
 	next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
-	const loadingService = inject(LoadingService);
-
 	let clonedRequest = req;
-	if (!clonedRequest.params.has(KEY_NO_LOADING)) {
-		loadingService.setLoading(true, clonedRequest.url);
-	} else {
-		clonedRequest = clonedRequest.clone({
-			params: clonedRequest.params.delete(KEY_NO_LOADING),
-		});
-	}
 
 	if (clonedRequest.params.has(KEY_NO_AUTH)) {
 		clonedRequest = clonedRequest.clone({
@@ -52,10 +41,7 @@ export const globalInterceptor: HttpInterceptorFn = (
 		return next(clonedRequest);
 	}
 
-	return next(clonedRequest).pipe(
-		finalize(() => loadingService.setLoading(false, clonedRequest.url)),
-		catchError(error => errorHandler(error))
-	);
+	return next(clonedRequest).pipe(catchError(error => errorHandler(error)));
 };
 
 function errorHandler(response: HttpErrorResponse): Observable<HttpEvent<unknown>> {
