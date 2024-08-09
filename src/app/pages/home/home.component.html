@@ -2,6 +2,7 @@
 
 <button br-button type="secondary">Teste</button>
 
+<!--
 <app-input
 	[formControl]="inputControl"
 	required
@@ -44,3 +45,8 @@
 <app-collapse-item id="collapse-1" label="Bacharel em Sistemas da Informação">
 	<h1>Teste conteúdo</h1>
 </app-collapse-item>
+-->
+
+<app-tabs [tabs]="tabs" [(activeTab)]="tabSelected"></app-tabs>
+
+<h1>{{ tabSelected }}</h1>

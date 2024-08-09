@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonDirective } from '../../shared/directives/button.directive';
 import { InputComponent } from '../../shared/components/input/input.component';
 import { FeedbackDirective } from '../../shared/directives/feedback.directive';
@@ -12,7 +12,8 @@ import { PaginatorComponent } from '../../shared/components/paginator/paginator.
 import { Columns, TableComponent } from '../../shared/components/table/table.component';
 import { SwitchComponent } from '../../shared/components/switch/switch.component';
 import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.component';
-import {CollapseItemComponent} from "../../shared/components/collapse-item/collapse-item.component";
+import { CollapseItemComponent } from '../../shared/components/collapse-item/collapse-item.component';
+import { Tabs, TabsComponent } from '../../shared/components/tabs/tabs.component';
 
 @Component({
 	selector: 'app-home',
@@ -32,6 +33,7 @@ import {CollapseItemComponent} from "../../shared/components/collapse-item/colla
 		FormsModule,
 		CheckboxComponent,
 		CollapseItemComponent,
+		TabsComponent,
 	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
@@ -95,4 +97,24 @@ export class HomeComponent {
 			console.log(value);
 		});
 	}
+
+	tabSelected = 0;
+	tabs: Tabs = [
+		{
+			label: 'Tab 1',
+			id: 0,
+			icon: 'fas fa-home',
+		},
+		{
+			label: 'Tab 2',
+			id: 1,
+			icon: 'fas fa-user',
+      active: true
+		},
+		{
+			label: 'Tab 3',
+			id: 2,
+			icon: 'fas fa-cog',
+		},
+	];
 }
