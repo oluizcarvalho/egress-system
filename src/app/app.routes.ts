@@ -3,8 +3,16 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{
+		path: 'dashboard',
+		loadComponent: () => import('./features/public/public.component').then(m => m.PublicComponent),
+		title: 'Dashboard | Sistema De Egressos',
+		data: {
+			breadCrumb: 'Dashboard',
+		},
+	},
+	{
 		path: 'home',
-		loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+		loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
 		title: 'Home | Sistema De Egressos',
 		data: {
 			breadCrumb: 'Home',
@@ -12,7 +20,7 @@ export const routes: Routes = [
 	},
 	{
 		path: '**',
-		loadComponent: () => import('./pages/not-found/not-found.component').then(m => m.NotFoundComponent),
+		loadComponent: () => import('./features/not-found/not-found.component').then(m => m.NotFoundComponent),
 		title: 'Página Não Encontrada | Sistema De Egressos',
 		data: {
 			breadCrumb: 'Página Não Encontrada',

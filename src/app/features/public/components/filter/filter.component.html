@@ -1,0 +1,36 @@
+<app-collapse-item expanded id="filter" label="Filtros" class="mb-3">
+	<form [formGroup]="formGroupFilter" class="filter-section row mx-0" (ngSubmit)="submit()">
+		<app-select
+			[data]="academicSemesterOptions"
+			formControlName="academicSemester"
+			class="col-md-3 col-12"
+			id="academic-semester"
+			label="Semestre letivo"
+		></app-select>
+		<app-multi-select
+			[data]="courseOptions"
+			formControlName="course"
+			class="col-md-3 col-12"
+			id="course"
+			label="Curso"
+		></app-multi-select>
+		<app-multi-select
+			[data]="titrationOptions"
+			formControlName="titration"
+			class="col-md-3 col-12"
+			id="titration"
+			label="Titulação"
+		></app-multi-select>
+		<app-multi-select
+			[data]="campusOptions"
+			formControlName="campus"
+			class="col-md-3 col-12"
+			id="campus"
+			label="Campus"
+		></app-multi-select>
+		<div class="col-12 d-flex justify-content-end gap-3 mt-4">
+			<button br-button type="reset" color="secondary">Limpar</button>
+			<button br-button type="submit" color="primary">Pesquisar</button>
+		</div>
+	</form>
+</app-collapse-item>

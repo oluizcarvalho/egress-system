@@ -26,10 +26,5 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 	styleUrl: './app.component.scss',
 })
 export class AppComponent {
-	alertService = inject(AlertService);
-	constructor() {
-		setTimeout(() => {
-			this.alertService.showAlert('success', 'Sucesso solicitação feita com sucesso', 'Sucesso.', true, 4000);
-		}, 1000);
-	}
+	constructor() {}
 }

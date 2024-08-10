@@ -13,12 +13,8 @@ import {
 } from '@angular/core';
 import BRSelect from '@govbr-ds/core/dist/components/select/select';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-export interface SelectOption {
-	value: string | number;
-	text: string;
-	selected?: boolean;
-}
+import { SelectOption } from '../../types/select.type';
+import { isArray } from 'node:util';
 
 @Component({
 	selector: 'app-multi-select',
@@ -59,7 +55,7 @@ export class MultiSelectComponent implements AfterViewChecked, ControlValueAcces
 	protected _change: (value: Array<string>) => void = () => void undefined;
 
 	private brSelect = inject(ElementRef);
-  private renderer = inject(Renderer2);
+	private renderer = inject(Renderer2);
 
 	constructor() {
 		afterNextRender(() => {
@@ -72,18 +68,21 @@ export class MultiSelectComponent implements AfterViewChecked, ControlValueAcces
 		const values = this.value;
 		if (Array.isArray(values) && values.length > 0) {
 			values.forEach(value => {
-				this.renderer.setAttribute(
-					this.brSelect.nativeElement.querySelector(`input[type="checkbox"][value="${value}"]`),
-					'checked',
-					''
-				);
+				if (value)
+					this.renderer.setAttribute(
+						this.brSelect.nativeElement.querySelector(`input[type="checkbox"][value="${value}"]`),
+						'checked',
+						''
+					);
 			});
-			document.body.click();
+			setTimeout(() => {
+				document.body.click();
+			});
 		}
 	}
 
 	setSelected() {
-		this.value = this.instance.selected;
+		this.value = this.instance.selectedValue;
 	}
 
 	writeValue(value: Array<string>): void {

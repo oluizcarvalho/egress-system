@@ -66,12 +66,14 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 				this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}"]`),
 				'selected'
 			);
-			document.body.click();
+			setTimeout(() => {
+				document.body.click();
+			});
 		}
 	}
 
 	setSelected() {
-		this.value = this.instance.selected;
+		this.value = this.instance.selectedValue;
 	}
 
 	writeValue(value: string): void {

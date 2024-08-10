@@ -109,7 +109,7 @@ export class HomeComponent {
 			label: 'Tab 2',
 			id: 1,
 			icon: 'fas fa-user',
-      active: true
+			active: true,
 		},
 		{
 			label: 'Tab 3',

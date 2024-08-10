@@ -4,9 +4,9 @@ import { SizeOptions } from '../types/size.type';
 @Directive({
 	selector: 'button[br-button], a[br-button]',
 	host: {
-		'[class.primary]': 'type === "primary"',
-		'[class.secondary]': 'type === "secondary"',
-		'[class.tertiary]': 'type === "tertiary"',
+		'[class.primary]': 'color === "primary"',
+		'[class.secondary]': 'color === "secondary"',
+		'[class.tertiary]': 'color === "tertiary"',
 		'[class.small]': 'size === "small"',
 		'[class.medium]': 'size === "medium"',
 		'[class.large]': 'size === "large"',
@@ -20,11 +20,11 @@ import { SizeOptions } from '../types/size.type';
 		'[class.br-button]': 'true',
 		role: 'button',
 	},
-	inputs: ['type', 'size', 'disabled', 'block', 'loading', 'active', 'circle', 'inverted'],
+	inputs: ['color', 'size', 'disabled', 'block', 'loading', 'active', 'circle', 'inverted'],
 	standalone: true,
 })
 export class ButtonDirective {
-	@Input() type: 'primary' | 'secondary' | 'tertiary' = 'primary';
+	@Input() color: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	@Input() size: SizeOptions = 'medium';
 	@Input() icon = '';
 	@Input() fontSet = 'fas';

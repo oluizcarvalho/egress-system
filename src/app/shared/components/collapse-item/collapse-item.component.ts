@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { booleanAttribute, Component, Input } from '@angular/core';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @Component({
@@ -11,4 +11,5 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 export class CollapseItemComponent {
 	@Input({ required: true }) label: string;
 	@Input({ required: true }) id: string;
+	@Input({ transform: booleanAttribute }) expanded = false;
 }
