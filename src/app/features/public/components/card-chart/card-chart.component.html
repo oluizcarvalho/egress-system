@@ -1,0 +1,12 @@
+<div class="card-chart">
+	<div class="card-header">
+		<i class="icon fas {{ icon }}"></i>
+		<div>
+			<div class="title">{{ title }}</div>
+			@if (subtitle) {
+				<div class="subtitle">{{ subtitle }}</div>
+			}
+		</div>
+	</div>
+	<ng-content></ng-content>
+</div>

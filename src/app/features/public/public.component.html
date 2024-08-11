@@ -1,2 +1,21 @@
 <h1>Dashboard de Dados Públicos</h1>
 <app-filter></app-filter>
+<app-table [data]="dataPaginated" [columns]="columns"></app-table>
+<app-paginator
+	(page)="onPageChange($event)"
+	[pageIndex]="coursesPagination.page"
+	[pageSizeOptions]="[5, 10, 20]"
+	[pageSize]="coursesPagination.pageSize"
+	[length]="coursesPagination.length"
+></app-paginator>
+<div class="row mt-6">
+	<div class="col-md-4 col-12">
+		<app-students-chart></app-students-chart>
+	</div>
+	<div class="col-md-4 col-12">
+		<app-students-chart></app-students-chart>
+	</div>
+	<div class="col-md-4 col-12">
+		<app-students-chart></app-students-chart>
+	</div>
+</div>

@@ -10,7 +10,7 @@ import {
 	Output,
 } from '@angular/core';
 
-type PageEvent = {
+export type PageEvent = {
 	length: number;
 	pageIndex: number;
 	pageSize: number;
@@ -28,7 +28,7 @@ export class PaginatorComponent implements OnChanges {
 	@Input({ transform: numberAttribute, required: true }) length: number;
 	@Input({ transform: numberAttribute }) pageSize: number;
 
-	private _pageIndex: number = 0;
+	private _pageIndex: number = 1;
 
 	get pageIndex(): number {
 		return this._pageIndex;
@@ -37,7 +37,6 @@ export class PaginatorComponent implements OnChanges {
 	@Input({ transform: numberAttribute })
 	set pageIndex(value: number) {
 		this._pageIndex = value;
-		this.currentPage = value + 1;
 	}
 
 	@Input() pageSizeOptions: number[];
@@ -46,7 +45,6 @@ export class PaginatorComponent implements OnChanges {
 	expandedOptions = false;
 	totalPages: number;
 	pageIndexOptions: number[] = [];
-	currentPage: number;
 	previousPageIndex: number;
 
 	private brPaginator = inject(ElementRef);

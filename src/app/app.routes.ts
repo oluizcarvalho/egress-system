@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 	{
 		path: 'dashboard',
 		loadComponent: () => import('./features/public/public.component').then(m => m.PublicComponent),

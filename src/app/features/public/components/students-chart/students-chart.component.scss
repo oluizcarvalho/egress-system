@@ -1,0 +1,44 @@
+.total {
+	color: var(--color-primary-darken-01);
+	font-size: 32.8px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+	pointer-events: none;
+	text-align: center;
+}
+
+.chart-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+}
+
+.color-box {
+	width: 16px;
+	height: 16px;
+	border-radius: 2px;
+	margin-right: 5px;
+	background: var(--color-primary-darken-01);
+
+	&.inactive {
+		background: var(--color-primary-pastel-01);
+	}
+}
+
+.label {
+	color: #333;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

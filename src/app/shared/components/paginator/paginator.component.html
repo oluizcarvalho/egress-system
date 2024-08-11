@@ -36,8 +36,8 @@
 	</div>
 	<span class="br-divider d-none d-sm-block mx-3"></span>
 	<div class="pagination-information d-none d-sm-flex">
-		<span class="current">{{ 1 + pageSize * pageIndex }}</span
-		>&ndash;<span class="per-page">{{ currentPage * pageSize > length ? length : currentPage * pageSize }}</span
+		<span class="current">{{ 1 + pageSize * (pageIndex - 1) }}</span
+		>&ndash;<span class="per-page">{{ pageIndex * pageSize > length ? length : pageIndex * pageSize }}</span
 		>&nbsp;de&nbsp;<span class="total">{{ length }}</span
 		>&nbsp;itens
 	</div>
@@ -45,7 +45,7 @@
 		<div class="br-select">
 			<div class="br-input" (click)="toggleSizeOptions(listOptionsPage); $event.stopPropagation()">
 				<label for="go-to-selection">Página</label>
-				<input id="go-to-selection" readonly [value]="currentPage" type="text" placeholder=" " />
+				<input id="go-to-selection" readonly [value]="pageIndex" type="text" placeholder=" " />
 				<button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
 					<i class="fas fa-angle-down" aria-hidden="true"></i>
 				</button>
@@ -54,7 +54,7 @@
 				@for (option of pageIndexOptions; track $index) {
 					<div
 						class="br-item"
-						[class.selected]="currentPage === option"
+						[class.selected]="pageIndex === option"
 						(click)="setPageIndex(option); $event.stopPropagation()"
 						tabindex="-1"
 					>
@@ -64,7 +64,7 @@
 								type="radio"
 								name="per-page-{{ option }}"
 								[value]="option"
-								[checked]="currentPage === option"
+								[checked]="pageIndex === option"
 							/>
 							<label for="per-page-{{ option }}">{{ option }}</label>
 						</div>
@@ -76,7 +76,7 @@
 	<span class="br-divider d-none d-sm-block mx-3"></span>
 	<div class="pagination-arrows ml-auto ml-sm-0">
 		<button
-			[disabled]="currentPage === 1"
+			[disabled]="pageIndex === 1"
 			(click)="prevPage()"
 			class="br-button circle"
 			type="button"
@@ -85,7 +85,7 @@
 			<i class="fas fa-angle-left" aria-hidden="true"></i>
 		</button>
 		<button
-			[disabled]="currentPage === totalPages"
+			[disabled]="pageIndex === totalPages"
 			(click)="nextPage()"
 			class="br-button circle"
 			type="button"

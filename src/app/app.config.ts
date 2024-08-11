@@ -1,4 +1,4 @@
-import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, isDevMode, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -22,5 +22,6 @@ export const appConfig: ApplicationConfig = {
 			enabled: !isDevMode(),
 			registrationStrategy: 'registerWhenStable:30000',
 		}),
+		{ provide: LOCALE_ID, useValue: 'pt-BR' },
 	],
 };

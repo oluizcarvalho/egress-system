@@ -57,7 +57,7 @@
 						"styles": [
 							"src/root.css",
 							"src/rawline.css",
-							"src/bootstrap.css",
+							"src/bootstrap-utilities.css",
 							"node_modules/@fortawesome/fontawesome-free/css/all.min.css",
 							"node_modules/@govbr-ds/core/dist/core.min.css",
 							"src/styles.scss"
