@@ -4,13 +4,17 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build",
+		"build": "ng build --ssr=false --prerender=false",
+		"build:ssr": "ng build",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"serve:ssr:egress-system": "node dist/egress-system/server/server.mjs",
 		"prepare": "husky || true",
 		"p:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss,.html}\"",
 		"p:fix": "prettier --config ./.prettierrc --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss,.html}\""
+	},
+	"engines": {
+		"node": ">=20.0.0"
 	},
 	"private": true,
 	"dependencies": {
