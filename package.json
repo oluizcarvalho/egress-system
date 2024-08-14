@@ -14,7 +14,7 @@
 		"p:fix": "prettier --config ./.prettierrc --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss,.html}\""
 	},
 	"engines": {
-		"node": ">=20.0.0"
+		"node": ">=18.20.0"
 	},
 	"private": true,
 	"dependencies": {
