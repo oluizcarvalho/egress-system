@@ -6,7 +6,8 @@
 		<div class="container-lg">
 			<div class="row">
 				<app-menu
-					class="br-menu push active col-sm-4 col-lg-2 px-0"
+					class="br-menu push col-sm-4 col-lg-2 px-0"
+					[class.active]="!isMobile()"
 					id="main-navigation"
 					data-breakpoints="col-sm-4 col-lg-2"
 				></app-menu>
