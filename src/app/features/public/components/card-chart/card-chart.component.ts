@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-card-chart',
@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
 	imports: [],
 	templateUrl: './card-chart.component.html',
 	styleUrl: './card-chart.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardChartComponent {
 	@Input({ required: true }) title: string;

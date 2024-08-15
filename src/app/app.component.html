@@ -6,12 +6,12 @@
 		<div class="container-lg">
 			<div class="row">
 				<app-menu
-					class="br-menu push col-sm-4 col-lg-2 px-0"
+					class="br-menu push col-xl-2 col-lg-3 col-md-4 col-sm-5 px-0"
 					[class.active]="!isMobile()"
 					id="main-navigation"
-					data-breakpoints="col-sm-4 col-lg-2"
+					data-breakpoints="col-xl-2 col-lg-3 col-md-4 col-sm-5"
 				></app-menu>
-				<div class="col mb-5">
+				<div class="col pt-4 pb-5">
 					<app-breadcrumb></app-breadcrumb>
 					<div class="main-content pl-sm-3" id="main-content">
 						<router-outlet></router-outlet>

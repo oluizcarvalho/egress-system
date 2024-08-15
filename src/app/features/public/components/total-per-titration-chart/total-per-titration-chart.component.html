@@ -1,0 +1,18 @@
+<app-card-chart title="Total por Título Acadêmico" subtitle="Semestre Letivo 2023/1">
+	<section class="d-flex g-2">
+		@if (render()) {
+			<ngx-charts-bar-horizontal
+				[results]="data()"
+				[scheme]="colorScheme"
+				[xAxis]="false"
+				[yAxis]="true"
+				[legend]="false"
+				[showXAxisLabel]="false"
+				[showYAxisLabel]="false"
+				[animations]="true"
+				[showDataLabel]="true"
+			>
+			</ngx-charts-bar-horizontal>
+		}
+	</section>
+</app-card-chart>

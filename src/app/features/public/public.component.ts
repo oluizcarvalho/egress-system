@@ -12,6 +12,9 @@ import { coursesPaginationMock } from './data/table-course.mock';
 import { PageEvent, PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Color, PieChartModule, ScaleType } from '@swimlane/ngx-charts';
 import { StudentsChartComponent } from './components/students-chart/students-chart.component';
+import { TotalPerCampusChartComponent } from './components/total-per-campus-chart/total-per-campus-chart.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TotalPerTitrationChartComponent } from './components/total-per-titration-chart/total-per-titration-chart.component';
 
 @Component({
 	selector: 'app-public',
@@ -28,6 +31,9 @@ import { StudentsChartComponent } from './components/students-chart/students-cha
 		PaginatorComponent,
 		PieChartModule,
 		StudentsChartComponent,
+		TotalPerCampusChartComponent,
+		NgxSkeletonLoaderModule,
+		TotalPerTitrationChartComponent,
 	],
 	templateUrl: './public.component.html',
 	styleUrl: './public.component.scss',
@@ -65,4 +71,6 @@ export class PublicComponent {
 		const end = start + pageEvent.pageSize;
 		this.dataPaginated = this.coursesPagination.data.slice(start, end);
 	}
+
+	protected readonly Array = Array;
 }

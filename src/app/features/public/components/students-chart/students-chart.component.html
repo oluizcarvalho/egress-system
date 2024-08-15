@@ -1,11 +1,10 @@
 <app-card-chart title="Estudantes">
-	<section class="d-flex g-2">
+	<section class="d-flex g-2 pt-3">
 		<div class="d-flex align-items-center chart-container">
-			<span class="total">{{ pieChartSum | number: '.' }}</span>
-
+			<span class="total">{{ pieChartSum() | number: '.' }}</span>
 			<ngx-charts-pie-chart
 				legendTitle="Legenda"
-				[results]="data"
+				[results]="data()"
 				[legend]="false"
 				[labels]="false"
 				[doughnut]="true"
@@ -16,7 +15,7 @@
 			</ngx-charts-pie-chart>
 		</div>
 		<div class="d-flex flex-column justify-content-center ml-2 gap-2">
-			@for (option of percents; track option.name) {
+			@for (option of percents(); track option.name) {
 				<div class="d-flex align-items-center gap-1">
 					<div class="color-box" [class.inactive]="option.name === 'Inativo'"></div>
 					<span class="color-label">{{ option.name }} {{ option.value }}%</span>
