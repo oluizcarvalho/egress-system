@@ -2,9 +2,9 @@ import { Component, inject } from '@angular/core';
 import { PageEvent, PaginatorComponent } from '../../../../shared/components/paginator/paginator.component';
 import { Columns, TableComponent } from '../../../../shared/components/table/table.component';
 import { testimonialsPaginationMock } from '../../data/table-testimonials.mock';
-import { StudentTestimony } from '../../types/titration.type';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { TestimonyDetailsDialogComponent } from '../../dialogs/testimony-details-dialog/testimony-details-dialog.component';
+import { StudentTestimony } from '../../models/titration.model';
 
 @Component({
 	selector: 'app-testimonials-list',

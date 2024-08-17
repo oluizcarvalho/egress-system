@@ -1,6 +1,35 @@
+#header {
+	z-index: 2;
+
+	a {
+		cursor: pointer;
+	}
+}
+
 .header-logo {
 	img {
 		max-height: 40px;
 		width: auto;
+	}
+}
+
+.br-sign-in {
+	padding: 4px;
+
+	.br-avatar {
+		span {
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+		}
+	}
+}
+
+#avatar-menu {
+	z-index: 3;
+	box-shadow: var(--surface-shadow-sm);
+
+	a {
+		cursor: pointer;
 	}
 }

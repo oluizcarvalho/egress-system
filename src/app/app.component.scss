@@ -2,3 +2,9 @@
 	margin-top: -24px;
 	z-index: 9999;
 }
+
+.main-content {
+	min-width: 100%;
+	min-height: calc(100dvh - 23.3rem);
+	height: 100%;
+}

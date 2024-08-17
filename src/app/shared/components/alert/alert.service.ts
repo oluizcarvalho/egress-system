@@ -37,9 +37,16 @@ export class AlertService {
 		title?: string,
 		autoClose = true,
 		duration = 4000,
-		closable = true
+		closable = true,
+		delay = 0
 	): void {
-		this.alertEvents = { type, message, title, duration, autoClose, closable };
+		if (delay) {
+			setTimeout(() => {
+				this.alertEvents = { type, message, title, duration, autoClose, closable };
+			}, delay);
+		} else {
+			this.alertEvents = { type, message, title, duration, autoClose, closable };
+		}
 	}
 
 	public clearAlerts(): void {

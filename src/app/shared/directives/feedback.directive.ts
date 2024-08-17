@@ -14,7 +14,7 @@ import { getIconByState, StateType } from '../utils/get-icon-by-state';
 	selector: 'span[br-feedback]',
 	standalone: true,
 	host: {
-		'[class.feedback]': 'true',
+		class: 'feedback',
 		role: 'alert',
 	},
 })

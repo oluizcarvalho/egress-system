@@ -5,7 +5,6 @@ import { FeedbackDirective } from '../../shared/directives/feedback.directive';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TextareaComponent } from '../../shared/components/textarea/textarea.component';
 import { SelectComponent } from '../../shared/components/select/select.component';
-import { SelectOptions } from '../../shared/types/select.type';
 import { MultiSelectComponent } from '../../shared/components/multi-select/multi-select.component';
 import { DateTimePickerComponent } from '../../shared/components/date-time-picker/date-time-picker.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
@@ -14,6 +13,7 @@ import { SwitchComponent } from '../../shared/components/switch/switch.component
 import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.component';
 import { CollapseItemComponent } from '../../shared/components/collapse-item/collapse-item.component';
 import { Tabs, TabsComponent } from '../../shared/components/tabs/tabs.component';
+import { SelectOptions } from '../../shared/models/select.model';
 
 @Component({
 	selector: 'app-home',

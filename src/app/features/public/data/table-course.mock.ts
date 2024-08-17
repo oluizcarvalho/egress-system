@@ -1,4 +1,4 @@
-import { Course, CoursePagination } from '../types/course.type';
+import { Course, CoursePagination } from '../models/course.model';
 
 export const coursesMock: Course[] = [
 	{ course: 'Agronomia', titration: 'Bacharelado', campus: 'Campus Patos de Minas', countStudents: 1026 },

@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import BRSelect from '@govbr-ds/core/dist/components/select/select';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectOptions } from '../../types/select.type';
+import { SelectOptions } from '../../models/select.model';
 
 @Component({
 	selector: 'app-select',

@@ -1,4 +1,4 @@
-import { StudentTestimony, StudentPagination } from '../types/titration.type';
+import { StudentPagination, StudentTestimony } from '../models/titration.model';
 
 export const testimonialsMock: StudentTestimony[] = [
 	{

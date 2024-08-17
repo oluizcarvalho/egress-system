@@ -6,7 +6,7 @@ import { academicSemesterOptions, campusOptions, courseOptions, titrationOptions
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonDirective } from '../../../../shared/directives/button.directive';
 import { ControlsOf } from '../../../../shared/types/controls-of.type';
-import { FilterType } from '../../types/filter.type';
+import { FilterModel } from '../../models/filter.model';
 
 @Component({
 	selector: 'app-filter',
@@ -30,7 +30,7 @@ export class FilterComponent {
 	courseOptions = courseOptions;
 	titrationOptions = titrationOptions;
 	campusOptions = campusOptions;
-	formGroupFilter = new FormGroup<ControlsOf<FilterType>>({
+	formGroupFilter = new FormGroup<ControlsOf<FilterModel>>({
 		academicSemester: new FormControl(academicSemesterOptions[0].value.toString()),
 		course: new FormControl(''),
 		titration: new FormControl(''),

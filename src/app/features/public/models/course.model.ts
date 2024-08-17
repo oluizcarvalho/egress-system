@@ -1,13 +1,13 @@
-export type Course = {
+export interface Course {
 	course: string;
 	titration: string;
 	campus: string;
 	countStudents: number;
-};
+}
 
-export type CoursePagination = {
+export interface CoursePagination {
 	data: Course[];
 	length: number;
 	page: number;
 	pageSize: number;
-};
+}

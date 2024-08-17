@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { Color, PieChartModule, ScaleType } from '@swimlane/ngx-charts';
 import { DecimalPipe } from '@angular/common';
 import { CardChartComponent } from '../card-chart/card-chart.component';

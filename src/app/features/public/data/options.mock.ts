@@ -1,4 +1,4 @@
-import { SelectOption } from '../../../shared/types/select.type';
+import { SelectOption } from '../../../shared/models/select.model';
 
 export const academicSemesterOptions: Array<SelectOption> = [
 	{
