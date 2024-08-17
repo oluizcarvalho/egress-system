@@ -15,6 +15,7 @@ import { StudentsChartComponent } from './components/students-chart/students-cha
 import { TotalPerCampusChartComponent } from './components/total-per-campus-chart/total-per-campus-chart.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TotalPerTitrationChartComponent } from './components/total-per-titration-chart/total-per-titration-chart.component';
+import { TestimonialsListComponent } from './components/testimonials-list/testimonials-list.component';
 
 @Component({
 	selector: 'app-public',
@@ -34,6 +35,7 @@ import { TotalPerTitrationChartComponent } from './components/total-per-titratio
 		TotalPerCampusChartComponent,
 		NgxSkeletonLoaderModule,
 		TotalPerTitrationChartComponent,
+		TestimonialsListComponent,
 	],
 	templateUrl: './public.component.html',
 	styleUrl: './public.component.scss',
@@ -63,6 +65,7 @@ export class PublicComponent {
 	];
 	coursesPagination = coursesPaginationMock;
 	dataPaginated = coursesPaginationMock.data.slice(0, coursesPaginationMock.pageSize);
+	protected readonly Array = Array;
 
 	constructor() {}
 
@@ -71,6 +74,4 @@ export class PublicComponent {
 		const end = start + pageEvent.pageSize;
 		this.dataPaginated = this.coursesPagination.data.slice(start, end);
 	}
-
-	protected readonly Array = Array;
 }

@@ -8,22 +8,27 @@
 	[pageSize]="coursesPagination.pageSize"
 	[length]="coursesPagination.length"
 ></app-paginator>
-<div class="row my-6">
+<div class="row my-6 d-flex">
 	@defer {
-		<div class="col-md-4 col-12">
+		<div class="col-md-4 col-12 mb-3">
 			<app-students-chart></app-students-chart>
 		</div>
-		<div class="col-md-4 col-12">
+		<div class="col-md-4 col-12 mb-3">
 			<app-total-per-campus-chart></app-total-per-campus-chart>
 		</div>
-		<div class="col-md-4 col-12">
+		<div class="col-md-4 col-12 mb-3">
 			<app-total-per-titration-chart></app-total-per-titration-chart>
 		</div>
 	} @placeholder (minimum 500ms) {
 		@for (i of Array.of(1, 2, 3); track $index) {
-			<div class="col-md-4 col-12">
+			<div class="col-md-4 col-12 mb-3">
 				<ngx-skeleton-loader [theme]="{ height: '200px' }" />
 			</div>
 		}
 	}
 </div>
+@defer (on viewport) {
+	<app-testimonials-list></app-testimonials-list>
+} @placeholder (minimum 500ms) {
+	<ngx-skeleton-loader [theme]="{ height: '300px', width: '100%' }" />
+}

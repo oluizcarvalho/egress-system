@@ -1,0 +1,9 @@
+<h2>Listagem de Depoimentos</h2>
+<app-table [data]="dataPaginated" [columns]="columns"></app-table>
+<app-paginator
+	(page)="onPageChange($event)"
+	[pageIndex]="testimonialsPagination.page"
+	[pageSizeOptions]="[5, 10, 20]"
+	[pageSize]="testimonialsPagination.pageSize"
+	[length]="testimonialsPagination.length"
+></app-paginator>

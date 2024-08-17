@@ -1,0 +1,30 @@
+h3 {
+	color: var(--pure-100, #000);
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	margin: 0;
+}
+
+b {
+	color: var(--pure-100, #000);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+p {
+	color: var(--gray-80, #333);
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20.3px;
+}
+
+:host {
+	*:focus-visible {
+		outline: none;
+	}
+}

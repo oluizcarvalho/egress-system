@@ -9,6 +9,12 @@ import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { globalInterceptor } from './core/interceptors/global-http.interceptor';
 import { loadingInterceptor } from './shared/components/loading/interceptors/loading.interceptor';
+import { NoopScrollStrategy, Overlay } from '@angular/cdk/overlay';
+import { DEFAULT_DIALOG_CONFIG, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
+
+export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
+	return () => overlay.scrollStrategies.noop();
+}
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -23,5 +29,14 @@ export const appConfig: ApplicationConfig = {
 			registrationStrategy: 'registerWhenStable:30000',
 		}),
 		{ provide: LOCALE_ID, useValue: 'pt-BR' },
+		{
+			provide: DEFAULT_DIALOG_CONFIG,
+			useValue: { panelClass: 'dialog', hasBackdrop: true, autoFocus: false },
+		},
+		{
+			provide: DIALOG_SCROLL_STRATEGY,
+			useFactory: scrollFactory,
+			deps: [Overlay],
+		},
 	],
 };
