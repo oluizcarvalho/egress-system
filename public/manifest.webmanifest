@@ -1,7 +1,7 @@
 {
 	"name": "Sistema Egressos UFU",
 	"short_name": "Egressos UFU",
-	"theme_color": "#1976d2",
+	"theme_color": "#021C69",
 	"background_color": "#ffffff",
 	"display": "standalone",
 	"scope": "./",
@@ -16,12 +16,6 @@
 		{
 			"src": "favicon/android-chrome-144x144.png",
 			"sizes": "144x144",
-			"type": "image/png",
-			"purpose": "maskable any"
-		},
-		{
-			"src": "favicon/mstile-150x150.png",
-			"sizes": "150x150",
 			"type": "image/png",
 			"purpose": "maskable any"
 		},
