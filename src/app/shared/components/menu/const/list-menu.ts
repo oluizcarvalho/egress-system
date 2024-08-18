@@ -1,10 +1,16 @@
 import { IMenu } from '../types/menu.type';
+import { Role } from '../../../../features/login/models/credentials.model';
 
-export const LIST_MENU: IMenu[] = [
+export const LIST_MENU_STUDENT: IMenu[] = [
 	{
 		label: 'Página inicial',
 		icon: 'fa-home',
 		url: '/home',
+	},
+	{
+		label: 'Dashboard',
+		icon: 'fa-chart-bar',
+		url: '/dashboard',
 	},
 	{
 		label: 'Informações acadêmicas',
@@ -27,3 +33,55 @@ export const LIST_MENU: IMenu[] = [
 		url: '/perfil',
 	},
 ];
+
+export const LIST_MENU_COORDINATOR: IMenu[] = [
+	{
+		label: 'Página inicial',
+		icon: 'fa-home',
+		url: '/home',
+	},
+	{
+		label: 'Dashboard',
+		icon: 'fa-chart-bar',
+		url: '/dashboard',
+	},
+	{
+		label: 'Egressos',
+		icon: 'fa-user-graduate',
+		url: '/egressos',
+	},
+	{
+		label: 'Comunicados',
+		icon: 'fa-bullhorn',
+		url: '/comunicados',
+	},
+	{
+		label: 'Questionários',
+		icon: 'fa-tasks',
+		url: '/questionarios',
+	},
+	{
+		label: 'Perfil',
+		icon: 'fa-user',
+		url: '/perfil',
+	},
+];
+
+export const LIST_MENU_PUBLIC: IMenu[] = [
+	{
+		label: 'Página inicial',
+		icon: 'fa-home',
+		url: '/home',
+	},
+	{
+		label: 'Dashboard',
+		icon: 'fa-chart-bar',
+		url: '/dashboard',
+	},
+];
+
+export const LIST_MENU_BY_ROLE = new Map<Role, IMenu[]>([
+	[Role.STUDENT, LIST_MENU_STUDENT],
+	[Role.COORDINATOR, LIST_MENU_COORDINATOR],
+	[Role.PUBLIC, LIST_MENU_PUBLIC],
+]);

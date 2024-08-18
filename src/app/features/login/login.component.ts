@@ -37,6 +37,7 @@ export class LoginComponent {
 				if (value.role === Role.PUBLIC) {
 					this.alertService.showAlert('warning', 'Usuário sem permissão de acesso', undefined, false, undefined, true);
 				} else {
+					this.alertService.clearAlerts();
 					this._authService.setCredentials(value);
 					this.router.navigate(['/home']);
 				}

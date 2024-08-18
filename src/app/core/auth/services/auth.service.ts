@@ -1,8 +1,9 @@
-import { Inject, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { computed, Inject, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { LocalStorageService } from '../../../shared/services/storage';
-import { Credentials } from '../../../features/login/models/credentials.model';
+import { Credentials, Role } from '../../../features/login/models/credentials.model';
 import { isPlatformBrowser } from '@angular/common';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 const KEY_STORAGE = 'credentials';
 
@@ -13,6 +14,9 @@ export class AuthService {
 	private localStorage = inject(LocalStorageService);
 	private router = inject(Router);
 	credentials = signal<Credentials | null>(null);
+	credentials$ = toObservable(this.credentials);
+	isStudent = computed(() => this.credentials()?.role === Role.STUDENT);
+	isCoordinator = computed(() => this.credentials()?.role === Role.COORDINATOR);
 
 	constructor(@Inject(PLATFORM_ID) private platformId: Object) {
 		if (isPlatformBrowser(this.platformId)) {
@@ -44,8 +48,25 @@ export class AuthService {
 		}
 		return this.isAuthenticated;
 	}
+
+	canActivateByRole(role: Role): boolean {
+		if (!this.isAuthenticated || this.credentials()?.role !== role) {
+			this.router.navigate(['/login']);
+			return false;
+		}
+
+		return true;
+	}
 }
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
 	return inject(AuthService).canActivate();
+};
+
+export const authGuardStudent: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+	return inject(AuthService).canActivateByRole(Role.STUDENT);
+};
+
+export const authGuardCoordinator: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+	return inject(AuthService).canActivateByRole(Role.COORDINATOR);
 };
