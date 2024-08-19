@@ -8,6 +8,6 @@ const ICONS_BY_STATE = {
 
 export type StateType = keyof typeof ICONS_BY_STATE;
 
-export const getIconByState = (state: StateType) => {
+export const getIconByStateUtils = (state: StateType) => {
 	return ICONS_BY_STATE[state] || '';
 };

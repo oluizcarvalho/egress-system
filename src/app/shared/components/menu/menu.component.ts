@@ -12,6 +12,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
 	selector: 'app-menu',
 	standalone: true,
+	host: { class: 'br-menu' },
 	imports: [NgClass, NgTemplateOutlet, RouterLink, RouterLinkActive],
 	templateUrl: './menu.component.html',
 	styleUrl: './menu.component.scss',
@@ -35,10 +36,6 @@ export class MenuComponent {
 
 		afterNextRender(() => {
 			this.instance = new BRMenu('br-menu', document.querySelector('.br-menu'));
-
-			if (this._authService.isPublic()) {
-				this.closeMenu();
-			}
 		});
 
 		this._authService.credentials$.pipe(takeUntilDestroyed()).subscribe(result => {

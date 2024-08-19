@@ -8,7 +8,7 @@ import {
 	OnDestroy,
 	Renderer2,
 } from '@angular/core';
-import { getIconByState, StateType } from '../utils/get-icon-by-state';
+import { getIconByStateUtils, StateType } from '../utils/get-icon-by-state.utils';
 
 @Directive({
 	selector: 'span[br-feedback]',
@@ -43,7 +43,7 @@ export class FeedbackDirective implements OnDestroy {
 		const icon = this.renderer.createElement('i');
 
 		this.renderer.addClass(icon, 'fas');
-		this.renderer.addClass(icon, getIconByState(this.state));
+		this.renderer.addClass(icon, getIconByStateUtils(this.state));
 		this.renderer.setAttribute(icon, 'aria-hidden', 'true');
 
 		this.renderer.insertBefore(this.el.nativeElement, icon, this.el.nativeElement.firstChild);

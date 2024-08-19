@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StateType } from '../../utils/get-icon-by-state';
+import { StateType } from '../../utils/get-icon-by-state.utils';
 import { Subject } from 'rxjs';
 
 export type AlertEvent = {

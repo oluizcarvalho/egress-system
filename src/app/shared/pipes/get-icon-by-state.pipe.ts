@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { getIconByState, StateType } from '../utils/get-icon-by-state';
+import { getIconByStateUtils, StateType } from '../utils/get-icon-by-state.utils';
 
 @Pipe({
 	name: 'getIconByState',
@@ -7,6 +7,6 @@ import { getIconByState, StateType } from '../utils/get-icon-by-state';
 })
 export class GetIconByStatePipe implements PipeTransform {
 	transform(state: StateType): string {
-		return getIconByState(state);
+		return getIconByStateUtils(state);
 	}
 }

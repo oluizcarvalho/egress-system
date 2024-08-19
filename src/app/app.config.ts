@@ -11,6 +11,10 @@ import { globalInterceptor } from './core/interceptors/global-http.interceptor';
 import { loadingInterceptor } from './shared/components/loading/interceptors/loading.interceptor';
 import { NoopScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { DEFAULT_DIALOG_CONFIG, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
 
 export function scrollFactory(overlay: Overlay): () => NoopScrollStrategy {
 	return () => overlay.scrollStrategies.noop();
