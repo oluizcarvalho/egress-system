@@ -47,7 +47,7 @@
 
 <ng-template #menuItem let-item>
 	@if (item.url) {
-		<a class="menu-item clickable" [routerLink]="[item.url]">
+		<a class="menu-item clickable" [routerLink]="[item.url]" routerLinkActive="active">
 			<span class="icon">
 				<i class="fas" [class]="item.icon" aria-hidden="true"></i>
 			</span>

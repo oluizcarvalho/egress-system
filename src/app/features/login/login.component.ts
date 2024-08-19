@@ -17,8 +17,8 @@ import { FeedbackDirective } from '../../shared/directives/feedback.directive';
 	styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-	alertService = inject(AlertService);
 	router = inject(Router);
+	private _alertService = inject(AlertService);
 	private _authService = inject(AuthService);
 
 	formLogin = new FormGroup({
@@ -35,15 +35,15 @@ export class LoginComponent {
 		getUserMock(this.formLogin.value.username, this.formLogin.value.password).subscribe({
 			next: value => {
 				if (value.role === Role.PUBLIC) {
-					this.alertService.showAlert('warning', 'Usuário sem permissão de acesso', undefined, false, undefined, true);
+					this._alertService.showAlert('warning', 'Usuário sem permissão de acesso', undefined, false, undefined, true);
 				} else {
-					this.alertService.clearAlerts();
+					this._alertService.clearAlerts();
 					this._authService.setCredentials(value);
 					this.router.navigate(['/home']);
 				}
 			},
 			error: message => {
-				this.alertService.showAlert('danger', message, undefined, false);
+				this._alertService.showAlert('danger', message, undefined, false);
 			},
 		});
 	}

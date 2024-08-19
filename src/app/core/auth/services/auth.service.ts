@@ -17,6 +17,7 @@ export class AuthService {
 	credentials$ = toObservable(this.credentials);
 	isStudent = computed(() => this.credentials()?.role === Role.STUDENT);
 	isCoordinator = computed(() => this.credentials()?.role === Role.COORDINATOR);
+	isPublic = computed(() => !this.credentials() || this.credentials()?.role === Role.PUBLIC);
 
 	constructor(@Inject(PLATFORM_ID) private platformId: Object) {
 		if (isPlatformBrowser(this.platformId)) {

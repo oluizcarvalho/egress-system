@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject, OnInit } from '@angular/core';
+import { afterNextRender, Component, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 
@@ -12,7 +12,7 @@ import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 	templateUrl: './breadcrumb.component.html',
 	styleUrl: './breadcrumb.component.scss',
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent {
 	instance: unknown;
 	crumbs: Array<{ label: string; url: string; home?: boolean; active?: boolean }> = [];
 	showBreadcrumb = false;
@@ -24,9 +24,7 @@ export class BreadcrumbComponent implements OnInit {
 		afterNextRender(() => {
 			this.instance = new BRBreadcrumb('br-breadcrumb', document.querySelector('.br-breadcrumb'));
 		});
-	}
 
-	ngOnInit(): void {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
 				const firstChild = this.route.root.firstChild;
