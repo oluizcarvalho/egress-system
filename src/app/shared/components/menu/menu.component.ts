@@ -1,4 +1,4 @@
-import { afterNextRender, Component, ElementRef, inject } from '@angular/core';
+import { afterNextRender, Component, ElementRef, inject, signal } from '@angular/core';
 import { LIST_MENU_BY_ROLE } from './const/list-menu';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import BRMenu from '@govbr-ds/core/dist/components/menu/menu';
@@ -7,6 +7,7 @@ import { Role } from '../../../features/login/models/credentials.model';
 import { AuthService } from '../../../core/auth/services/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IMenu } from './types/menu.type';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
 	selector: 'app-menu',
@@ -18,14 +19,25 @@ import { IMenu } from './types/menu.type';
 export class MenuComponent {
 	list: IMenu[] = [];
 	instance: unknown;
-	brMenu = inject(ElementRef);
+	isMobile = signal<boolean>(false);
+
+	private _brMenu = inject(ElementRef);
 	private _authService = inject(AuthService);
+	private _breakpointObserver = inject(BreakpointObserver);
 
 	constructor() {
+		this._breakpointObserver
+			.observe([Breakpoints.Handset, Breakpoints.Web, Breakpoints.Tablet])
+			.pipe(takeUntilDestroyed())
+			.subscribe(() => {
+				this.isMobile.set(this._breakpointObserver.isMatched(Breakpoints.Handset));
+			});
+
 		afterNextRender(() => {
 			this.instance = new BRMenu('br-menu', document.querySelector('.br-menu'));
-			if (!this._authService.credentials() || this._authService.credentials().role === Role.PUBLIC) {
-				this.brMenu.nativeElement.querySelector('[data-dismiss="menu"]').click();
+
+			if (this._authService.isPublic()) {
+				this.closeMenu();
 			}
 		});
 
@@ -36,5 +48,15 @@ export class MenuComponent {
 				this.list = LIST_MENU_BY_ROLE.get(result.role || Role.PUBLIC);
 			}
 		});
+	}
+
+	closeMenu() {
+		this._brMenu.nativeElement.querySelector('[data-dismiss="menu"]').click();
+	}
+
+	closeMenuIfMobile() {
+		if (this.isMobile()) {
+			this.closeMenu();
+		}
 	}
 }
