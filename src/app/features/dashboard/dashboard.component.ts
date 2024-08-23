@@ -18,7 +18,7 @@ import { TestimonialsListComponent } from './components/testimonials-list/testim
 import { Course } from './models/course.model';
 
 @Component({
-	selector: 'app-public',
+	selector: 'app-dashboard',
 	standalone: true,
 	imports: [
 		HeaderComponent,
@@ -37,10 +37,10 @@ import { Course } from './models/course.model';
 		TotalPerTitrationChartComponent,
 		TestimonialsListComponent,
 	],
-	templateUrl: './public.component.html',
-	styleUrl: './public.component.scss',
+	templateUrl: './dashboard.component.html',
+	styleUrl: './dashboard.component.scss',
 })
-export class PublicComponent {
+export class DashboardComponent {
 	columns: Array<Columns> = [
 		{
 			columnDef: 'course',

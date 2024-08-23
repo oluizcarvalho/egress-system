@@ -15,12 +15,12 @@ export const LIST_MENU_STUDENT: IMenu[] = [
 	{
 		label: 'Informações acadêmicas',
 		icon: 'fa-book',
-		url: '/informacoes-academicas',
+		url: '/informacoes/academicas',
 	},
 	{
 		label: 'Informações profissionais',
 		icon: 'fa-briefcase',
-		url: '/informacoes-profissionais',
+		url: '/informacoes/profissionais',
 	},
 	{
 		label: 'Depoimentos',
