@@ -10,7 +10,7 @@ export class CheckUpdateService {
 	readonly appRef = inject(ApplicationRef);
 	readonly swUpdate = inject(SwUpdate);
 
-	constructor() {
+	init() {
 		if (isDevMode()) return;
 
 		const appIsStable$ = this.appRef.isStable.pipe(
@@ -20,10 +20,10 @@ export class CheckUpdateService {
 				this.setPromptUpdate();
 			})
 		);
-		const everyTwentyMinutes$ = interval(minutesToMsConverterUtils(20));
-		const everyTwentyMinutesOrAppIsStable$ = merge(appIsStable$, everyTwentyMinutes$);
+		const everyTenMinutes$ = interval(minutesToMsConverterUtils(10));
+		const everyTenMinutesOrAppIsStable$ = merge(appIsStable$, everyTenMinutes$);
 
-		everyTwentyMinutesOrAppIsStable$.subscribe(async () => {
+		everyTenMinutesOrAppIsStable$.subscribe(async () => {
 			await this.verifyUpdate();
 		});
 	}

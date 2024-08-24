@@ -9,6 +9,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { NgClass } from '@angular/common';
 import { AuthService } from './core/auth/services/auth.service';
+import { CheckUpdateService } from './core/update/check-update.service';
 
 @Component({
 	selector: 'app-root',
@@ -26,13 +27,14 @@ import { AuthService } from './core/auth/services/auth.service';
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	isMobile = signal<boolean>(false);
 	hideNavbar = signal<boolean>(true);
 
 	authService = inject(AuthService);
 	breakpointObserver = inject(BreakpointObserver);
 	router = inject(Router);
+	checkUpdateService = inject(CheckUpdateService);
 
 	isPublic = this.authService.isPublic;
 
@@ -46,6 +48,10 @@ export class AppComponent {
 				this.validateUrl(data.url);
 			}
 		});
+	}
+
+	ngOnInit(): void {
+		this.checkUpdateService.init();
 	}
 
 	private validateUrl(url: string) {
