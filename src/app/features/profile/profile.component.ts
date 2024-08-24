@@ -1,9 +1,8 @@
-import { afterNextRender, Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ItemInfoComponent } from '../../shared/components/item-info/item-info.component';
 import { profileMock } from './mocks/profile.mock';
-import { AuthService } from '../../core/auth/services/auth.service';
 import { ButtonDirective } from '../../shared/directives/button.directive';
-import {MagicButtonComponent} from "../../shared/components/magic-button/magic-button.component";
+import { RouterLink } from '@angular/router';
 
 export interface Profile {
 	name: string;
@@ -20,17 +19,10 @@ export interface Profile {
 @Component({
 	selector: 'app-profile',
 	standalone: true,
-	imports: [ItemInfoComponent, ButtonDirective, MagicButtonComponent],
+	imports: [ItemInfoComponent, ButtonDirective, RouterLink],
 	templateUrl: './profile.component.html',
 	styleUrl: './profile.component.scss',
 })
 export class ProfileComponent {
 	data: Profile = profileMock;
-	authService = inject(AuthService);
-
-	constructor() {
-		afterNextRender(() => {
-			this.data.name = this.authService.credentials().fullName;
-		});
-	}
 }

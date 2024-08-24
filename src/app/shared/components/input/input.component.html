@@ -33,6 +33,7 @@
 			[(ngModel)]="value"
 			(change)="onChangeInput($event)"
 			(blur)="onBlur()"
+			[mask]="mask"
 		/>
 	</ng-template>
 	@if (disabled) {

@@ -27,31 +27,44 @@ export class BreadcrumbComponent {
 
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
+				this.crumbs = [
+					{
+						label: 'Página Inicial',
+						url: '/home',
+						home: true,
+					},
+				];
+
+				this.showBreadcrumb = false;
+
+				const buildBreadcrumbs = (route: ActivatedRoute, url: string = '') => {
+					if (route.snapshot.routeConfig) {
+						const routePath = route.snapshot.routeConfig.path;
+
+						if (routePath) {
+							url += `/${routePath}`;
+						}
+
+						if (route.snapshot.data['breadCrumb'] && routePath) {
+							this.crumbs.push({
+								label: route.snapshot.data['breadCrumb'],
+								url: url,
+								active: route.children.length === 0,
+							});
+						}
+					}
+
+					if (route.firstChild) {
+						buildBreadcrumbs(route.firstChild, url);
+					}
+				};
+
 				const firstChild = this.route.root.firstChild;
-
 				if (firstChild) {
-					const currentRoute = firstChild.snapshot;
+					buildBreadcrumbs(firstChild);
 
-					this.crumbs = [
-						{
-							label: 'Página Inicial',
-							url: '/home',
-							home: true,
-						},
-					];
-					this.showBreadcrumb = false;
-
-					if (
-						currentRoute.routeConfig &&
-						currentRoute.routeConfig.path !== 'home' &&
-						currentRoute.routeConfig.path !== 'login'
-					) {
-						this.crumbs.push({
-							label: currentRoute.data['breadCrumb'],
-							url: currentRoute.routeConfig.path,
-							active: true,
-						});
-
+					const lastCrumb = this.crumbs[this.crumbs.length - 1];
+					if (lastCrumb && lastCrumb.url !== '/home' && lastCrumb.url !== '/login') {
 						this.showBreadcrumb = true;
 					}
 				}

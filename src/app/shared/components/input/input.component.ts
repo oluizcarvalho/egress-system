@@ -13,11 +13,12 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { AbstractControl, ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import BRInput from '@govbr-ds/core/dist/components/input/input';
 import { SizeOptions } from '../../types/size.type';
+import {NgxMaskDirective} from "ngx-mask";
 
 @Component({
 	selector: 'app-input',
 	standalone: true,
-	imports: [NgClass, NgTemplateOutlet, FormsModule],
+	imports: [NgClass, NgTemplateOutlet, FormsModule, NgxMaskDirective],
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.scss',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true }],
@@ -33,6 +34,7 @@ export class InputComponent implements ControlValueAccessor {
 	@Input() hint = '';
 	@Input() autocomplete = '';
 	@Input() feedback = '';
+	@Input() mask = '';
 	@Input({ transform: booleanAttribute }) hasButton = false;
 	@Input({ transform: booleanAttribute }) highlight = false;
 	@Input({ transform: booleanAttribute }) readonly = false;

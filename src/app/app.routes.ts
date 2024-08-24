@@ -30,11 +30,25 @@ export const routes: Routes = [
 	},
 	{
 		path: 'perfil',
-		loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
-		title: 'Perfil',
 		data: {
 			breadCrumb: 'Perfil',
 		},
+		title: 'Perfil',
+		children: [
+			{
+				path: '',
+				loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
+			},
+			{
+				path: 'editar',
+				loadComponent: () =>
+					import('./features/profile/pages/profile-edit/profile-edit.component').then(m => m.ProfileEditComponent),
+				title: 'Editar Perfil',
+				data: {
+					breadCrumb: 'Editar Perfil',
+				},
+			},
+		],
 	},
 	...routesCoordinator,
 	...routesGraduates,
