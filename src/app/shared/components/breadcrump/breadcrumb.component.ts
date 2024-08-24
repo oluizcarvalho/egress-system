@@ -35,13 +35,17 @@ export class BreadcrumbComponent {
 					this.crumbs = [
 						{
 							label: 'Página Inicial',
-							url: '/',
+							url: '/home',
 							home: true,
 						},
 					];
 					this.showBreadcrumb = false;
 
-					if (currentRoute.routeConfig && currentRoute.routeConfig.path !== 'home') {
+					if (
+						currentRoute.routeConfig &&
+						currentRoute.routeConfig.path !== 'home' &&
+						currentRoute.routeConfig.path !== 'login'
+					) {
 						this.crumbs.push({
 							label: currentRoute.data['breadCrumb'],
 							url: currentRoute.routeConfig.path,

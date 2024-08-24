@@ -3,11 +3,14 @@ import { routesCoordinator } from './features/coordinator/coordinator.routes';
 import { routesGraduates } from './features/graduates/graduates.routes';
 
 export const routes: Routes = [
-	{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{
 		path: 'login',
 		loadComponent: () => import('./features/login/login.component').then(m => m.LoginComponent),
 		title: 'Login',
+		data: {
+			breadCrumb: false,
+		},
 	},
 	{
 		path: 'dashboard',
