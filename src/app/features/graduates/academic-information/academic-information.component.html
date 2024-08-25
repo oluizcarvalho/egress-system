@@ -1,1 +1,59 @@
-<p>academic-information works!</p>
+<div id="btn-new">
+	<button [routerLink]="['/informacoes/academicas/novo']" br-button color="primary">Novo Curso</button>
+</div>
+
+<h1>Informações Acadêmicas</h1>
+
+@for (history of data; track history.id; let first = $first) {
+	<app-collapse-item [label]="history.courseName" [id]="history.id.toString()" [expanded]="first">
+		<div class="btn-edit">
+			<button
+				size="small"
+				[routerLink]="['/informacoes/academicas/novo']"
+				br-button
+				color="secondary"
+				icon="fa-edit"
+			>
+				Editar Curso
+			</button>
+		</div>
+		<div class="row">
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Nome da Instituição" [value]="history.institutionName"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Tipo de Instituição" [value]="history.institutionType"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Nome do Curso" [value]="history.courseName"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Nível do Curso" [value]="history.courseLevel"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="País" [value]="history.country"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Data de Ingresso" [value]="history.startDate | date: 'dd/MM/y'"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Data de Conclusão" [value]="history.endDate | date: 'dd/MM/y'"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Estado" [value]="history.state"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Cidade" [value]="history.city"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Matrícula" [value]="history.registrationNumber || '--'"></app-item-info>
+			</div>
+		</div>
+	</app-collapse-item>
+	@if (!$last) {
+		<hr class="divider" />
+	}
+}
+<div id="btn-new-mobile">
+	<button [routerLink]="['/informacoes/academicas/novo']" br-button color="primary">Novo Curso</button>
+</div>

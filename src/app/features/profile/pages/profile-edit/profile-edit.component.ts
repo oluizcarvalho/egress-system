@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ItemInfoComponent } from '../../../../shared/components/item-info/item-info.component';
 import { InputComponent } from '../../../../shared/components/input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { profileMock } from '../../mocks/profile.mock';
 import { ButtonDirective } from '../../../../shared/directives/button.directive';
 import { FeedbackDirective } from '../../../../shared/directives/feedback.directive';
+import { AlertService } from '../../../../shared/components/alert/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-profile-edit',
@@ -16,6 +18,8 @@ import { FeedbackDirective } from '../../../../shared/directives/feedback.direct
 export class ProfileEditComponent {
 	form: FormGroup;
 	data = profileMock;
+	alertService = inject(AlertService);
+	router = inject(Router);
 
 	constructor() {
 		this.form = new FormGroup({
@@ -33,9 +37,9 @@ export class ProfileEditComponent {
 
 	onSubmit(): void {
 		if (this.form.valid) {
-			// Handle form submission
 			console.log(this.form.value);
+			this.alertService.showAlert('success', 'Dados salvos com êxito!', 'Sucesso.');
+			this.router.navigate(['/perfil']);
 		}
-		alert('Perfil atualizado com sucesso!');
 	}
 }

@@ -4,13 +4,40 @@ import { authGuardStudent } from '../../core/auth/services/auth.service';
 export const routesGraduates: Routes = [
 	{
 		path: 'informacoes/academicas',
-		loadComponent: () =>
-			import('./academic-information/academic-information.component').then(m => m.AcademicInformationComponent),
 		title: 'Informações Acadêmicas',
 		canActivate: [authGuardStudent],
 		data: {
 			breadCrumb: 'Informações Acadêmicas',
 		},
+		children: [
+			{
+				path: '',
+				loadComponent: () =>
+					import('./academic-information/academic-information.component').then(m => m.AcademicInformationComponent),
+			},
+			{
+				path: 'novo',
+				loadComponent: () =>
+					import('./academic-information/pages/academic-information-cr/academic-information-cr.component').then(
+						m => m.AcademicInformationCrComponent
+					),
+				title: 'Nova Informação Acadêmica',
+				data: {
+					breadCrumb: 'Nova Informação Acadêmica',
+				},
+			},
+			{
+				path: 'editar:id',
+				loadComponent: () =>
+					import('./academic-information/pages/academic-information-cr/academic-information-cr.component').then(
+						m => m.AcademicInformationCrComponent
+					),
+				title: 'Editar Informação Acadêmica',
+				data: {
+					breadCrumb: 'Editar Informação Acadêmica',
+				},
+			},
+		],
 	},
 	{
 		path: 'informacoes/profissionais',
