@@ -1,9 +1,7 @@
 <div id="btn-new">
 	<button [routerLink]="['/informacoes/academicas/novo']" br-button color="primary">Novo Curso</button>
 </div>
-
 <h1>Informações Acadêmicas</h1>
-
 @for (history of data; track history.id; let first = $first) {
 	<app-collapse-item [label]="history.courseName" [id]="history.id.toString()" [expanded]="first">
 		<div class="btn-edit">

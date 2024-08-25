@@ -3,7 +3,7 @@ import { routesCoordinator } from './features/coordinator/coordinator.routes';
 import { routesGraduates } from './features/graduates/graduates.routes';
 
 export const routes: Routes = [
-	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 	{
 		path: 'login',
 		loadComponent: () => import('./features/login/login.component').then(m => m.LoginComponent),

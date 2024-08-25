@@ -9,7 +9,9 @@
 	[attr.aria-controls]="'accordion-body-' + id"
 >
 	<div class="header" (click)="accordionItem.toggle()">
-		{{ label }}
+		<span>
+			{{ label }}
+		</span>
 		<i class="fas fa-chevron-down" [class.fa-rotate-180]="accordionItem.expanded"> </i>
 	</div>
 	@if (accordionItem.expanded) {

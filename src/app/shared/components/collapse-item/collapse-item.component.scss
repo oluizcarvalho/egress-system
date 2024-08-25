@@ -16,6 +16,17 @@
 		display: flex;
 		align-items: center;
 		gap: 8px;
+		outline: none;
+		box-shadow: none;
+
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+
+		span {
+			pointer-events: none;
+		}
 
 		i {
 			transition-duration: 0.5s;
