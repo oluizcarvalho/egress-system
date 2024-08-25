@@ -43,6 +43,11 @@ body {
 
 	@media (max-width: 768px) {
 		padding: 12px;
+		row-gap: 0;
+
+		.br-input {
+			margin-bottom: 8px;
+		}
 	}
 }
 

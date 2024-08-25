@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject } from '@angular/core';
+import { afterNextRender, Component, inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 
@@ -11,6 +11,7 @@ import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 	},
 	templateUrl: './breadcrumb.component.html',
 	styleUrl: './breadcrumb.component.scss',
+	encapsulation: ViewEncapsulation.None,
 })
 export class BreadcrumbComponent {
 	instance: unknown;
