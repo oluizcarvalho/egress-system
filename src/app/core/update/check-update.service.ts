@@ -1,27 +1,29 @@
 import { ApplicationRef, inject, Injectable, isDevMode } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { filter, first, interval, merge, tap } from 'rxjs';
+import { filter, first, interval } from 'rxjs';
 import { minutesToMsConverterUtils } from '../../shared/utils/minutes-to-ms-converter.utils';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class CheckUpdateService {
-	readonly appRef = inject(ApplicationRef);
 	readonly swUpdate = inject(SwUpdate);
+	appRef = inject(ApplicationRef);
 
 	init() {
 		if (isDevMode()) return;
 
-		setTimeout(() => {
+		this.appRef.isStable.pipe(first(stable => !!stable)).subscribe(() => {
 			this.verifyUpdate();
 			this.setPromptUpdate();
-		}, 5000);
+			this.initPolling();
+		});
+	}
 
+	private initPolling() {
 		const everyTenMinutes$ = interval(minutesToMsConverterUtils(10));
-		const everyTenMinutesOrAppIsStable$ = merge(everyTenMinutes$, this.appRef.isStable.pipe(first(v => v)));
 
-		everyTenMinutesOrAppIsStable$.subscribe(async () => {
+		everyTenMinutes$.subscribe(async () => {
 			await this.verifyUpdate();
 		});
 	}

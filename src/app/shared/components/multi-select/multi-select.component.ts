@@ -74,10 +74,8 @@ export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, Co
 						''
 					);
 			});
-			setTimeout(() => {
-				document.body.click();
-			});
 		}
+		document.body.click();
 	}
 
 	setSelected() {

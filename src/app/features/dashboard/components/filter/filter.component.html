@@ -1,7 +1,7 @@
 <app-collapse-item expanded id="filter" label="Filtros">
 	<form [formGroup]="formGroupFilter" class="filter-section row mx-0" (ngSubmit)="submit()">
 		<app-select
-			[data]="academicSemesterOptions"
+			[options]="academicSemesterOptions"
 			formControlName="academicSemester"
 			class="col-md-3 col-12"
 			id="academic-semester"

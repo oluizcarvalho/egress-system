@@ -1,12 +1,14 @@
 import { AcademicInformation } from '../models/academic-information.model';
+import {InstitutionTypeEnum} from "../../../../shared/enums/institution-type.enum";
+import {TitrationEnum} from "../../../../shared/enums/titration.enum";
 
 export const educationHistoryMock: Array<AcademicInformation> = [
 	{
 		id: 1,
 		institutionName: 'Universidade Federal de Uberlândia',
-		institutionType: 'Instituição Pública',
+		institutionType: InstitutionTypeEnum.PUBLIC_INSTITUTION,
 		courseName: 'Sistemas da Informação',
-		courseLevel: 'Bacharelado',
+		courseLevel: TitrationEnum.GRADUATION,
 		country: 'Brasil',
 		startDate: new Date(2016, 1, 1).toISOString(),
 		endDate: new Date(2020, 1, 1).toISOString(),

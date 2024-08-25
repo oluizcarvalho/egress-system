@@ -28,7 +28,7 @@ export class SelectComponent implements AfterViewInit, AfterViewChecked, Control
 	@Input() placeholder = 'Selecione o item';
 	@Input() hint: string = '';
 	@Input({ transform: booleanAttribute }) disabled: boolean = false;
-	@Input() data: SelectOptions = [];
+	@Input() options: SelectOptions = [];
 	@Output() selectedEvent = new EventEmitter<string>();
 
 	instance: any;
@@ -66,10 +66,8 @@ export class SelectComponent implements AfterViewInit, AfterViewChecked, Control
 				this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}"]`),
 				'selected'
 			);
-			setTimeout(() => {
-				document.body.click();
-			});
 		}
+		document.body.click();
 	}
 
 	setSelected() {

@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-	hideNavbar = input<boolean>(true);
+	hideNavbar = input<boolean>(false);
 	authService = inject(AuthService);
 	user = this.authService.credentials;
 

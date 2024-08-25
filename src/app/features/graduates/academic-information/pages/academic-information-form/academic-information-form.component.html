@@ -1,0 +1,64 @@
+<h1>
+	{{ mode() === 'create' ? 'Cadastrar' : 'Editar' }} Informações
+	@if (mode() === 'create') {
+		<p class="subtitle mt-1">Somente cursos integralizados externamente à UFU</p>
+	}
+</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<app-input id="institutionName" label="Nome da Instituição" formControlName="institutionName"></app-input>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-select
+				[options]="institutionTypeOptions"
+				id="institutionType"
+				label="Tipo de Instituição"
+				formControlName="institutionType"
+			></app-select>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-input id="courseName" label="Nome do Curso" formControlName="courseName"></app-input>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-select
+				[options]="titrationOptions"
+				id="courseLevel"
+				label="Titulação"
+				formControlName="courseLevel"
+			></app-select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<app-date-time-picker
+				id="startDate"
+				label="Data de Ingresso"
+				type="date"
+				formControlName="startDate"
+			></app-date-time-picker>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-date-time-picker
+				id="endDate"
+				label="Data de Conclusão"
+				type="date"
+				formControlName="endDate"
+			></app-date-time-picker>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<app-input id="country" label="País" formControlName="country"></app-input>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-input id="state" label="Estado" formControlName="state"></app-input>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-input id="city" label="Cidade" formControlName="city"></app-input>
+		</div>
+		<div class="col-12 col-lg-3 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0">
+			<button br-button color="primary">Salvar</button>
+		</div>
+	</div>
+</form>

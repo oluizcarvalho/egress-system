@@ -1,18 +1,18 @@
 import { AfterViewInit, Component, ElementRef, inject, signal } from '@angular/core';
 import { LIST_MENU_BY_ROLE } from './const/list-menu';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import BRMenu from '@govbr-ds/core/dist/components/menu/menu';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Role } from '../../../features/login/models/credentials.model';
 import { AuthService } from '../../../core/auth/services/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IMenu } from './types/menu.type';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import BRMenu from '@govbr-ds/core/dist/components/menu/menu';
 
 @Component({
 	selector: 'app-menu',
 	standalone: true,
-	host: { class: 'br-menu' },
+	host: { class: 'br-menu push px-0' },
 	imports: [NgClass, NgTemplateOutlet, RouterLink, RouterLinkActive],
 	templateUrl: './menu.component.html',
 	styleUrl: './menu.component.scss',
@@ -44,11 +44,13 @@ export class MenuComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.instance = new BRMenu('br-menu', document.querySelector('.br-menu'));
+		setTimeout(() => {
+			this.instance = new BRMenu('br-menu', document.querySelector('.br-menu'));
+		});
 	}
 
 	closeMenu() {
-		this._brMenu.nativeElement.querySelector('[data-dismiss="menu"]').click();
+		if (this._brMenu) this._brMenu.nativeElement.querySelector('[data-dismiss="menu"]').click();
 	}
 
 	closeMenuIfMobile() {
