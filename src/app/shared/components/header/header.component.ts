@@ -7,9 +7,6 @@ import { RouterLink } from '@angular/router';
 @Component({
 	selector: 'app-header',
 	standalone: true,
-	host: {
-		ngSkipHydration: 'true',
-	},
 	imports: [NgOptimizedImage, CdkMenuModule, RouterLink],
 	templateUrl: './header.component.html',
 	styleUrl: './header.component.scss',

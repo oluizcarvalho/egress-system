@@ -1,6 +1,6 @@
 import {
-	afterNextRender,
 	AfterViewChecked,
+	AfterViewInit,
 	booleanAttribute,
 	Component,
 	ElementRef,
@@ -22,7 +22,7 @@ import { SelectOptions } from '../../models/select.model';
 	templateUrl: './select.component.html',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true }],
 })
-export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
+export class SelectComponent implements AfterViewInit, AfterViewChecked, ControlValueAccessor {
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input() placeholder = 'Selecione o item';
@@ -53,11 +53,11 @@ export class SelectComponent implements AfterViewChecked, ControlValueAccessor {
 	brSelect = inject(ElementRef);
 	renderer = inject(Renderer2);
 
-	constructor() {
-		afterNextRender(() => {
-			this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
-			this._populateItemSelected();
-		});
+	constructor() {}
+
+	ngAfterViewInit(): void {
+		this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
+		this._populateItemSelected();
 	}
 
 	private _populateItemSelected(): void {

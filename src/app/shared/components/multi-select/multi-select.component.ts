@@ -1,6 +1,6 @@
 import {
-	afterNextRender,
 	AfterViewChecked,
+	AfterViewInit,
 	booleanAttribute,
 	Component,
 	ElementRef,
@@ -22,7 +22,7 @@ import { SelectOption } from '../../models/select.model';
 	templateUrl: './multi-select.component.html',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MultiSelectComponent), multi: true }],
 })
-export class MultiSelectComponent implements AfterViewChecked, ControlValueAccessor {
+export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, ControlValueAccessor {
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input() placeholder = 'Selecione o item';
@@ -56,11 +56,11 @@ export class MultiSelectComponent implements AfterViewChecked, ControlValueAcces
 	private brSelect = inject(ElementRef);
 	private renderer = inject(Renderer2);
 
-	constructor() {
-		afterNextRender(() => {
-			this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
-			this._populateItensSelected();
-		});
+	constructor() {}
+
+	ngAfterViewInit(): void {
+		this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
+		this._populateItensSelected();
 	}
 
 	private _populateItensSelected(): void {

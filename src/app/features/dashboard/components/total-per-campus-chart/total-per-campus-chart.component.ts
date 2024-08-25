@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { BarChartModule, Color, ScaleType } from '@swimlane/ngx-charts';
 import { CardChartComponent } from '../card-chart/card-chart.component';
 
@@ -21,7 +21,6 @@ export class TotalPerCampusChartComponent {
 			value: 69,
 		},
 	]);
-	render = signal<boolean>(false);
 
 	colorScheme: Color = {
 		name: 'gov',
@@ -30,9 +29,5 @@ export class TotalPerCampusChartComponent {
 		domain: ['#003366'],
 	};
 
-	constructor() {
-		afterNextRender(() => {
-			this.render.set(true);
-		});
-	}
+	constructor() {}
 }

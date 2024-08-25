@@ -1,4 +1,4 @@
-import { afterNextRender, booleanAttribute, Directive, ElementRef, inject, Input, Renderer2 } from '@angular/core';
+import { booleanAttribute, Directive, ElementRef, inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { SizeOptions } from '../types/size.type';
 
 @Directive({
@@ -23,7 +23,7 @@ import { SizeOptions } from '../types/size.type';
 	inputs: ['color', 'size', 'disabled', 'block', 'loading', 'active', 'circle', 'inverted'],
 	standalone: true,
 })
-export class ButtonDirective {
+export class ButtonDirective implements OnInit {
 	@Input() color: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	@Input() size: SizeOptions = 'medium';
 	@Input() icon = '';
@@ -39,10 +39,10 @@ export class ButtonDirective {
 	public el = inject(ElementRef);
 	public renderer = inject(Renderer2);
 
-	constructor() {
-		afterNextRender(() => {
-			this.setIcon();
-		});
+	constructor() {}
+
+	ngOnInit(): void {
+		this.setIcon();
 	}
 
 	setIcon(): void {

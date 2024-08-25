@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { GetIconByStatePipe } from '../../pipes/get-icon-by-state.pipe';
 import { AlertEvent, AlertService } from './alert.service';
@@ -32,18 +32,18 @@ import { animate, style, transition, trigger } from '@angular/animations';
 		]),
 	],
 })
-export class AlertComponent {
+export class AlertComponent implements OnInit {
 	alert = signal<AlertEvent | null>(null);
 	private alertService = inject(AlertService);
 
-	constructor() {
-		afterNextRender(() => {
-			this.alertService.alertEvents$.subscribe(event => {
-				this.alert.set(event);
-				if (event.autoClose) this.registerCloseTime(event);
-			});
-			this.alertService.clearEvent$.subscribe(() => this.onHide());
+	constructor() {}
+
+	ngOnInit(): void {
+		this.alertService.alertEvents$.subscribe(event => {
+			this.alert.set(event);
+			if (event.autoClose) this.registerCloseTime(event);
 		});
+		this.alertService.clearEvent$.subscribe(() => this.onHide());
 	}
 
 	public onHide(): void {

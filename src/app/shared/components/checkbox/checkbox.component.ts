@@ -1,5 +1,5 @@
 import {
-	afterNextRender,
+	AfterViewInit,
 	booleanAttribute,
 	Component,
 	ElementRef,
@@ -17,7 +17,7 @@ import BRCheckbox from '@govbr-ds/core/dist/components/checkbox/checkbox';
 	imports: [NgClass],
 	templateUrl: './checkbox.component.html',
 })
-export class CheckboxComponent {
+export class CheckboxComponent implements AfterViewInit {
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input({ transform: booleanAttribute }) disabled = false;
@@ -42,9 +42,9 @@ export class CheckboxComponent {
 
 	@Output() valueChange = new EventEmitter<boolean>();
 
-	constructor() {
-		afterNextRender(() => {
-			this.instance = new BRCheckbox('brCheckbox', this.brCheckbox.nativeElement.querySelector('.br-checkbox'));
-		});
+	constructor() {}
+
+	ngAfterViewInit(): void {
+		this.instance = new BRCheckbox('brCheckbox', this.brCheckbox.nativeElement.querySelector('.br-checkbox'));
 	}
 }

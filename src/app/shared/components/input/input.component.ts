@@ -1,5 +1,5 @@
 import {
-	afterNextRender,
+	AfterViewInit,
 	booleanAttribute,
 	Component,
 	ElementRef,
@@ -13,7 +13,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { AbstractControl, ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import BRInput from '@govbr-ds/core/dist/components/input/input';
 import { SizeOptions } from '../../types/size.type';
-import {NgxMaskDirective} from "ngx-mask";
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
 	selector: 'app-input',
@@ -23,7 +23,7 @@ import {NgxMaskDirective} from "ngx-mask";
 	styleUrl: './input.component.scss',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true }],
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputComponent implements ControlValueAccessor, AfterViewInit {
 	@Input({ required: true }) label = '';
 	@Input({ required: true }) id: string;
 	@Input() name = '';
@@ -83,10 +83,10 @@ export class InputComponent implements ControlValueAccessor {
 	instance: unknown;
 	private brInput = inject(ElementRef);
 
-	constructor() {
-		afterNextRender(() => {
-			this.instance = new BRInput('br-input', this.brInput.nativeElement.querySelector('.br-input'));
-		});
+	constructor() {}
+
+	ngAfterViewInit(): void {
+		this.instance = new BRInput('br-input', this.brInput.nativeElement.querySelector('.br-input'));
 	}
 
 	writeValue(value: string): void {

@@ -1,5 +1,5 @@
 import {
-	afterNextRender,
+	AfterViewInit,
 	booleanAttribute,
 	Directive,
 	ElementRef,
@@ -18,20 +18,20 @@ import { getIconByStateUtils, StateType } from '../utils/get-icon-by-state.utils
 		role: 'alert',
 	},
 })
-export class FeedbackDirective implements OnDestroy {
+export class FeedbackDirective implements AfterViewInit, OnDestroy {
 	@Input() state: StateType = '';
 	@Input({ transform: booleanAttribute }) noPropagateState = false;
 	node: HTMLDivElement;
 	el = inject(ElementRef);
 	renderer = inject(Renderer2);
 
-	constructor() {
-		afterNextRender(() => {
-			this.node = this.renderer.parentNode(this.el.nativeElement) as HTMLDivElement;
+	constructor() {}
 
-			this.setState();
-			this.setIcon();
-		});
+	ngAfterViewInit(): void {
+		this.node = this.renderer.parentNode(this.el.nativeElement) as HTMLDivElement;
+
+		this.setState();
+		this.setIcon();
 	}
 
 	private setState(): void {

@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 
@@ -13,7 +13,7 @@ import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 	styleUrl: './breadcrumb.component.scss',
 	encapsulation: ViewEncapsulation.None,
 })
-export class BreadcrumbComponent {
+export class BreadcrumbComponent implements AfterViewInit, OnInit {
 	instance: unknown;
 	crumbs: Array<{ label: string; url: string; home?: boolean; active?: boolean }> = [];
 	showBreadcrumb = false;
@@ -21,11 +21,9 @@ export class BreadcrumbComponent {
 	router = inject(Router);
 	route = inject(ActivatedRoute);
 
-	constructor() {
-		afterNextRender(() => {
-			this.instance = new BRBreadcrumb('br-breadcrumb', document.querySelector('.br-breadcrumb'));
-		});
+	constructor() {}
 
+	ngOnInit(): void {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
 				this.crumbs = [
@@ -38,31 +36,9 @@ export class BreadcrumbComponent {
 
 				this.showBreadcrumb = false;
 
-				const buildBreadcrumbs = (route: ActivatedRoute, url: string = '') => {
-					if (route.snapshot.routeConfig) {
-						const routePath = route.snapshot.routeConfig.path;
-
-						if (routePath) {
-							url += `/${routePath}`;
-						}
-
-						if (route.snapshot.data['breadCrumb'] && routePath) {
-							this.crumbs.push({
-								label: route.snapshot.data['breadCrumb'],
-								url: url,
-								active: route.children.length === 0,
-							});
-						}
-					}
-
-					if (route.firstChild) {
-						buildBreadcrumbs(route.firstChild, url);
-					}
-				};
-
 				const firstChild = this.route.root.firstChild;
 				if (firstChild) {
-					buildBreadcrumbs(firstChild);
+					this.buildBreadcrumbs(firstChild);
 
 					const lastCrumb = this.crumbs[this.crumbs.length - 1];
 					if (lastCrumb && lastCrumb.url !== '/home' && lastCrumb.url !== '/login') {
@@ -71,5 +47,31 @@ export class BreadcrumbComponent {
 				}
 			}
 		});
+	}
+
+	buildBreadcrumbs(route: ActivatedRoute, url: string = '') {
+		if (route.snapshot.routeConfig) {
+			const routePath = route.snapshot.routeConfig.path;
+
+			if (routePath) {
+				url += `/${routePath}`;
+			}
+
+			if (route.snapshot.data['breadCrumb'] && routePath) {
+				this.crumbs.push({
+					label: route.snapshot.data['breadCrumb'],
+					url: url,
+					active: route.children.length === 0,
+				});
+			}
+		}
+
+		if (route.firstChild) {
+			this.buildBreadcrumbs(route.firstChild, url);
+		}
+	}
+
+	ngAfterViewInit(): void {
+		this.instance = new BRBreadcrumb('br-breadcrumb', document.querySelector('.br-breadcrumb'));
 	}
 }

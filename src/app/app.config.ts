@@ -1,8 +1,7 @@
 import { ApplicationConfig, isDevMode, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
-import {provideRouter, TitleStrategy} from '@angular/router';
+import { provideRouter, TitleStrategy } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
@@ -12,8 +11,8 @@ import { loadingInterceptor } from './shared/components/loading/interceptors/loa
 import { NoopScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { DEFAULT_DIALOG_CONFIG, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
 import { registerLocaleData } from '@angular/common';
+import { CustomPageTitleStrategy } from './core/strategy/title.strategy';
 import localePt from '@angular/common/locales/pt';
-import {CustomPageTitleStrategy} from "./core/strategy/title.strategy";
 
 registerLocaleData(localePt);
 
@@ -26,8 +25,7 @@ export const appConfig: ApplicationConfig = {
 		provideZoneChangeDetection({ eventCoalescing: true }),
 		provideRouter(routes),
 		provideHttpClient(withInterceptors([globalInterceptor, loadingInterceptor]), withFetch()),
-		provideClientHydration(),
-		provideAnimationsAsync('animations'),
+		provideAnimationsAsync(),
 		provideEnvironmentNgxMask(),
 		provideServiceWorker('ngsw-worker.js', {
 			enabled: !isDevMode(),

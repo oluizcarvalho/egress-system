@@ -18,8 +18,8 @@ export const routesGraduates: Routes = [
 			{
 				path: 'novo',
 				loadComponent: () =>
-					import('./academic-information/pages/academic-information-cr/academic-information-cr.component').then(
-						m => m.AcademicInformationCrComponent
+					import('./academic-information/pages/academic-information-form/academic-information-form.component').then(
+						m => m.AcademicInformationFormComponent
 					),
 				title: 'Nova Informação Acadêmica',
 				data: {
@@ -27,10 +27,10 @@ export const routesGraduates: Routes = [
 				},
 			},
 			{
-				path: 'editar:id',
+				path: 'editar/:id',
 				loadComponent: () =>
-					import('./academic-information/pages/academic-information-cr/academic-information-cr.component').then(
-						m => m.AcademicInformationCrComponent
+					import('./academic-information/pages/academic-information-form/academic-information-form.component').then(
+						m => m.AcademicInformationFormComponent
 					),
 				title: 'Editar Informação Acadêmica',
 				data: {

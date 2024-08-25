@@ -1,5 +1,5 @@
 import {
-	afterNextRender,
+	AfterViewInit,
 	booleanAttribute,
 	Component,
 	ElementRef,
@@ -28,7 +28,7 @@ export type TypesDatePicker = keyof typeof TYPE_DATE_PICKER;
 	templateUrl: './date-time-picker.component.html',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DateTimePickerComponent), multi: true }],
 })
-export class DateTimePickerComponent implements OnInit, ControlValueAccessor {
+export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 	@Input({ required: true }) label = '';
 	@Input({ required: true }) id: string;
 	@Input({ transform: booleanAttribute }) range = false;
@@ -83,28 +83,28 @@ export class DateTimePickerComponent implements OnInit, ControlValueAccessor {
 
 	private brDatePicker = inject(ElementRef);
 
-	constructor() {
-		afterNextRender(() => {
-			let dates = {};
-			if (this.maxDate) {
-				dates = {
-					maxDate: this.normalizeDate(this.maxDate),
-				};
+	constructor() {}
+
+	ngAfterViewInit(): void {
+		let dates = {};
+		if (this.maxDate) {
+			dates = {
+				maxDate: this.normalizeDate(this.maxDate),
+			};
+		}
+		if (this.minDate) {
+			dates = {
+				...dates,
+				minDate: this.normalizeDate(this.minDate),
+			};
+		}
+		this.instance = new BRDateTimePicker(
+			'br-datetimepicker',
+			this.brDatePicker.nativeElement.querySelector('.br-datetimepicker'),
+			{
+				...dates,
 			}
-			if (this.minDate) {
-				dates = {
-					...dates,
-					minDate: this.normalizeDate(this.minDate),
-				};
-			}
-			this.instance = new BRDateTimePicker(
-				'br-datetimepicker',
-				this.brDatePicker.nativeElement.querySelector('.br-datetimepicker'),
-				{
-					...dates,
-				}
-			);
-		});
+		);
 	}
 
 	normalizeDate(date: string | Date): string {
