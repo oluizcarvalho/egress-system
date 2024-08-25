@@ -13,15 +13,13 @@ export class CheckUpdateService {
 	init() {
 		if (isDevMode()) return;
 
-		const appIsStable$ = this.appRef.isStable.pipe(
-			first(isStable => isStable === true),
-			tap(() => {
-				console.log('App is stable now');
-				this.setPromptUpdate();
-			})
-		);
+		setTimeout(() => {
+			this.verifyUpdate();
+			this.setPromptUpdate();
+		}, 5000);
+
 		const everyTenMinutes$ = interval(minutesToMsConverterUtils(10));
-		const everyTenMinutesOrAppIsStable$ = merge(appIsStable$, everyTenMinutes$);
+		const everyTenMinutesOrAppIsStable$ = merge(everyTenMinutes$, this.appRef.isStable.pipe(first(v => v)));
 
 		everyTenMinutesOrAppIsStable$.subscribe(async () => {
 			await this.verifyUpdate();

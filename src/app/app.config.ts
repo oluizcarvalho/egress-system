@@ -31,7 +31,7 @@ export const appConfig: ApplicationConfig = {
 		provideEnvironmentNgxMask(),
 		provideServiceWorker('ngsw-worker.js', {
 			enabled: !isDevMode(),
-			registrationStrategy: 'registerWhenStable:30000',
+			registrationStrategy: 'registerWhenStable:3000',
 		}),
 		{ provide: LOCALE_ID, useValue: 'pt-BR' },
 		{
