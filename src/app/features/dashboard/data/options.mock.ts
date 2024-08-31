@@ -3,204 +3,204 @@ import { SelectOption } from '../../../shared/models/select.model';
 export const academicSemesterOptions: Array<SelectOption> = [
 	{
 		value: '20242',
-		text: '2024/2',
+		label: '2024/2',
 	},
 	{
 		value: '20241',
-		text: '2024/1',
+		label: '2024/1',
 	},
 	{
 		value: '20232',
-		text: '2023/2',
+		label: '2023/2',
 	},
 	{
 		value: '20231',
-		text: '2023/1',
+		label: '2023/1',
 	},
 	{
 		value: '20222',
-		text: '2022/2',
+		label: '2022/2',
 	},
 	{
 		value: '20221',
-		text: '2022/1',
+		label: '2022/1',
 	},
 	{
 		value: '20212',
-		text: '2021/2',
+		label: '2021/2',
 	},
 	{
 		value: '20211',
-		text: '2021/1',
+		label: '2021/1',
 	},
 	{
 		value: '20202',
-		text: '2020/2',
+		label: '2020/2',
 	},
 	{
 		value: '20201',
-		text: '2020/1',
+		label: '2020/1',
 	},
 	{
 		value: '20192',
-		text: '2019/2',
+		label: '2019/2',
 	},
 	{
 		value: '20191',
-		text: '2019/1',
+		label: '2019/1',
 	},
 	{
 		value: '20182',
-		text: '2018/2',
+		label: '2018/2',
 	},
 	{
 		value: '20181',
-		text: '2018/1',
+		label: '2018/1',
 	},
 ];
 
 export const courseOptions: Array<SelectOption> = [
 	{
 		value: '1',
-		text: 'Administração',
+		label: 'Administração',
 	},
 	{
 		value: '2',
-		text: 'Agronomia',
+		label: 'Agronomia',
 	},
 	{
 		value: '3',
-		text: 'Arquitetura e Urbanismo',
+		label: 'Arquitetura e Urbanismo',
 	},
 	{
 		value: '4',
-		text: 'Biomedicina',
+		label: 'Biomedicina',
 	},
 	{
 		value: '5',
-		text: 'Ciência da Computação',
+		label: 'Ciência da Computação',
 	},
 	{
 		value: '6',
-		text: 'Ciências Biológicas',
+		label: 'Ciências Biológicas',
 	},
 	{
 		value: '7',
-		text: 'Ciências Contábeis',
+		label: 'Ciências Contábeis',
 	},
 	{
 		value: '8',
-		text: 'Direito',
+		label: 'Direito',
 	},
 	{
 		value: '9',
-		text: 'Educação Física',
+		label: 'Educação Física',
 	},
 	{
 		value: '10',
-		text: 'Enfermagem',
+		label: 'Enfermagem',
 	},
 	{
 		value: '11',
-		text: 'Engenharia Civil',
+		label: 'Engenharia Civil',
 	},
 	{
 		value: '12',
-		text: 'Engenharia de Produção',
+		label: 'Engenharia de Produção',
 	},
 	{
 		value: '13',
-		text: 'Engenharia Elétrica',
+		label: 'Engenharia Elétrica',
 	},
 	{
 		value: '14',
-		text: 'Engenharia Mecânica',
+		label: 'Engenharia Mecânica',
 	},
 	{
 		value: '15',
-		text: 'Farmácia',
+		label: 'Farmácia',
 	},
 	{
 		value: '16',
-		text: 'Fisioterapia',
+		label: 'Fisioterapia',
 	},
 	{
 		value: '17',
-		text: 'Medicina Veterinária',
+		label: 'Medicina Veterinária',
 	},
 	{
 		value: '18',
-		text: 'Nutrição',
+		label: 'Nutrição',
 	},
 	{
 		value: '19',
-		text: 'Odontologia',
+		label: 'Odontologia',
 	},
 	{
 		value: '20',
-		text: 'Pedagogia',
+		label: 'Pedagogia',
 	},
 	{
 		value: '21',
-		text: 'Psicologia',
+		label: 'Psicologia',
 	},
 	{
 		value: '22',
-		text: 'Publicidade e Propaganda',
+		label: 'Publicidade e Propaganda',
 	},
 	{
 		value: '23',
-		text: 'Relações Internacionais',
+		label: 'Relações Internacionais',
 	},
 	{
 		value: '24',
-		text: 'Sistemas de Informação',
+		label: 'Sistemas de Informação',
 	},
 	{
 		value: '25',
-		text: 'Zootecnia',
+		label: 'Zootecnia',
 	},
 ];
 
 export const titrationOptions: Array<SelectOption> = [
 	{
 		value: '1',
-		text: 'Graduação',
+		label: 'Graduação',
 	},
 	{
 		value: '2',
-		text: 'Pós-Graduação',
+		label: 'Pós-Graduação',
 	},
 	{
 		value: '3',
-		text: 'Mestrado',
+		label: 'Mestrado',
 	},
 	{
 		value: '4',
-		text: 'Doutorado',
+		label: 'Doutorado',
 	},
 ];
 
 export const campusOptions: Array<SelectOption> = [
 	{
 		value: '1',
-		text: 'Campus Monte Carmelo',
+		label: 'Campus Monte Carmelo',
 	},
 	{
 		value: '2',
-		text: 'Campus Patos de Minas',
+		label: 'Campus Patos de Minas',
 	},
 	{
 		value: '3',
-		text: 'Campus Pontal',
+		label: 'Campus Pontal',
 	},
 	{
 		value: '4',
-		text: 'Campus Santa Mônica',
+		label: 'Campus Santa Mônica',
 	},
 
 	{
 		value: '5',
-		text: 'Campus Umuarama',
+		label: 'Campus Umuarama',
 	},
 ];

@@ -1,1 +1,63 @@
-<p>professional-information works!</p>
+<div class="btn-new">
+	<button [routerLink]="['/informacoes/profissionais/novo']" br-button color="primary">Nova Experiência</button>
+</div>
+<h1>Informações Profissionais</h1>
+@for (info of data; track info.id; let first = $first) {
+	<app-collapse-item [label]="info.companyName" [id]="info.id.toString()" [expanded]="first">
+		<div class="btn-edit">
+			<button
+				br-button
+				size="small"
+				[routerLink]="['/informacoes/profissionais/editar/', info.id]"
+				color="secondary"
+				icon="fa-edit"
+			>
+				Editar Experiência
+			</button>
+		</div>
+		<div class="row">
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Nome da Empresa" [value]="info.companyName"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Categoria" [value]="info.category | getCategoryDescription"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Tipo de Emprego" [value]="info.jobType | getJobTypeDescription"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Localidade" [value]="info.location | getLocationDescription"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Cargo" [value]="info.jobTitle"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Nível de Cargo" [value]="info.jobLevel | getJobLevelDescription"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Data de Início" [value]="info.startDate | date: 'dd/MM/y'"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Data de Término" [value]="info.endDate | date: 'dd/MM/y'"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Mídia Salarial" [value]="info.salary | currency"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Função" [value]="info.function || '--'"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Informações Acadêmicas Relacionadas" [value]="info.relatedAcademicInfo"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Identificador" [value]="info.id.toString()"></app-item-info>
+			</div>
+		</div>
+	</app-collapse-item>
+	@if (!$last) {
+		<hr class="divider" />
+	}
+}
+<div class="btn-new-mobile">
+	<button [routerLink]="['/informacoes/profissionais/novo']" br-button color="primary">Nova Experiência</button>
+</div>

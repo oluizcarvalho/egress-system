@@ -55,9 +55,9 @@
 							}
 						],
 						"styles": [
-							"src/root.css",
-							"src/rawline.css",
-							"src/bootstrap-utilities.css",
+							"src/themes/fonts/rawline.css",
+							"src/themes/foundation/root.css",
+							"src/themes/utilities/bootstrap-utilities.css",
 							"node_modules/@fortawesome/fontawesome-free/css/all.min.css",
 							"node_modules/@govbr-ds/core/dist/core.min.css",
 							"src/styles.scss"

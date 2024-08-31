@@ -3,13 +3,13 @@ import { ButtonDirective } from '../../../../../shared/directives/button.directi
 import { FeedbackDirective } from '../../../../../shared/directives/feedback.directive';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../../../../shared/components/input/input.component';
-import { educationHistoryMock } from '../../mocks/academic-information.mock';
+import { EDUCATION_HISTORY_MOCK } from '../../mocks/academic-information.mock';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../../../shared/components/alert/alert.service';
 import { DateTimePickerComponent } from '../../../../../shared/components/date-time-picker/date-time-picker.component';
 import { SelectComponent } from '../../../../../shared/components/select/select.component';
-import { institutionTypeOptionsMock } from '../../../../../shared/mocks/institution-type.mock';
-import { titrationOptionsMock } from '../../../../../shared/mocks/titration.mock';
+import { INSTITUTION_TYPE_OPTIONS_MOCK } from '../../../../../shared/mocks/institution-type.mock';
+import { COURSE_LEVEL_OPTIONS_MOCK } from '../../../../../shared/mocks/titration.mock';
 
 @Component({
 	selector: 'app-academic-information-form',
@@ -28,11 +28,11 @@ import { titrationOptionsMock } from '../../../../../shared/mocks/titration.mock
 })
 export class AcademicInformationFormComponent {
 	form: FormGroup;
-	data = educationHistoryMock;
+	data = EDUCATION_HISTORY_MOCK;
 	mode = signal<'create' | 'edit'>('create');
 	id?: string;
-	institutionTypeOptions = institutionTypeOptionsMock;
-	titrationOptions = titrationOptionsMock;
+	institutionTypeOptions = INSTITUTION_TYPE_OPTIONS_MOCK;
+	titrationOptions = COURSE_LEVEL_OPTIONS_MOCK;
 
 	route = inject(ActivatedRoute);
 	router = inject(Router);
@@ -59,7 +59,7 @@ export class AcademicInformationFormComponent {
 			this.id = id;
 
 			if (id) {
-				const data = educationHistoryMock.find(item => item.id.toString() === id);
+				const data = EDUCATION_HISTORY_MOCK.find(item => item.id.toString() === id);
 				if (data) {
 					this.form.patchValue({
 						...data,

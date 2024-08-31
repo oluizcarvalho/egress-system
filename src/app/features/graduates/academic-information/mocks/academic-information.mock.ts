@@ -1,14 +1,14 @@
 import { AcademicInformation } from '../models/academic-information.model';
-import {InstitutionTypeEnum} from "../../../../shared/enums/institution-type.enum";
-import {TitrationEnum} from "../../../../shared/enums/titration.enum";
+import { InstitutionTypeEnum } from '../../../../shared/enums/institution-type.enum';
+import { CourseLevelEnum } from '../../../../shared/enums/course-level.enum';
 
-export const educationHistoryMock: Array<AcademicInformation> = [
+export const EDUCATION_HISTORY_MOCK: Array<AcademicInformation> = [
 	{
 		id: 1,
 		institutionName: 'Universidade Federal de Uberlândia',
 		institutionType: InstitutionTypeEnum.PUBLIC_INSTITUTION,
 		courseName: 'Sistemas da Informação',
-		courseLevel: TitrationEnum.GRADUATION,
+		courseLevel: CourseLevelEnum.BACHELOR,
 		country: 'Brasil',
 		startDate: new Date(2016, 1, 1).toISOString(),
 		endDate: new Date(2020, 1, 1).toISOString(),
@@ -19,12 +19,12 @@ export const educationHistoryMock: Array<AcademicInformation> = [
 	{
 		id: 2,
 		institutionName: 'Universidade Estadual de Campinas',
-		institutionType: 'Instituição Pública',
+		institutionType: InstitutionTypeEnum.PUBLIC_INSTITUTION,
 		courseName: 'Engenharia de Computação',
-		courseLevel: 'Bacharelado',
+		courseLevel: CourseLevelEnum.BACHELOR,
 		country: 'Brasil',
-    startDate: new Date(2020, 1, 1).toISOString(),
-    endDate: new Date(2024, 1, 1).toISOString(),
+		startDate: new Date(2020, 1, 1).toISOString(),
+		endDate: new Date(2024, 1, 1).toISOString(),
 		state: 'São Paulo',
 		city: 'Campinas',
 		registrationNumber: 'ID789456',

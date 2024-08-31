@@ -1,4 +1,4 @@
-<div id="btn-new">
+<div class="btn-new">
 	<button [routerLink]="['/informacoes/academicas/novo']" br-button color="primary">Novo Curso</button>
 </div>
 <h1>Informações Acadêmicas</h1>
@@ -20,13 +20,16 @@
 				<app-item-info label="Nome da Instituição" [value]="history.institutionName"></app-item-info>
 			</div>
 			<div class="col-12 col-lg-3">
-				<app-item-info label="Tipo de Instituição" [value]="history.institutionType"></app-item-info>
+				<app-item-info
+					label="Tipo de Instituição"
+					[value]="history.institutionType | getInstitutionTypeDescription"
+				></app-item-info>
 			</div>
 			<div class="col-12 col-lg-3">
 				<app-item-info label="Nome do Curso" [value]="history.courseName"></app-item-info>
 			</div>
 			<div class="col-12 col-lg-3">
-				<app-item-info label="Nível do Curso" [value]="history.courseLevel"></app-item-info>
+				<app-item-info label="Nível do Curso" [value]="history.courseLevel | getCourseLevelDescription"></app-item-info>
 			</div>
 			<div class="col-12 col-lg-3">
 				<app-item-info label="País" [value]="history.country"></app-item-info>

@@ -1,4 +1,10 @@
-import { ApplicationConfig, isDevMode, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
+import {
+	ApplicationConfig,
+	DEFAULT_CURRENCY_CODE,
+	isDevMode,
+	LOCALE_ID,
+	provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter, TitleStrategy } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -32,6 +38,7 @@ export const appConfig: ApplicationConfig = {
 			registrationStrategy: 'registerWhenStable:3000',
 		}),
 		{ provide: LOCALE_ID, useValue: 'pt-BR' },
+		{ provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
 		{
 			provide: DEFAULT_DIALOG_CONFIG,
 			useValue: { panelClass: 'dialog', hasBackdrop: true, autoFocus: false },

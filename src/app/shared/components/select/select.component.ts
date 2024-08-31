@@ -62,10 +62,8 @@ export class SelectComponent implements AfterViewInit, AfterViewChecked, Control
 
 	private _populateItemSelected(): void {
 		if (this.value) {
-			this.renderer.addClass(
-				this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}"]`),
-				'selected'
-			);
+			const optionValue = this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}`);
+			if (optionValue) this.renderer.addClass(optionValue, 'selected');
 		}
 		document.body.click();
 	}

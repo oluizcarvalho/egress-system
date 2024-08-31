@@ -11,7 +11,7 @@
 			<div class="br-item" [attr.data-value]="option.value" tabindex="-1" (click)="setSelected()">
 				<div class="br-radio">
 					<input id="{{ id + i }}" type="radio" value="{{ option.value }}" />
-					<label for="{{ id + i }}">{{ option.text }}</label>
+					<label for="{{ id + i }}">{{ option.label }}</label>
 				</div>
 			</div>
 		}

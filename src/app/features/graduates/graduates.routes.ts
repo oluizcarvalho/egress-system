@@ -41,15 +41,42 @@ export const routesGraduates: Routes = [
 	},
 	{
 		path: 'informacoes/profissionais',
-		loadComponent: () =>
-			import('./professional-information/professional-information.component').then(
-				m => m.ProfessionalInformationComponent
-			),
 		canActivate: [authGuardStudent],
 		title: 'Informações Profissionais',
 		data: {
 			breadCrumb: 'Informações Profissionais',
 		},
+		children: [
+			{
+				path: '',
+				loadComponent: () =>
+					import('./professional-information/professional-information.component').then(
+						m => m.ProfessionalInformationComponent
+					),
+			},
+			{
+				path: 'novo',
+				loadComponent: () =>
+					import(
+						'./professional-information/pages/professional-information-form/professional-information-form.component'
+					).then(m => m.ProfessionalInformationFormComponent),
+				title: 'Nova Informação Profissional',
+				data: {
+					breadCrumb: 'Nova Informação Profissional',
+				},
+			},
+			{
+				path: 'editar/:id',
+				loadComponent: () =>
+					import(
+						'./professional-information/pages/professional-information-form/professional-information-form.component'
+					).then(m => m.ProfessionalInformationFormComponent),
+				title: 'Editar Informação Profissional',
+				data: {
+					breadCrumb: 'Editar Informação Profissional',
+				},
+			},
+		],
 	},
 	{
 		path: 'depoimentos',
