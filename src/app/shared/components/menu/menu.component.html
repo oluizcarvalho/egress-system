@@ -10,9 +10,9 @@
 		<nav class="menu-body">
 			@for (lvl1 of list; track $index) {
 				@if (!lvl1.children) {
-					<ng-container [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: lvl1 }"> </ng-container>
+					<ng-container [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: lvl1 }"></ng-container>
 				} @else {
-					<ng-container [ngTemplateOutlet]="menuFolder" [ngTemplateOutletContext]="{ $implicit: lvl1 }"> </ng-container>
+					<ng-container [ngTemplateOutlet]="menuFolder" [ngTemplateOutletContext]="{ $implicit: lvl1 }"></ng-container>
 				}
 			}
 		</nav>
@@ -21,7 +21,7 @@
 
 <ng-template #menuFolder let-item>
 	<div class="menu-folder">
-		<ng-container [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: item }"> </ng-container>
+		<ng-container [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
 		@if (item.children) {
 			<ng-container [ngTemplateOutlet]="menuList" [ngTemplateOutletContext]="{ $implicit: item.children }">
 			</ng-container>

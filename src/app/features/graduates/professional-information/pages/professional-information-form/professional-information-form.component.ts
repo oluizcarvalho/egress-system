@@ -10,11 +10,11 @@ import {
 	JOB_TYPE_OPTIONS_MOCK,
 	LOCATION_OPTIONS_MOCK,
 	PROFESSIONAL_INFO_MOCK,
-	RELATED_ACADEMIC_INFO_OPTIONS,
 } from '../../mocks/professional-information.mock';
 import { AlertService } from '../../../../../shared/components/alert/alert.service';
 import { SelectOptions } from '../../../../../shared/models/select.model';
 import { ButtonDirective } from '../../../../../shared/directives/button.directive';
+import { RELATED_ACADEMIC_INFO_OPTIONS } from '../../../../../shared/mocks/related-academic-info.mock';
 
 @Component({
 	selector: 'app-professional-information-form',

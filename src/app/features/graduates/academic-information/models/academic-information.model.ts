@@ -1,5 +1,5 @@
 export interface AcademicInformation {
-  id: number;
+	id: number;
 	institutionName: string;
 	institutionType: string;
 	courseName: string;

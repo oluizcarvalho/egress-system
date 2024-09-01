@@ -1,10 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {
-	CATEGORY_OPTIONS_MOCK,
-	JOB_LEVEL_OPTIONS_MOCK,
-	JOB_TYPE_OPTIONS_MOCK,
-	LOCATION_OPTIONS_MOCK,
-} from '../mocks/professional-information.mock';
+import { JOB_LEVEL_OPTIONS_MOCK } from '../mocks/professional-information.mock';
 import { getLabelByValue } from '../../../../shared/utils/option-label.utils';
 
 @Pipe({

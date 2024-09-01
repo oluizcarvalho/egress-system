@@ -3,5 +3,5 @@ export type IMenu = {
 	icon: string;
 	label: string;
 	url?: string;
-  children?: Array<IMenu>;
+	children?: Array<IMenu>;
 };

@@ -80,11 +80,38 @@ export const routesGraduates: Routes = [
 	},
 	{
 		path: 'depoimentos',
-		loadComponent: () => import('./testimonials/testimonials.component').then(m => m.TestimonialsComponent),
 		canActivate: [authGuardStudent],
 		title: 'Depoimentos',
 		data: {
 			breadCrumb: 'Depoimentos',
 		},
+		children: [
+			{
+				path: '',
+				loadComponent: () => import('./testimonials/testimonials.component').then(m => m.TestimonialsComponent),
+			},
+			{
+				path: 'novo',
+				loadComponent: () =>
+					import('./testimonials/pages/testimonials-form/testimonials-form.component').then(
+						m => m.TestimonialsFormComponent
+					),
+				title: 'Novo Depoimento',
+				data: {
+					breadCrumb: 'Novo Depoimento',
+				},
+			},
+			{
+				path: 'editar/:id',
+				loadComponent: () =>
+					import('./testimonials/pages/testimonials-form/testimonials-form.component').then(
+						m => m.TestimonialsFormComponent
+					),
+				title: 'Editar Depoimento',
+				data: {
+					breadCrumb: 'Editar Depoimento',
+				},
+			},
+		],
 	},
 ];

@@ -1,0 +1,34 @@
+<h1>{{ mode() === 'create' ? 'Cadastrar' : 'Editar' }} Informações</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
+	<div class="row">
+		<div class="col-12 col-lg-7">
+			<app-textarea id="testimonial" label="Texto do Depoimento " formControlName="text"></app-textarea>
+		</div>
+		<div class="col-12 col-lg-5">
+			<div class="d-flex flex-column gap-2">
+				@if (relatedAcademicInfoOptions.length > 1) {
+					<app-select
+						[options]="relatedAcademicInfoOptions"
+						id="relatedAcademicInfo"
+						label="Curso Relacionado"
+						formControlName="relatedAcademicInfo"
+					>
+					</app-select>
+				}
+				<app-radio
+					horizontal
+					[options]="privacyOptions"
+					formControlName="privacy"
+					label="Privacidade do Depoimento"
+				></app-radio>
+			</div>
+		</div>
+
+		<div class="col-12 d-flex justify-content-lg-end justify-content-center gap-3 mt-4">
+			@if (mode() === 'edit') {
+				<button br-button color="secondary">Excluir Depoimento</button>
+			}
+			<button br-button color="primary">Salvar</button>
+		</div>
+	</div>
+</form>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {SizeOptions} from "../../types/size.type";
+import { SizeOptions } from '../../types/size.type';
 
 @Component({
 	selector: 'app-magic-button',
@@ -14,6 +14,6 @@ import {SizeOptions} from "../../types/size.type";
 export class MagicButtonComponent {
 	@Input() icon = '';
 	@Input() fontSet = 'fas';
-  @Input() size: SizeOptions = 'medium';
-  @Input() label = '';
+	@Input() size: SizeOptions = 'medium';
+	@Input() label = '';
 }

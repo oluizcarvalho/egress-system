@@ -1,1 +1,51 @@
-<p>testimonials works!</p>
+<div class="btn-new">
+	<button [routerLink]="['/depoimentos/novo']" br-button color="primary">Novo Depoimento</button>
+</div>
+
+<h1>Depoimentos</h1>
+
+@for (testimonial of data; track testimonial.id; let first = $first) {
+	<app-collapse-item [label]="'Depoimento ' + testimonial.id" [id]="testimonial.id.toString()" [expanded]="first">
+		<div class="btn-edit">
+			<button
+				size="small"
+				[routerLink]="['/depoimentos/editar/', testimonial.id]"
+				br-button
+				color="secondary"
+				icon="fa-edit"
+			>
+				Editar Depoimento
+			</button>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<app-item-info label="Texto do Depoimento" [value]="testimonial.text"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Curso" [value]="testimonial.relatedAcademicInfo"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info
+					label="Privacidade do Depoimento"
+					[value]="testimonial.privacy | getPrivacyDescription"
+				></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info label="Identificador" [value]="testimonial.id"></app-item-info>
+			</div>
+			<div class="col-12 col-lg-3">
+				<app-item-info
+					label="Data do Cadastro do Depoimento"
+					[value]="testimonial.registrationDate | date: 'dd/MM/y'"
+				></app-item-info>
+			</div>
+		</div>
+	</app-collapse-item>
+	@if (!$last) {
+		<hr class="divider" />
+	}
+}
+
+<div class="btn-new-mobile">
+	<button [routerLink]="['/depoimentos/novo']" br-button color="primary">Novo Depoimento</button>
+</div>
