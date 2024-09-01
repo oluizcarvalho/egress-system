@@ -26,9 +26,13 @@
 		<span class="feedback warning" role="alert"
 			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>Campo desabilitado</span
 		>
-	} @else if (hint) {
-		<span class="feedback warning" role="alert"
-			><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
-		>
+	} @else {
+		@if (hint) {
+			<span class="feedback warning" role="alert"
+				><i class="fas fa-exclamation-triangle" aria-hidden="true"></i>{{ hint }}</span
+			>
+		}
+
+		<ng-content></ng-content>
 	}
 </div>

@@ -63,5 +63,11 @@ export class TestimonialsFormComponent {
 		});
 	}
 
-	onSubmit() {}
+	onSubmit() {
+		if (this.form.invalid) {
+			this.form.markAllAsTouched();
+			this.alertService.showAlert('danger', 'Preencha todos os campos obrigatórios');
+			return;
+		}
+	}
 }

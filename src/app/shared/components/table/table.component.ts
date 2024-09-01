@@ -32,8 +32,6 @@ export class TableComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.displayedColumns = this.columns.map(c => c.columnDef);
-		console.log(this.displayedColumns);
-		console.log(this.data);
 	}
 
 	trackByItem(item: any, index: number): number {
