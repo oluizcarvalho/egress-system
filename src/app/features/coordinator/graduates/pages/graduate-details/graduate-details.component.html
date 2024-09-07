@@ -1,20 +1,27 @@
 <h1>Detalhes do Egresso</h1>
 <app-tabs [(activeTab)]="activeTab" [tabs]="tabs"></app-tabs>
-@switch (activeTab) {
-	@case (GraduateTabs.PersonalData) {
-		<h3>Dados pessoais</h3>
-		<!--    <app-graduate-personal-data [graduate]="graduate"></app-graduate-personal-data>-->
+<section>
+	@switch (activeTab) {
+		@case (GraduateTabs.PersonalData) {
+			<app-graduate-personal-data></app-graduate-personal-data>
+		}
+		@case (GraduateTabs.AcademicInformation) {
+			@defer (when activeTab === GraduateTabs.AcademicInformation) {
+				<app-graduate-academic-information></app-graduate-academic-information>
+			}
+		}
+		@case (GraduateTabs.ProfessionalInformation) {
+			@defer (when activeTab === GraduateTabs.ProfessionalInformation) {
+				<app-graduate-professional-information></app-graduate-professional-information>
+			}
+		}
+		@case (GraduateTabs.Testimonies) {
+			@defer (when activeTab === GraduateTabs.Testimonies) {
+				<app-graduate-testimonials></app-graduate-testimonials>
+			}
+		}
+		@default {
+			<app-graduate-personal-data></app-graduate-personal-data>
+		}
 	}
-	@case (GraduateTabs.AcademicInformation) {
-		<!--    <app-graduate-formation [graduate]="graduate"></app-graduate-formation>-->
-	}
-	@case (GraduateTabs.ProfessionalInformation) {
-		<!--    <app-graduate-history [graduate]="graduate"></app-graduate-history>-->
-	}
-	@case (GraduateTabs.Testimonies) {
-		<!--    <app-graduate-documents [graduate]="graduate"></app-graduate-documents>-->
-	}
-	@default {
-		<!--    <app-graduate-personal-data [graduate]="graduate"></app-graduate-personal-data>-->
-	}
-}
+</section>

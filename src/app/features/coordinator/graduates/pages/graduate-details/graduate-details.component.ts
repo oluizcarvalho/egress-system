@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Tabs, TabsComponent } from '@shared/components/tabs/tabs.component';
+import { PersonalDataComponent } from '@app/features/coordinator/graduates/components/personal-data/personal-data.component';
+import { AcademicInformationComponent } from '@app/features/coordinator/graduates/components/academic-information/academic-information.component';
+import { ProfessionalInformationComponent } from '@app/features/coordinator/graduates/components/professional-information/professional-information.component';
+import { TestimonialsComponent } from '@app/features/coordinator/graduates/components/testimonials/testimonials.component';
 
 export enum GraduateTabs {
 	PersonalData = 0,
@@ -11,7 +15,13 @@ export enum GraduateTabs {
 @Component({
 	selector: 'app-graduate-details',
 	standalone: true,
-	imports: [TabsComponent],
+	imports: [
+		TabsComponent,
+		PersonalDataComponent,
+		AcademicInformationComponent,
+		ProfessionalInformationComponent,
+		TestimonialsComponent,
+	],
 	templateUrl: './graduate-details.component.html',
 	styleUrl: './graduate-details.component.scss',
 })
