@@ -1,4 +1,5 @@
-import { Course, CoursePagination } from '../models/course.model';
+import { Course } from '../models/course.model';
+import { Pagination } from '@shared/models/pagination.model';
 
 export const coursesMock: Course[] = [
 	{ course: 'Agronomia', titration: 'Bacharelado', campus: 'Campus Patos de Minas', countStudents: 1026 },
@@ -23,7 +24,7 @@ export const coursesMock: Course[] = [
 	{ course: 'Biologia', titration: 'Bacharelado', campus: 'Campus Patos de Minas', countStudents: 400 },
 ];
 
-export const coursesPaginationMock: CoursePagination = {
+export const coursesPaginationMock: Pagination<Course> = {
 	data: coursesMock,
 	length: coursesMock.length,
 	page: 1,

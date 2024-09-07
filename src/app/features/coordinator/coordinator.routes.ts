@@ -4,12 +4,23 @@ import { authGuardCoordinator } from '../../core/auth/services/auth.service';
 export const routesCoordinator: Routes = [
 	{
 		path: 'egressos',
-		loadComponent: () => import('./graduates/graduates.component').then(m => m.GraduatesComponent),
-		title: 'Graduados',
+		title: 'Egressos',
 		canActivate: [authGuardCoordinator],
 		data: {
 			breadCrumb: 'Egressos',
 		},
+		children: [
+			{ path: '', loadComponent: () => import('./graduates/graduates.component').then(m => m.GraduatesComponent) },
+			{
+				path: 'detalhes/:id',
+				loadComponent: () =>
+					import('./graduates/pages/graduate-details/graduate-details.component').then(m => m.GraduateDetailsComponent),
+				title: 'Detalhes do Egresso',
+				data: {
+					breadCrumb: 'Detalhes',
+				},
+			},
+		],
 	},
 	{
 		path: 'comunicados',

@@ -1,6 +1,6 @@
-import { SelectOption } from '../../../shared/models/select.model';
+import { SelectOption, SelectOptions } from '../../../shared/models/select.model';
 
-export const academicSemesterOptions: Array<SelectOption> = [
+export const academicSemesterOptions: SelectOptions = [
 	{
 		value: '20242',
 		label: '2024/2',
@@ -59,7 +59,7 @@ export const academicSemesterOptions: Array<SelectOption> = [
 	},
 ];
 
-export const courseOptions: Array<SelectOption> = [
+export const courseOptions: SelectOptions = [
 	{
 		value: '1',
 		label: 'Administração',
@@ -159,48 +159,5 @@ export const courseOptions: Array<SelectOption> = [
 	{
 		value: '25',
 		label: 'Zootecnia',
-	},
-];
-
-export const titrationOptions: Array<SelectOption> = [
-	{
-		value: '1',
-		label: 'Graduação',
-	},
-	{
-		value: '2',
-		label: 'Pós-Graduação',
-	},
-	{
-		value: '3',
-		label: 'Mestrado',
-	},
-	{
-		value: '4',
-		label: 'Doutorado',
-	},
-];
-
-export const campusOptions: Array<SelectOption> = [
-	{
-		value: '1',
-		label: 'Campus Monte Carmelo',
-	},
-	{
-		value: '2',
-		label: 'Campus Patos de Minas',
-	},
-	{
-		value: '3',
-		label: 'Campus Pontal',
-	},
-	{
-		value: '4',
-		label: 'Campus Santa Mônica',
-	},
-
-	{
-		value: '5',
-		label: 'Campus Umuarama',
 	},
 ];

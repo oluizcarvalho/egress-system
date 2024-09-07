@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { CollapseItemComponent } from '../../../../shared/components/collapse-item/collapse-item.component';
-import { SelectComponent } from '../../../../shared/components/select/select.component';
-import { MultiSelectComponent } from '../../../../shared/components/multi-select/multi-select.component';
-import { academicSemesterOptions, campusOptions, courseOptions, titrationOptions } from '../../data/options.mock';
+import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
+import { SelectComponent } from '@shared/components/select/select.component';
+import { MultiSelectComponent } from '@shared/components/multi-select/multi-select.component';
+import { academicSemesterOptions, courseOptions } from '../../data/options.mock';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonDirective } from '../../../../shared/directives/button.directive';
-import { ControlsOf } from '../../../../shared/types/controls-of.type';
+import { ButtonDirective } from '@shared/directives/button.directive';
+import { ControlsOf } from '@shared/types/controls-of.type';
 import { FilterModel } from '../../models/filter.model';
+import { CAMPUS_OPTIONS_MOCK, COURSE_LEVEL_OPTIONS_MOCK } from '@shared/mocks';
 
 @Component({
-	selector: 'app-filter',
+	selector: 'app-dashboard-filter',
 	standalone: true,
 	imports: [
 		CollapseItemComponent,
@@ -28,8 +29,9 @@ import { FilterModel } from '../../models/filter.model';
 export class FilterComponent {
 	academicSemesterOptions = academicSemesterOptions;
 	courseOptions = courseOptions;
-	titrationOptions = titrationOptions;
-	campusOptions = campusOptions;
+	titrationOptions = COURSE_LEVEL_OPTIONS_MOCK;
+	campusOptions = CAMPUS_OPTIONS_MOCK;
+
 	formGroupFilter = new FormGroup<ControlsOf<FilterModel>>({
 		academicSemester: new FormControl(academicSemesterOptions[0].value.toString()),
 		course: new FormControl(''),

@@ -1,0 +1,49 @@
+<app-collapse-item expanded id="filter" label="Filtros">
+	<form [formGroup]="formGroupFilter" class="filter-section row mx-0" (ngSubmit)="submit()">
+		<app-input
+			formControlName="graduateName"
+			class="col-md-3 col-12"
+			id="graduate-name"
+			label="Nome do Egresso"
+		></app-input>
+		<app-input formControlName="cpf" class="col-md-3 col-12" id="cpf" label="CPF"></app-input>
+		<app-select
+			[options]="campusOptions"
+			formControlName="campus"
+			class="col-md-3 col-12"
+			id="campus"
+			label="Campus"
+		></app-select>
+		<app-input
+			formControlName="courseNameOrCode"
+			class="col-md-3 col-12"
+			id="course-name-code"
+			label="Nome ou Código do Curso"
+		></app-input>
+		<app-select
+			[options]="titrationOptions"
+			formControlName="titration"
+			class="col-md-3 col-12"
+			id="titration"
+			label="Titulação"
+		></app-select>
+		<app-date-time-picker
+			formControlName="admissionDate"
+			class="col-md-3 col-12"
+			id="admission-date"
+			label="Data de Ingresso"
+			placeholder="00/00/0000"
+		></app-date-time-picker>
+		<app-date-time-picker
+			formControlName="completionDate"
+			class="col-md-3 col-12"
+			id="completion-date"
+			label="Data de Conclusão"
+			placeholder="00/00/0000"
+		></app-date-time-picker>
+		<div class="col-md-3 col-12 d-flex justify-content-end gap-3 mt-4">
+			<button br-button type="reset" color="secondary">Limpar</button>
+			<button br-button type="submit" color="primary">Pesquisar</button>
+		</div>
+	</form>
+</app-collapse-item>

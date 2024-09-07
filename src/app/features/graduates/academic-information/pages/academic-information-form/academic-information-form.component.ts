@@ -82,4 +82,8 @@ export class AcademicInformationFormComponent {
 		this.alertService.showAlert('success', 'Dados salvos com êxito!', 'Sucesso.');
 		this.router.navigate(['/informacoes/academicas']);
 	}
+
+	onDelete() {
+		console.log('Delete');
+	}
 }

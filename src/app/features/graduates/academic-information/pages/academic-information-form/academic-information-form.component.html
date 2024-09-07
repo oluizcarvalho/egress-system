@@ -57,7 +57,12 @@
 		<div class="col-12 col-lg-3">
 			<app-input id="city" label="Cidade" formControlName="city"></app-input>
 		</div>
-		<div class="col-12 col-lg-3 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0">
+		<div
+			class="col-12 col-lg-3 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0 gap-3"
+		>
+			@if (mode() === 'edit') {
+				<button br-button color="secondary" (click)="onDelete()">Excluir</button>
+			}
 			<button br-button color="primary">Salvar</button>
 		</div>
 	</div>

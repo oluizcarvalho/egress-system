@@ -83,4 +83,8 @@ export class ProfessionalInformationFormComponent {
 		this.alertService.showAlert('success', 'Dados salvos com êxito!', 'Sucesso.');
 		this.router.navigate(['/informacoes/profissionais']);
 	}
+
+	onDelete() {
+		console.log('Delete');
+	}
 }

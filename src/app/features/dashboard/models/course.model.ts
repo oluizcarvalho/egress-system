@@ -4,10 +4,3 @@ export interface Course {
 	campus: string;
 	countStudents: number;
 }
-
-export interface CoursePagination {
-	data: Course[];
-	length: number;
-	page: number;
-	pageSize: number;
-}

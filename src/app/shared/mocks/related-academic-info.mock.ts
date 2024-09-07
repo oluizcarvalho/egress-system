@@ -1,4 +1,6 @@
-export const RELATED_ACADEMIC_INFO_OPTIONS = [
+import { SelectOptions } from '@shared/models/select.model';
+
+export const RELATED_ACADEMIC_INFO_OPTIONS: SelectOptions = [
 	{
 		label: 'Bacharelado em Sistemas de Informação',
 		value: 'Bacharelado em Sistemas de Informação',

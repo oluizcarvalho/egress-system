@@ -1,1 +1,10 @@
-<p>graduates works!</p>
+<h1>Listagem de Egressos</h1>
+<app-graduates-filter></app-graduates-filter>
+<app-table [data]="dataPaginated" [columns]="columns"></app-table>
+<app-paginator
+	[pageIndex]="graduatePagination.page"
+	[pageSizeOptions]="[5, 10, 20]"
+	[pageSize]="graduatePagination.pageSize"
+	[length]="graduatePagination.length"
+	(page)="onPageChange($event)"
+></app-paginator>
