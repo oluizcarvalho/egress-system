@@ -58,7 +58,8 @@ export const LIST_MENU_COORDINATOR: IMenu[] = [
 	{
 		label: 'Questionários',
 		icon: 'fa-tasks',
-		url: '/questionarios',
+		url: 'https://forms.office.com/',
+		external: true,
 	},
 	{
 		label: 'Perfil',

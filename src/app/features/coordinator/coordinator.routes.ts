@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuardCoordinator } from '../../core/auth/services/auth.service';
+import { authGuardCoordinator } from '@app/core/auth/services/auth.service';
 
 export const routesCoordinator: Routes = [
 	{
@@ -24,20 +24,38 @@ export const routesCoordinator: Routes = [
 	},
 	{
 		path: 'comunicados',
-		loadComponent: () => import('./announcements/announcements.component').then(m => m.AnnouncementsComponent),
 		title: 'Comunicados',
 		canActivate: [authGuardCoordinator],
 		data: {
 			breadCrumb: 'Comunicados',
 		},
-	},
-	{
-		path: 'questionarios',
-		canActivate: [authGuardCoordinator],
-		loadComponent: () => import('./questionnaires/questionnaires.component').then(m => m.QuestionnairesComponent),
-		title: 'Questionários',
-		data: {
-			breadCrumb: 'Questionários',
-		},
+		children: [
+			{
+				path: '',
+				loadComponent: () => import('./announcements/announcements.component').then(m => m.AnnouncementsComponent),
+			},
+			{
+				path: 'detalhes/:id',
+				loadComponent: () =>
+					import('./announcements/pages/announcement-details/announcement-details.component').then(
+						m => m.AnnouncementDetailsComponent
+					),
+				title: 'Detalhes do Comunicado',
+				data: {
+					breadCrumb: 'Detalhes',
+				},
+			},
+			{
+				path: 'novo',
+				loadComponent: () =>
+					import('./announcements/pages/announcement-form/announcement-form.component').then(
+						m => m.AnnouncementFormComponent
+					),
+				title: 'Novo Comunicado',
+				data: {
+					breadCrumb: 'Novo',
+				},
+			},
+		],
 	},
 ];

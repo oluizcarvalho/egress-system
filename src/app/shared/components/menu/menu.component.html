@@ -47,12 +47,21 @@
 
 <ng-template #menuItem let-item>
 	@if (item.url) {
-		<a class="menu-item clickable" (click)="closeMenuIfMobile()" [routerLink]="[item.url]" routerLinkActive="active">
-			<span class="icon">
-				<i class="fas" [class]="item.icon" aria-hidden="true"></i>
-			</span>
-			<span class="content">{{ item.label }}</span>
-		</a>
+		@if (item.external) {
+			<a class="menu-item clickable" [href]="item.url">
+				<span class="icon">
+					<i class="fas" [class]="item.icon" aria-hidden="true"></i>
+				</span>
+				<span class="content">{{ item.label }}</span>
+			</a>
+		} @else {
+			<a class="menu-item clickable" (click)="closeMenuIfMobile()" [routerLink]="item.url" routerLinkActive="active">
+				<span class="icon">
+					<i class="fas" [class]="item.icon" aria-hidden="true"></i>
+				</span>
+				<span class="content">{{ item.label }}</span>
+			</a>
+		}
 	} @else {
 		<a class="menu-item">
 			<span class="icon">

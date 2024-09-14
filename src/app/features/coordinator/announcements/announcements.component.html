@@ -1,1 +1,18 @@
-<p>announcements works!</p>
+<div id="btn-new-announcement">
+	<button [routerLink]="['/comunicados/novo']" br-button color="primary">Novo Comunicado</button>
+</div>
+
+<h1>Comunicados</h1>
+
+<div id="btn-new-announcement-mobile">
+	<button [routerLink]="['/comunicados/novo']" br-button color="primary">Novo Comunicado</button>
+</div>
+
+<app-table [data]="dataPaginated" [columns]="columns"></app-table>
+<app-paginator
+	[pageIndex]="dataPagination.page"
+	[pageSizeOptions]="[5, 10, 20]"
+	[pageSize]="dataPagination.pageSize"
+	[length]="dataPagination.length"
+	(page)="onPageChange($event)"
+></app-paginator>

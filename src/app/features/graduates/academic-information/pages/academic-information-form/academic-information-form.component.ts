@@ -1,15 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
-import { ButtonDirective } from '../../../../../shared/directives/button.directive';
-import { FeedbackDirective } from '../../../../../shared/directives/feedback.directive';
+import { ButtonDirective } from '@shared/directives/button.directive';
+import { FeedbackDirective } from '@shared/directives/feedback.directive';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputComponent } from '../../../../../shared/components/input/input.component';
+import { InputComponent } from '@shared/components/input/input.component';
 import { EDUCATION_HISTORY_MOCK } from '../../mocks/academic-information.mock';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '../../../../../shared/components/alert/alert.service';
-import { DateTimePickerComponent } from '../../../../../shared/components/date-time-picker/date-time-picker.component';
-import { SelectComponent } from '../../../../../shared/components/select/select.component';
-import { INSTITUTION_TYPE_OPTIONS_MOCK } from '../../../../../shared/mocks/institution-type.mock';
-import { COURSE_LEVEL_OPTIONS_MOCK } from '../../../../../shared/mocks/titration.mock';
+import { AlertService } from '@shared/components/alert/alert.service';
+import { DateTimePickerComponent } from '@shared/components/date-time-picker/date-time-picker.component';
+import { SelectComponent } from '@shared/components/select/select.component';
+import { COURSE_LEVEL_OPTIONS_MOCK, INSTITUTION_TYPE_OPTIONS_MOCK } from '@shared/mocks';
 
 @Component({
 	selector: 'app-academic-information-form',

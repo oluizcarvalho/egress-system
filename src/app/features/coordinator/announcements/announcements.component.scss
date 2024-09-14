@@ -1,0 +1,25 @@
+#btn-new-announcement {
+	width: 100%;
+	height: 0;
+	display: flex;
+	justify-content: flex-end;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+}
+
+#btn-new-announcement-mobile {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: 16px;
+
+	@media (min-width: 768px) {
+		display: none;
+	}
+}
+
+::ng-deep .br-table tr td:first-child {
+	min-width: 300px;
+}

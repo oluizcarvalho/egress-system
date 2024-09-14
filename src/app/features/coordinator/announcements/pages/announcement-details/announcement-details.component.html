@@ -1,0 +1,20 @@
+<h1>Detalhes</h1>
+@if (announcement) {
+	<section>
+		<h3>{{ announcement.title }} - {{ announcement.creationDate | date }}</h3>
+		<div class="d-flex flex-column">
+			<b>Texto do Comunicado</b>
+			<p>{{ announcement.content }}</p>
+		</div>
+		<div class="d-flex flex-column">
+			<b>Enviado para</b>
+			<p>
+				@if (announcement.typeRecipients === TypeRecipientsEnum.ALL) {
+					Todos alunos
+				} @else {
+					<span [innerHTML]="announcement | formatCoursesAndLevels"></span>
+				}
+			</p>
+		</div>
+	</section>
+}

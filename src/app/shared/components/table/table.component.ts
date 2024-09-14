@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, Input, OnInit } from '@angular/core';
+import { booleanAttribute, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DatePipe, NgClass } from '@angular/common';
 import { NgxMaskPipe } from 'ngx-mask';
@@ -19,6 +19,7 @@ export interface Columns {
 	imports: [DatePipe, NgxMaskPipe, CdkTableModule, NgClass],
 	templateUrl: './table.component.html',
 	styleUrl: './table.component.scss',
+	encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent implements OnInit {
 	@Input({ required: true }) columns: Columns[] = [];
