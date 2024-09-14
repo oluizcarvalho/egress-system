@@ -19,7 +19,6 @@ export interface Columns {
 	imports: [DatePipe, NgxMaskPipe, CdkTableModule, NgClass],
 	templateUrl: './table.component.html',
 	styleUrl: './table.component.scss',
-	encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent implements OnInit {
 	@Input({ required: true }) columns: Columns[] = [];
