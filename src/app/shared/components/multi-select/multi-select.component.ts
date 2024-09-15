@@ -22,7 +22,7 @@ import { SelectOption } from '../../models/select.model';
 	templateUrl: './multi-select.component.html',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MultiSelectComponent), multi: true }],
 })
-export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, ControlValueAccessor {
+export class MultiSelectComponent implements AfterViewInit, ControlValueAccessor {
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input() placeholder = 'Selecione o item';
@@ -40,13 +40,13 @@ export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, Co
 	}
 
 	set value(val: Array<string>) {
-		if (this.disabled) return;
-		if (!Array.isArray(val)) {
-			val = [val];
+		let aux = val;
+		if (!Array.isArray(aux)) {
+			aux = [aux];
 		}
-		this._value = val;
-		this._change(val);
-		this.selectedEvent.emit(val);
+		this._value = aux;
+		this._change(aux);
+		this.selectedEvent.emit(aux);
 	}
 
 	protected _touched: () => void = () => void undefined;
@@ -61,6 +61,10 @@ export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, Co
 	ngAfterViewInit(): void {
 		this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
 		this._populateItensSelected();
+
+		if (this.instance) {
+			this.instance.resetOptionsList();
+		}
 	}
 
 	private _populateItensSelected(): void {
@@ -79,6 +83,7 @@ export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, Co
 	}
 
 	setSelected() {
+		if (this.disabled) return;
 		this.value = this.instance.selectedValue;
 	}
 
@@ -100,11 +105,5 @@ export class MultiSelectComponent implements AfterViewInit, AfterViewChecked, Co
 
 	public onBlur(): void {
 		this._touched();
-	}
-
-	ngAfterViewChecked() {
-		if (this.instance) {
-			this.instance.resetOptionsList();
-		}
 	}
 }

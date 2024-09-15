@@ -1,31 +1,22 @@
-import {
-	AfterViewInit,
-	booleanAttribute,
-	Component,
-	ElementRef,
-	EventEmitter,
-	inject,
-	Input,
-	Output,
-} from '@angular/core';
-import { NgClass } from '@angular/common';
-import BRCheckbox from '@govbr-ds/core/dist/components/checkbox/checkbox';
+import { booleanAttribute, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-checkbox',
 	standalone: true,
-	imports: [NgClass],
+	imports: [],
 	templateUrl: './checkbox.component.html',
 })
-export class CheckboxComponent implements AfterViewInit {
+export class CheckboxComponent {
+	@Input() state: 'valid' | 'invalid' | '' = '';
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input({ transform: booleanAttribute }) disabled = false;
 	@Input({ transform: booleanAttribute }) checked = false;
-	@Input() state: 'valid' | 'invalid' | '' = '';
 
-	private brCheckbox = inject(ElementRef);
-	instance: unknown;
+	@HostBinding('class') class = 'br-checkbox' + (this.state ? ` ${this.state}` : '');
+	@HostBinding('class.disabled') get disabledClass() {
+		return this.disabled;
+	}
 
 	private _value = this.checked;
 
@@ -37,14 +28,13 @@ export class CheckboxComponent implements AfterViewInit {
 	set value(val: boolean) {
 		if (this.disabled) return;
 		this._value = val;
-		this.valueChange.emit(val);
 	}
 
 	@Output() valueChange = new EventEmitter<boolean>();
 
-	constructor() {}
-
-	ngAfterViewInit(): void {
-		this.instance = new BRCheckbox('brCheckbox', this.brCheckbox.nativeElement.querySelector('.br-checkbox'));
+	onChangeCheck(event: Event) {
+		const target = event.target as HTMLInputElement;
+		if (target) this.value = target.checked;
+		this.valueChange.emit(this.value);
 	}
 }

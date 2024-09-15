@@ -1,1 +1,45 @@
-<p>announcement-new works!</p>
+<p>Novo Comunicado</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
+	<div class="row">
+		<div class="col-12 col-lg-6">
+			<app-input id="title" label="Título" formControlName="title">
+				@if (form.controls.title.invalid && !form.controls.title.untouched) {
+					<span br-feedback state="warning"> Insira um título </span>
+				}
+			</app-input>
+		</div>
+		<div class="col-12 my-lg-3 my-0">
+			<app-textarea id="content" label="Texto do comunicado" formControlName="content">
+				@if (form.controls.content.invalid && !form.controls.content.untouched) {
+					<span br-feedback state="warning"> Insira um texto </span>
+				}
+			</app-textarea>
+		</div>
+		<div class="col-12 col-lg-4">
+			<app-multi-select [data]="coursesOptions" id="courses" label="Cursos" formControlName="courses">
+				@if (form.controls.courses.invalid && !form.controls.courses.untouched) {
+					<span br-feedback state="warning"> Selecione um ou mais cursos </span>
+				}
+			</app-multi-select>
+		</div>
+		<div class="col-12 col-lg-4">
+			<app-multi-select [data]="levelsOptions" id="levels" label="Níveis do curso" formControlName="levels">
+				@if (form.controls.levels.invalid && !form.controls.levels.untouched) {
+					<span br-feedback state="warning"> Selecione um ou mais níveis </span>
+				}
+			</app-multi-select>
+		</div>
+		<div class="col-12 col-lg-4">
+			<label>Enviar para todos?</label>
+			<app-checkbox
+				id="check-all"
+				label="Marque aqui para enviar o comunicado a todos."
+				(valueChange)="onCheckAllChange($event)"
+				[value]="checkAll"
+			></app-checkbox>
+		</div>
+		<div class="col-12 d-flex justify-content-end mt-3">
+			<button br-button type="submit" id="send-button" color="primary">Enviar</button>
+		</div>
+	</div>
+</form>

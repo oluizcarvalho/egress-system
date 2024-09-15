@@ -22,7 +22,7 @@ import { SelectOptions } from '../../models/select.model';
 	templateUrl: './select.component.html',
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SelectComponent), multi: true }],
 })
-export class SelectComponent implements AfterViewInit, AfterViewChecked, ControlValueAccessor {
+export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 	@Input({ required: true }) label: string = '';
 	@Input({ required: true }) id: string = '';
 	@Input() placeholder = 'Selecione o item';
@@ -58,6 +58,10 @@ export class SelectComponent implements AfterViewInit, AfterViewChecked, Control
 	ngAfterViewInit(): void {
 		this.instance = new BRSelect('br-select', this.brSelect.nativeElement.querySelector('.br-select'));
 		this._populateItemSelected();
+
+		if (this.instance) {
+			this.instance.resetOptionsList();
+		}
 	}
 
 	private _populateItemSelected(): void {
@@ -88,13 +92,7 @@ export class SelectComponent implements AfterViewInit, AfterViewChecked, Control
 		this._touched = fn;
 	}
 
-	public onBlur(): void {
+	onBlur(): void {
 		this._touched();
-	}
-
-	ngAfterViewChecked() {
-		if (this.instance) {
-			this.instance.resetOptionsList();
-		}
 	}
 }
