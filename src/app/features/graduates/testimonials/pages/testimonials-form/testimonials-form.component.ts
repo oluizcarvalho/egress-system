@@ -12,6 +12,7 @@ import { PRIVACY_OPTIONS, TESTIMONIALS_MOCK } from '../../mocks/testimonials.moc
 import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks/related-academic-info.mock';
 import { RadioComponent } from '@shared/components/radio/radio.component';
 import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
 
 @Component({
 	selector: 'app-testimonials-form',
@@ -25,6 +26,7 @@ import { FeedbackDirective } from '@shared/directives/feedback.directive';
 		ReactiveFormsModule,
 		RadioComponent,
 		FeedbackDirective,
+		HasErrorPipe,
 	],
 	templateUrl: './testimonials-form.component.html',
 	styleUrl: './testimonials-form.component.scss',

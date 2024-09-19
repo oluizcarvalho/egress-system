@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ItemInfoComponent } from '../../shared/components/item-info/item-info.component';
-import { profileMock } from './mocks/profile.mock';
-import { ButtonDirective } from '../../shared/directives/button.directive';
 import { RouterLink } from '@angular/router';
+import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
+import { ButtonDirective } from '@shared/directives/button.directive';
+import { profileMock } from './mocks/profile.mock';
 
 export interface Profile {
 	name: string;

@@ -95,4 +95,8 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
 			this.change.emit(this.value);
 		}
 	}
+
+	public onBlur(): void {
+		this._touched();
+	}
 }

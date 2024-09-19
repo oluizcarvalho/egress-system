@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, isFormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
 import { InputComponent } from '@shared/components/input/input.component';
 import { TextareaComponent } from '@shared/components/textarea/textarea.component';
 import { SelectComponent } from '@shared/components/select/select.component';
@@ -9,12 +11,10 @@ import { TypeRecipientsEnum } from '@app/features/coordinator/announcements/mode
 import { COURSE_LEVEL_OPTIONS_MOCK, COURSE_OPTIONS_MOCK } from '@shared/mocks';
 import { FeedbackDirective } from '@shared/directives/feedback.directive';
 import { ButtonDirective } from '@shared/directives/button.directive';
-import { Dialog } from '@angular/cdk/dialog';
 import {
 	DialogConfirmComponent,
 	DialogConfirmInputs,
 } from '@shared/components/dialog-confirm/dialog-confirm.component';
-import { Router } from '@angular/router';
 import { AlertService } from '@shared/components/alert/alert.service';
 
 @Component({

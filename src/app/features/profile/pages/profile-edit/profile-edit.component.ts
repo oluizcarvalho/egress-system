@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { ItemInfoComponent } from '../../../../shared/components/item-info/item-info.component';
-import { InputComponent } from '../../../../shared/components/input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { profileMock } from '../../mocks/profile.mock';
-import { ButtonDirective } from '../../../../shared/directives/button.directive';
-import { FeedbackDirective } from '../../../../shared/directives/feedback.directive';
-import { AlertService } from '../../../../shared/components/alert/alert.service';
 import { Router } from '@angular/router';
+import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
+import { InputComponent } from '@shared/components/input/input.component';
+import { ButtonDirective } from '@shared/directives/button.directive';
+import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { AlertService } from '@shared/components/alert/alert.service';
+import { profileMock } from '../../mocks/profile.mock';
 
 @Component({
 	selector: 'app-profile-edit',
@@ -25,7 +25,7 @@ export class ProfileEditComponent {
 		this.form = new FormGroup({
 			name: new FormControl({ value: this.data.name, disabled: true }, Validators.required),
 			cpf: new FormControl({ value: this.data.cpf, disabled: true }, Validators.required),
-			email: new FormControl(this.data.email, [Validators.required, Validators.email]),
+			email: new FormControl({ value: this.data.email, disabled: true }, [Validators.required, Validators.email]),
 			secondaryEmail: new FormControl(this.data.secondaryEmail, [Validators.email]),
 			phone: new FormControl(this.data.phone, Validators.required),
 			secondaryPhone: new FormControl(this.data.secondaryPhone),

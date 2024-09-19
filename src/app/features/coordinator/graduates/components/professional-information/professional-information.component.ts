@@ -7,6 +7,7 @@ import { GetJobTypeDescriptionPipe } from '@app/features/graduates/professional-
 import { GetLocationDescriptionPipe } from '@app/features/graduates/professional-information/pipes/get-location-description.pipe';
 import { GetJobLevelDescriptionPipe } from '@app/features/graduates/professional-information/pipes/get-job-level-description.pipe';
 import { PROFESSIONAL_INFO_MOCK } from '@app/features/graduates/professional-information/mocks/professional-information.mock';
+import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes/title-collapse-professional-information.pipe';
 
 @Component({
 	selector: 'app-graduate-professional-information',
@@ -21,6 +22,7 @@ import { PROFESSIONAL_INFO_MOCK } from '@app/features/graduates/professional-inf
 		GetJobLevelDescriptionPipe,
 		DatePipe,
 		NgTemplateOutlet,
+		TitleCollapseProfessionalInformationPipe,
 	],
 	templateUrl: './professional-information.component.html',
 	styleUrl: './professional-information.component.scss',

@@ -3,7 +3,7 @@
 </div>
 <h1>Informações Profissionais</h1>
 @for (info of data; track info.id; let first = $first) {
-	<app-collapse-item [label]="info.companyName" [id]="info.id.toString()" [expanded]="first">
+	<app-collapse-item [label]="info | titleCollapseProfessionalInformation" [id]="info.id.toString()" [expanded]="first">
 		<div class="btn-edit">
 			<button
 				br-button
@@ -38,10 +38,14 @@
 				<app-item-info label="Data de Início" [value]="info.startDate | date: 'dd/MM/y'"></app-item-info>
 			</div>
 			<div class="col-12 col-lg-3">
-				<app-item-info label="Data de Término" [value]="info.endDate | date: 'dd/MM/y'"></app-item-info>
+				@if (info.endDate) {
+					<app-item-info label="Data de Término" [value]="info.endDate | date: 'dd/MM/y'"></app-item-info>
+				} @else {
+					<app-item-info label="Data de Término" value="--"></app-item-info>
+				}
 			</div>
 			<div class="col-12 col-lg-3">
-				<app-item-info label="Mídia Salarial" [value]="info.salary | currency"></app-item-info>
+				<app-item-info label="Média Salarial" [value]="info.salary | currency"></app-item-info>
 			</div>
 			<div class="col-12 col-lg-3">
 				<app-item-info label="Função" [value]="info.function || '--'"></app-item-info>

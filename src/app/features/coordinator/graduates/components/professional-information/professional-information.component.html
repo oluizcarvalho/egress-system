@@ -1,6 +1,10 @@
 @if (data.length > 1) {
 	@for (info of data; track info.id; let first = $first) {
-		<app-collapse-item [label]="info?.companyName" [id]="info?.id.toString()" [expanded]="first">
+		<app-collapse-item
+			[label]="info | titleCollapseProfessionalInformation"
+			[id]="info?.id.toString()"
+			[expanded]="first"
+		>
 			<ng-container *ngTemplateOutlet="templateRef; context: { $implicit: info }"></ng-container>
 		</app-collapse-item>
 		@if (!$last) {
@@ -42,7 +46,7 @@
 			<app-item-info label="Data de Término" [value]="info?.endDate | date: 'dd/MM/y'"></app-item-info>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-item-info label="Mídia Salarial" [value]="info?.salary | currency"></app-item-info>
+			<app-item-info label="Média Salarial" [value]="info?.salary | currency"></app-item-info>
 		</div>
 		<div class="col-12 col-lg-3">
 			<app-item-info label="Função" [value]="info?.function || '--'"></app-item-info>

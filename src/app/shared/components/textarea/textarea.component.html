@@ -12,6 +12,7 @@
 		[required]="required"
 		[readonly]="readonly"
 		[(ngModel)]="value"
+		(blur)="onBlur()"
 		(change)="onChange($event)"
 	></textarea>
 

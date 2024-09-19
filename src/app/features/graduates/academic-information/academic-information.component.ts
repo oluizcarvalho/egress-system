@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { OptionLabelPipe } from '../../../shared/pipes/option-label.pipe';
 import { GetInstitutionTypeDescriptionPipe } from './pipes/get-institution-type-description.pipe';
 import { GetCourseLevelDescriptionPipe } from './pipes/get-course-level-description.pipe';
+import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes/title-collapse-academic-information.pipe';
 
 @Component({
 	selector: 'app-academic-information',
@@ -21,6 +22,7 @@ import { GetCourseLevelDescriptionPipe } from './pipes/get-course-level-descript
 		OptionLabelPipe,
 		GetInstitutionTypeDescriptionPipe,
 		GetCourseLevelDescriptionPipe,
+		TitleCollapseProfessionalInformationPipe,
 	],
 	templateUrl: './academic-information.component.html',
 	styleUrl: './academic-information.component.scss',

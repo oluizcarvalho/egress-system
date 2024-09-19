@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { ButtonDirective } from '@shared/directives/button.directive';
 import { FeedbackDirective } from '@shared/directives/feedback.directive';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputComponent } from '@shared/components/input/input.component';
 import { EDUCATION_HISTORY_MOCK } from '../../mocks/academic-information.mock';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { AlertService } from '@shared/components/alert/alert.service';
 import { DateTimePickerComponent } from '@shared/components/date-time-picker/date-time-picker.component';
 import { SelectComponent } from '@shared/components/select/select.component';
 import { COURSE_LEVEL_OPTIONS_MOCK, INSTITUTION_TYPE_OPTIONS_MOCK } from '@shared/mocks';
+import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
 
 @Component({
 	selector: 'app-academic-information-form',
@@ -21,6 +22,7 @@ import { COURSE_LEVEL_OPTIONS_MOCK, INSTITUTION_TYPE_OPTIONS_MOCK } from '@share
 		ReactiveFormsModule,
 		DateTimePickerComponent,
 		SelectComponent,
+		HasErrorPipe,
 	],
 	templateUrl: './academic-information-form.component.html',
 	styleUrl: './academic-information-form.component.scss',
@@ -39,16 +41,15 @@ export class AcademicInformationFormComponent {
 
 	constructor() {
 		this.form = new FormGroup({
-			institutionName: new FormControl(''),
-			institutionType: new FormControl(''),
-			courseName: new FormControl(''),
-			courseLevel: new FormControl(''),
-			country: new FormControl(''),
-			startDate: new FormControl(''),
+			institutionName: new FormControl('', [Validators.required]),
+			institutionType: new FormControl('', [Validators.required]),
+			courseName: new FormControl('', [Validators.required]),
+			courseLevel: new FormControl('', [Validators.required]),
+			country: new FormControl('', [Validators.required]),
+			startDate: new FormControl('', [Validators.required]),
 			endDate: new FormControl(''),
-			state: new FormControl(''),
-			city: new FormControl(''),
-			registrationNumber: new FormControl(''),
+			state: new FormControl('', [Validators.required]),
+			city: new FormControl('', [Validators.required]),
 		});
 
 		this.route.paramMap.subscribe(params => {

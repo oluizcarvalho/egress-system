@@ -9,5 +9,5 @@ export interface AcademicInformation {
 	endDate: string;
 	state: string;
 	city: string;
-	registrationNumber: string;
+	registrationNumber?: string;
 }

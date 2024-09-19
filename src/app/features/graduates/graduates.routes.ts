@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuardStudent } from '../../core/auth/services/auth.service';
+import { authGuardStudent } from '@app/core/auth/services/auth.service';
 
 export const routesGraduates: Routes = [
 	{

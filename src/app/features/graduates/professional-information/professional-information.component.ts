@@ -9,6 +9,7 @@ import { GetLocationDescriptionPipe } from './pipes/get-location-description.pip
 import { GetJobTypeDescriptionPipe } from './pipes/get-job-type-description.pipe';
 import { GetCategoryDescriptionPipe } from './pipes/get-category-description.pipe';
 import { ButtonDirective } from '../../../shared/directives/button.directive';
+import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes/title-collapse-professional-information.pipe';
 
 @Component({
 	selector: 'app-professional-information',
@@ -24,6 +25,7 @@ import { ButtonDirective } from '../../../shared/directives/button.directive';
 		GetJobTypeDescriptionPipe,
 		GetCategoryDescriptionPipe,
 		ButtonDirective,
+		TitleCollapseProfessionalInformationPipe,
 	],
 	templateUrl: './professional-information.component.html',
 	styleUrl: './professional-information.component.scss',

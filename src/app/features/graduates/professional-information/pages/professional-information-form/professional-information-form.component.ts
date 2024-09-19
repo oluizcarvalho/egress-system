@@ -1,9 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
-import { DateTimePickerComponent } from '../../../../../shared/components/date-time-picker/date-time-picker.component';
-import { InputComponent } from '../../../../../shared/components/input/input.component';
-import { SelectComponent } from '../../../../../shared/components/select/select.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DateTimePickerComponent } from '@shared/components/date-time-picker/date-time-picker.component';
+import { InputComponent } from '@shared/components/input/input.component';
+import { SelectComponent } from '@shared/components/select/select.component';
+import { AlertService } from '@shared/components/alert/alert.service';
+import { SelectOptions } from '@shared/models/select.model';
+import { ButtonDirective } from '@shared/directives/button.directive';
 import {
 	CATEGORY_OPTIONS_MOCK,
 	JOB_LEVEL_OPTIONS_MOCK,
@@ -11,15 +14,22 @@ import {
 	LOCATION_OPTIONS_MOCK,
 	PROFESSIONAL_INFO_MOCK,
 } from '../../mocks/professional-information.mock';
-import { AlertService } from '../../../../../shared/components/alert/alert.service';
-import { SelectOptions } from '../../../../../shared/models/select.model';
-import { ButtonDirective } from '../../../../../shared/directives/button.directive';
-import { RELATED_ACADEMIC_INFO_OPTIONS } from '../../../../../shared/mocks/related-academic-info.mock';
+import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks';
+import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
 
 @Component({
 	selector: 'app-professional-information-form',
 	standalone: true,
-	imports: [DateTimePickerComponent, InputComponent, SelectComponent, ReactiveFormsModule, ButtonDirective],
+	imports: [
+		DateTimePickerComponent,
+		InputComponent,
+		SelectComponent,
+		ReactiveFormsModule,
+		ButtonDirective,
+		FeedbackDirective,
+		HasErrorPipe,
+	],
 	templateUrl: './professional-information-form.component.html',
 	styleUrl: './professional-information-form.component.scss',
 })
@@ -34,19 +44,20 @@ export class ProfessionalInformationFormComponent {
 	locationOptions: SelectOptions = LOCATION_OPTIONS_MOCK;
 	relatedAcademicInfoOptions: SelectOptions = RELATED_ACADEMIC_INFO_OPTIONS;
 
+	maxDate = new Date();
 	route = inject(ActivatedRoute);
 	router = inject(Router);
 	alertService = inject(AlertService);
 
 	constructor() {
 		this.form = new FormGroup({
-			companyName: new FormControl(null),
-			jobTitle: new FormControl(null),
-			jobLevel: new FormControl(null),
-			jobType: new FormControl(null),
-			category: new FormControl(null),
-			location: new FormControl(null),
-			startDate: new FormControl(null),
+			companyName: new FormControl(null, [Validators.required]),
+			jobTitle: new FormControl(null, [Validators.required]),
+			jobLevel: new FormControl(null, [Validators.required]),
+			jobType: new FormControl(null, [Validators.required]),
+			category: new FormControl(null, [Validators.required]),
+			location: new FormControl(null, [Validators.required]),
+			startDate: new FormControl(null, [Validators.required]),
 			endDate: new FormControl(null),
 			salary: new FormControl(null),
 			function: new FormControl(null),

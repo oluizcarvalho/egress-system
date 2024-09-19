@@ -7,7 +7,7 @@ export interface ProfessionalInfo {
 	jobTitle: string;
 	jobLevel: string;
 	startDate: Date;
-	endDate: Date;
+	endDate?: Date;
 	salary?: number;
 	function?: string;
 	relatedAcademicInfo: string;

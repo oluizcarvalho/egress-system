@@ -3,18 +3,24 @@
 </div>
 <h1>Informações Acadêmicas</h1>
 @for (history of data; track history.id; let first = $first) {
-	<app-collapse-item [label]="history.courseName" [id]="history.id.toString()" [expanded]="first">
-		<div class="btn-edit">
-			<button
-				size="small"
-				[routerLink]="['/informacoes/academicas/editar/', history.id]"
-				br-button
-				color="secondary"
-				icon="fa-edit"
-			>
-				Editar Curso
-			</button>
-		</div>
+	<app-collapse-item
+		[label]="history | titleCollapseAcademicInformation"
+		[id]="history.id.toString()"
+		[expanded]="first"
+	>
+		@if (!history.registrationNumber) {
+			<div class="btn-edit">
+				<button
+					size="small"
+					[routerLink]="['/informacoes/academicas/editar/', history.id]"
+					br-button
+					color="secondary"
+					icon="fa-edit"
+				>
+					Editar Curso
+				</button>
+			</div>
+		}
 		<div class="row">
 			<div class="col-12 col-lg-3">
 				<app-item-info label="Nome da Instituição" [value]="history.institutionName"></app-item-info>

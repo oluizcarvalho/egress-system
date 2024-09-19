@@ -7,7 +7,11 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
 	<div class="row">
 		<div class="col-12 col-lg-3">
-			<app-input id="institutionName" label="Nome da Instituição" formControlName="institutionName"></app-input>
+			<app-input id="institutionName" label="Nome da Instituição" formControlName="institutionName">
+				@if (form.get('institutionName') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div class="col-12 col-lg-3">
 			<app-select
@@ -15,28 +19,34 @@
 				id="institutionType"
 				label="Tipo de Instituição"
 				formControlName="institutionType"
-			></app-select>
+			>
+				@if (form.get('institutionType') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-select>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-input id="courseName" label="Nome do Curso" formControlName="courseName"></app-input>
+			<app-input id="courseName" label="Nome do Curso" formControlName="courseName">
+				@if (form.get('courseName') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-select
-				[options]="titrationOptions"
-				id="courseLevel"
-				label="Titulação"
-				formControlName="courseLevel"
-			></app-select>
+			<app-select [options]="titrationOptions" id="courseLevel" label="Titulação" formControlName="courseLevel">
+				@if (form.get('courseLevel') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-select>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-12 col-lg-3">
-			<app-date-time-picker
-				id="startDate"
-				label="Data de Ingresso"
-				type="date"
-				formControlName="startDate"
-			></app-date-time-picker>
+			<app-date-time-picker id="startDate" label="Data de Ingresso" type="date" formControlName="startDate">
+				@if (form.get('startDate') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-date-time-picker>
 		</div>
 		<div class="col-12 col-lg-3">
 			<app-date-time-picker
@@ -49,13 +59,25 @@
 	</div>
 	<div class="row">
 		<div class="col-12 col-lg-3">
-			<app-input id="country" label="País" formControlName="country"></app-input>
+			<app-input id="country" label="País" formControlName="country">
+				@if (form.get('country') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-input id="state" label="Estado" formControlName="state"></app-input>
+			<app-input id="state" label="Estado" formControlName="state">
+				@if (form.get('state') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-input id="city" label="Cidade" formControlName="city"></app-input>
+			<app-input id="city" label="Cidade" formControlName="city">
+				@if (form.get('city') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div
 			class="col-12 col-lg-3 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0 gap-3"

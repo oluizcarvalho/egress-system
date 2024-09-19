@@ -2,34 +2,48 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
 	<div class="row">
 		<div class="col-12 col-lg-3">
-			<app-input id="companyName" label="Nome da Empresa" formControlName="companyName"></app-input>
+			<app-input id="companyName" label="Nome da Empresa" formControlName="companyName">
+				@if (form.get('companyName') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-select [options]="categoryOptions" id="category" label="Categoria" formControlName="category"></app-select>
+			<app-select [options]="categoryOptions" id="category" label="Categoria" formControlName="category">
+				@if (form.get('category') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-select>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-select
-				[options]="jobTypeOptions"
-				id="jobType"
-				label="Tipo de Emprego"
-				formControlName="jobType"
-			></app-select>
+			<app-select [options]="jobTypeOptions" id="jobType" label="Tipo de Emprego" formControlName="jobType">
+				@if (form.get('jobType') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-select>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-select [options]="locationOptions" id="location" label="Localidade" formControlName="location"></app-select>
+			<app-select [options]="locationOptions" id="location" label="Localidade" formControlName="location">
+				@if (form.get('jobType') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-select>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-12 col-lg-3">
-			<app-input id="jobTitle" label="Cargo" formControlName="jobTitle"></app-input>
+			<app-input id="jobTitle" label="Cargo" formControlName="jobTitle">
+				@if (form.get('jobTitle') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
 		</div>
 		<div class="col-12 col-lg-3">
-			<app-select
-				[options]="jobLevelOptions"
-				id="jobLevel"
-				label="Nível do Cargo"
-				formControlName="jobLevel"
-			></app-select>
+			<app-select [options]="jobLevelOptions" id="jobLevel" label="Nível do Cargo" formControlName="jobLevel">
+				@if (form.get('jobLevel') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-select>
 		</div>
 		<div class="col-12 col-lg-3">
 			<app-input id="function" label="Função" formControlName="function"></app-input>
@@ -41,19 +55,26 @@
 	<div class="row">
 		<div class="col-12 col-lg-3">
 			<app-date-time-picker
+				[maxDate]="maxDate"
 				id="startDate"
 				label="Data de Ingresso"
 				type="date"
 				formControlName="startDate"
-			></app-date-time-picker>
+			>
+				@if (form.get('startDate') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-date-time-picker>
 		</div>
 		<div class="col-12 col-lg-3">
 			<app-date-time-picker
+				[maxDate]="maxDate"
 				id="endDate"
 				label="Data de Conclusão"
 				type="date"
 				formControlName="endDate"
-			></app-date-time-picker>
+			>
+			</app-date-time-picker>
 		</div>
 		<div class="col-12 col-lg-3">
 			@if (relatedAcademicInfoOptions.length > 1) {

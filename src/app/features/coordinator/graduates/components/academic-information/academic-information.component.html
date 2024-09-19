@@ -1,6 +1,10 @@
 @if (data.length > 1) {
 	@for (history of data; track history.id; let first = $first) {
-		<app-collapse-item [label]="history?.courseName" [id]="history?.id.toString()" [expanded]="first">
+		<app-collapse-item
+			[label]="history | titleCollapseAcademicInformation"
+			[id]="history?.id.toString()"
+			[expanded]="first"
+		>
 			<ng-container *ngTemplateOutlet="templateRef; context: { $implicit: history }"></ng-container>
 		</app-collapse-item>
 		@if (!$last) {

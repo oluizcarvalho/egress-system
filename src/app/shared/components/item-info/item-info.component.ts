@@ -11,4 +11,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 export class ItemInfoComponent {
 	label = input<string>();
 	value = input<string>();
+	type = input<'text' | 'url' | 'email' | 'phone'>('text');
 }

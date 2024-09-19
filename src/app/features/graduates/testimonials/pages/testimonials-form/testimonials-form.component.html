@@ -2,8 +2,8 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
 	<div class="row">
 		<div class="col-12 col-lg-7">
-			<app-textarea id="testimonial" label="Texto do Depoimento " formControlName="text">
-				@if (form.controls.text.invalid && !form.controls.text.untouched) {
+			<app-textarea id="testimonial" label="Texto do Depoimento" formControlName="text">
+				@if (form.controls.text | hasError) {
 					<span br-feedback state="danger">Campo obrigatório</span>
 				}
 			</app-textarea>
