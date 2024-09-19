@@ -17,7 +17,7 @@
 						label="Curso Relacionado"
 						formControlName="relatedAcademicInfo"
 					>
-						@if (form.controls.relatedAcademicInfo.invalid && !form.controls.relatedAcademicInfo.untouched) {
+						@if (form.controls.relatedAcademicInfo | hasError) {
 							<span br-feedback state="danger">Campo obrigatório</span>
 						}
 					</app-select>
@@ -28,7 +28,7 @@
 					formControlName="privacy"
 					label="Privacidade do Depoimento"
 				></app-radio>
-				@if (form.controls.privacy.invalid && !form.controls.privacy.untouched) {
+				@if (form.controls.privacy | hasError) {
 					<span br-feedback noPropagateState state="danger">Campo obrigatório</span>
 				}
 			</div>

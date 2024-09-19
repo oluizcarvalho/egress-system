@@ -60,7 +60,8 @@ body {
 	}
 }
 
-.cdk-overlay-pane.dialog {
+.cdk-overlay-pane.dialog,
+.cdk-overlay-pane.consent {
 	display: block;
 	background: #fff;
 	border-radius: 0;
@@ -73,4 +74,8 @@ body {
 	*:focus-visible {
 		outline: none;
 	}
+}
+
+.cdk-overlay-pane.consent {
+	padding: 16px;
 }

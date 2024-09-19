@@ -13,6 +13,13 @@ import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks/related-academic-in
 import { RadioComponent } from '@shared/components/radio/radio.component';
 import { FeedbackDirective } from '@shared/directives/feedback.directive';
 import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
+import { Dialog } from '@angular/cdk/dialog';
+import {
+	DialogConfirmComponent,
+	DialogConfirmInputs,
+} from '@shared/components/dialog-confirm/dialog-confirm.component';
+import { TypeRecipientsEnum } from '@app/features/coordinator/announcements/models/announcements.model';
+import { ConsentDialogComponent } from '@app/features/graduates/testimonials/dialogs/consent-dialog/consent-dialog.component';
 
 @Component({
 	selector: 'app-testimonials-form',
@@ -46,6 +53,7 @@ export class TestimonialsFormComponent {
 	alertService = inject(AlertService);
 	relatedAcademicInfoOptions: SelectOptions = RELATED_ACADEMIC_INFO_OPTIONS;
 	privacyOptions = PRIVACY_OPTIONS;
+	dialog = inject(Dialog);
 
 	constructor() {
 		this.route.paramMap.subscribe(params => {
@@ -71,5 +79,29 @@ export class TestimonialsFormComponent {
 			this.alertService.showAlert('danger', 'Preencha todos os campos obrigatórios');
 			return;
 		}
+
+		if (this.mode() === 'create') {
+			this.createTestimonial();
+		} else {
+			this.editTestimonial();
+		}
+	}
+
+	private createTestimonial() {
+		const dialog = this.dialog.open(ConsentDialogComponent, { maxWidth: '500px', panelClass: 'consent' });
+
+		dialog.closed.subscribe(async (confirmed: boolean) => {
+			if (confirmed) {
+				this.router.navigate(['/depoimentos']).then(() => {
+					this.alertService.showAlert('success', 'Depoimento salvo com sucesso');
+				});
+			}
+		});
+	}
+
+	private editTestimonial() {
+		this.router.navigate(['/depoimentos']).then(() => {
+			this.alertService.showAlert('success', 'Depoimento editado com sucesso');
+		});
 	}
 }
