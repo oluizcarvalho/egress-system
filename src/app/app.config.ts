@@ -13,12 +13,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { globalInterceptor } from './core/interceptors/global-http.interceptor';
-import { loadingInterceptor } from './shared/components/loading/interceptors/loading.interceptor';
+import { loadingInterceptor } from '@shared/components/loading/interceptors/loading.interceptor';
 import { NoopScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { DEFAULT_DIALOG_CONFIG, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
 import { registerLocaleData } from '@angular/common';
 import { CustomPageTitleStrategy } from './core/strategy/title.strategy';
 import localePt from '@angular/common/locales/pt';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 registerLocaleData(localePt);
 
@@ -49,5 +50,6 @@ export const appConfig: ApplicationConfig = {
 			useFactory: scrollFactory,
 			deps: [Overlay],
 		},
+		provideCharts(withDefaultRegisterables()),
 	],
 };

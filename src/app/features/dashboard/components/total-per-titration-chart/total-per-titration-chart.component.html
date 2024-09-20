@@ -1,18 +1,7 @@
 <app-card-chart title="Total por Título Acadêmico" subtitle="Semestre Letivo 2023/1">
 	<section class="d-flex g-2">
-		@if (data()) {
-			<ngx-charts-bar-horizontal
-				[results]="data()"
-				[scheme]="colorScheme"
-				[xAxis]="false"
-				[yAxis]="true"
-				[legend]="false"
-				[showXAxisLabel]="false"
-				[showYAxisLabel]="false"
-				[animations]="true"
-				[showDataLabel]="true"
-			>
-			</ngx-charts-bar-horizontal>
-		}
+		<div style="display: block">
+			<canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"></canvas>
+		</div>
 	</section>
 </app-card-chart>

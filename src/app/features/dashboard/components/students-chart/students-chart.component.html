@@ -2,17 +2,7 @@
 	<section class="d-flex g-2 pt-3">
 		<div class="d-flex align-items-center chart-container">
 			<span class="total">{{ pieChartSum() | number: '.' }}</span>
-			<ngx-charts-pie-chart
-				legendTitle="Legenda"
-				[results]="data()"
-				[legend]="false"
-				[labels]="false"
-				[doughnut]="true"
-				[gradient]="false"
-				[view]="[200, 200]"
-				[scheme]="colorScheme"
-			>
-			</ngx-charts-pie-chart>
+			<canvas baseChart type="doughnut" [options]="doughnutChartOptions" [data]="data()"></canvas>
 		</div>
 		<div class="d-flex flex-column justify-content-center ml-2 gap-2">
 			@for (option of percents(); track option.name) {

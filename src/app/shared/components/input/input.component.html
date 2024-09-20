@@ -18,11 +18,11 @@
 	<ng-template #input>
 		<input
 			id="input-{{ id }}"
-			[autocomplete]="autocomplete"
 			[name]="name"
 			[disabled]="disabled"
 			[type]="type"
 			[readonly]="readonly"
+			[attr.autocomplete]="autocomplete"
 			[attr.maxLength]="maxLength"
 			[attr.min]="min"
 			[attr.max]="max"

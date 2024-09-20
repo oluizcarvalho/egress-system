@@ -32,7 +32,7 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
 	@Input() state: 'success' | 'danger' | 'info' | 'warning' | '' = '';
 	@Input() placeholder = '';
 	@Input() hint = '';
-	@Input() autocomplete = '';
+	@Input() autocomplete = 'off';
 	@Input() feedback = '';
 	@Input() mask = '';
 	@Input({ transform: booleanAttribute }) hasButton = false;

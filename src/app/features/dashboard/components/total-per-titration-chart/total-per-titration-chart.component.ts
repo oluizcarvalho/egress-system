@@ -1,36 +1,34 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { BarChartModule, Color, ScaleType } from '@swimlane/ngx-charts';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CardChartComponent } from '../card-chart/card-chart.component';
+import { ChartConfiguration } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
 	selector: 'app-total-per-titration-chart',
 	standalone: true,
-	imports: [CardChartComponent, BarChartModule],
+	imports: [CardChartComponent, BaseChartDirective],
 	templateUrl: './total-per-titration-chart.component.html',
 	styleUrl: './total-per-titration-chart.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TotalPerTitrationChartComponent {
-	data = input([
-		{
-			name: 'Bacharelado',
-			value: 8919,
-		},
-		{
-			name: 'Licenciatura Plena',
-			value: 1969,
-		},
-		{
-			name: 'Área Básica de Ingresso',
-			value: 941,
-		},
-	]);
+	public barChartData: ChartConfiguration<'bar'>['data'] = {
+		labels: ['Bacharelado', 'Licenciatura Plena', 'Área Básica de Ingresso'],
+		datasets: [{ data: [8919, 1969, 941], label: 'Total por Título Acadêmico' }],
+	};
 
-	colorScheme: Color = {
-		name: 'gov',
-		group: ScaleType.Ordinal,
-		selectable: true,
-		domain: ['#003366'],
+	public barChartOptions: ChartConfiguration<'bar'>['options'] = {
+		responsive: true,
+		maintainAspectRatio: false,
+		scales: {
+			x: { display: true },
+			y: { display: true },
+		},
+		animation: {
+			duration: 1000,
+		},
+		indexAxis: 'y',
+		backgroundColor: '#003366',
 	};
 
 	constructor() {}
