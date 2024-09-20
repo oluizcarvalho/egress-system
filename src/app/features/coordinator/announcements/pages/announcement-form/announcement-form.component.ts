@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, isFormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Dialog } from '@angular/cdk/dialog';
@@ -16,6 +16,7 @@ import {
 	DialogConfirmInputs,
 } from '@shared/components/dialog-confirm/dialog-confirm.component';
 import { AlertService } from '@shared/components/alert/alert.service';
+import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
 
 @Component({
 	selector: 'app-announcement-form',
@@ -30,11 +31,12 @@ import { AlertService } from '@shared/components/alert/alert.service';
 		ReactiveFormsModule,
 		FeedbackDirective,
 		ButtonDirective,
+		NgxEditorModule,
 	],
 	templateUrl: './announcement-form.component.html',
 	styleUrl: './announcement-form.component.scss',
 })
-export class AnnouncementFormComponent {
+export class AnnouncementFormComponent implements OnInit, OnDestroy {
 	form = new FormGroup({
 		title: new FormControl('', [Validators.required]),
 		content: new FormControl('', [Validators.required]),
@@ -45,10 +47,26 @@ export class AnnouncementFormComponent {
 	coursesOptions = COURSE_OPTIONS_MOCK;
 	levelsOptions = COURSE_LEVEL_OPTIONS_MOCK;
 	checkAll = false;
+	editor: Editor;
+	toolbar: Toolbar = [
+		['bold', 'italic'],
+		['underline', 'strike'],
+		['code', 'blockquote'],
+		['ordered_list', 'bullet_list'],
+		[{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+		['link'],
+		['align_left', 'align_center', 'align_right', 'align_justify'],
+	];
 
 	private dialog = inject(Dialog);
 	private router = inject(Router);
 	private alertService = inject(AlertService);
+
+	constructor() {}
+
+	ngOnInit(): void {
+		this.editor = new Editor();
+	}
 
 	onSubmit() {
 		if (this.form.invalid) {
@@ -101,5 +119,9 @@ export class AnnouncementFormComponent {
 				}
 			});
 		}
+	}
+
+	ngOnDestroy() {
+		this.editor.destroy();
 	}
 }

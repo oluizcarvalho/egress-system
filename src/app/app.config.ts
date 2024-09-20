@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common';
 import { CustomPageTitleStrategy } from './core/strategy/title.strategy';
 import localePt from '@angular/common/locales/pt';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { NgxEditorConfig } from 'ngx-editor';
 
 registerLocaleData(localePt);
 

@@ -8,12 +8,12 @@
 				}
 			</app-input>
 		</div>
-		<div class="col-12 my-lg-3 my-0">
-			<app-textarea id="content" label="Texto do comunicado" formControlName="content">
-				@if (form.controls.content.invalid && !form.controls.content.untouched) {
-					<span br-feedback state="warning"> Insira um texto </span>
-				}
-			</app-textarea>
+		<div class="col-12 my-3">
+			<ngx-editor-menu [toolbar]="toolbar" [editor]="editor"></ngx-editor-menu>
+			<ngx-editor [editor]="editor" formControlName="content" placeholder="Insira o conteúdo aqui..."></ngx-editor>
+			@if (form.controls.content.invalid && !form.controls.content.untouched) {
+				<span br-feedback state="warning"> Insira o conteúdo do comunicado </span>
+			}
 		</div>
 		<div class="col-12 col-lg-4">
 			<app-multi-select [data]="coursesOptions" id="courses" label="Cursos" formControlName="courses">
