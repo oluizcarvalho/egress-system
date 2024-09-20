@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../shared/components/header/header.component';
-import { AlertComponent } from '../../shared/components/alert/alert.component';
-import { MenuComponent } from '../../shared/components/menu/menu.component';
-import { BreadcrumbComponent } from '../../shared/components/breadcrump/breadcrumb.component';
 import { RouterModule } from '@angular/router';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { AlertComponent } from '@shared/components/alert/alert.component';
+import { MenuComponent } from '@shared/components/menu/menu.component';
+import { BreadcrumbComponent } from '@shared/components/breadcrump/breadcrumb.component';
+import { FooterComponent } from '@shared/components/footer/footer.component';
+import { Columns, TableComponent } from '@shared/components/table/table.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { Columns, TableComponent } from '../../shared/components/table/table.component';
-import { coursesPaginationMock } from './data/table-course.mock';
-import { PageEvent, PaginatorComponent } from '../../shared/components/paginator/paginator.component';
-import { PieChartModule } from '@swimlane/ngx-charts';
+import { PageEvent, PaginatorComponent } from '@shared/components/paginator/paginator.component';
 import { StudentsChartComponent } from './components/students-chart/students-chart.component';
 import { TotalPerCampusChartComponent } from './components/total-per-campus-chart/total-per-campus-chart.component';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TotalPerTitrationChartComponent } from './components/total-per-titration-chart/total-per-titration-chart.component';
 import { TestimonialsListComponent } from './components/testimonials-list/testimonials-list.component';
+import { coursesPaginationMock } from './data/table-course.mock';
 import { Course } from './models/course.model';
 
 @Component({
@@ -30,7 +29,6 @@ import { Course } from './models/course.model';
 		FilterComponent,
 		TableComponent,
 		PaginatorComponent,
-		PieChartModule,
 		StudentsChartComponent,
 		TotalPerCampusChartComponent,
 		NgxSkeletonLoaderModule,
