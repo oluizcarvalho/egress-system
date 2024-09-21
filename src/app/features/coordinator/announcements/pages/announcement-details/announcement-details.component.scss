@@ -18,4 +18,25 @@ section {
 		font-weight: 600;
 		line-height: normal;
 	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		margin-top: 16px;
+		padding: 16px;
+		border-radius: 8px;
+		border: 1px solid var(--border-color-alternative);
+	}
+
+	::ng-deep .content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p {
+			margin: 0 0 8px !important;
+		}
+	}
 }
