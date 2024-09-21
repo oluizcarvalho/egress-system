@@ -37,6 +37,12 @@ export class StudentsChartComponent {
 		responsive: true,
 		maintainAspectRatio: false,
 		cutout: '75%',
+		layout: {
+			padding: {
+				bottom: 8,
+				left: 8,
+			},
+		},
 		datasets: {
 			doughnut: {
 				borderWidth: 1,

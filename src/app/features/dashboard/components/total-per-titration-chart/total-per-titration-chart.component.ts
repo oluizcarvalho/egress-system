@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 import { CardChartComponent } from '../card-chart/card-chart.component';
 import { ChartConfiguration } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
@@ -12,10 +12,10 @@ import { BaseChartDirective } from 'ng2-charts';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TotalPerTitrationChartComponent {
-	public barChartData: ChartConfiguration<'bar'>['data'] = {
+	barChartData: InputSignal<ChartConfiguration<'bar'>['data']> = input({
 		labels: ['Bacharelado', 'Licenciatura Plena', 'Área Básica de Ingresso'],
 		datasets: [{ data: [8919, 1969, 941], label: 'Total por Título Acadêmico' }],
-	};
+	});
 
 	public barChartOptions: ChartConfiguration<'bar'>['options'] = {
 		responsive: true,
@@ -26,6 +26,21 @@ export class TotalPerTitrationChartComponent {
 		},
 		animation: {
 			duration: 1000,
+		},
+		layout: {
+			padding: {
+				bottom: 8,
+				left: 8,
+				right: 8,
+			},
+		},
+		plugins: {
+			legend: {
+				display: false,
+			},
+			title: {
+				display: false,
+			},
 		},
 		indexAxis: 'y',
 		backgroundColor: '#003366',

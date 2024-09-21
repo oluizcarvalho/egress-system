@@ -12,7 +12,7 @@
 			<ngx-editor-menu [toolbar]="toolbar" [editor]="editor"></ngx-editor-menu>
 			<ngx-editor [editor]="editor" formControlName="content" placeholder="Insira o conteúdo aqui..."></ngx-editor>
 			@if (form.controls.content.invalid && !form.controls.content.untouched) {
-				<span br-feedback state="warning"> Insira o conteúdo do comunicado </span>
+				<span br-feedback class="mt-1" state="warning"> Insira o conteúdo do comunicado </span>
 			}
 		</div>
 		<div class="col-12 col-lg-4">
