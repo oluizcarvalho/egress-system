@@ -2,13 +2,20 @@ import { AfterViewInit, Component, ElementRef, inject, signal } from '@angular/c
 import { LIST_MENU_BY_ROLE } from './const/list-menu';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Role } from '../../../features/login/models/credentials.model';
-import { AuthService } from '../../../core/auth/services/auth.service';
+import { Role } from '@app/features/login/models/credentials.model';
+import { AuthService } from '@app/core/auth/services/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IMenu } from './types/menu.type';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import BRMenu from '@govbr-ds/core/dist/components/menu/menu';
 
+/**
+ * Componente MenuComponent é responsável por exibir o menu da aplicação.
+ * @example
+ * <app-menu></app-menu>
+ * @public
+ * {@link https://www.gov.br/ds/components/menu?tab=desenvolvedor|Documentação oficial}
+ */
 @Component({
 	selector: 'app-menu',
 	standalone: true,

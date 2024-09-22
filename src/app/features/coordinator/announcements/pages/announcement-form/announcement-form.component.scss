@@ -1,3 +1,13 @@
 .br-checkbox {
 	margin-top: 12px;
 }
+
+::ng-deep .NgxEditor {
+	border-color: var(--border-color-alternative) !important;
+
+	&__Content {
+		max-height: 28dvh;
+		overflow-y: auto;
+		min-height: 120px;
+	}
+}

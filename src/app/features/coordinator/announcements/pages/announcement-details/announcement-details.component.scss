@@ -9,6 +9,7 @@ section {
 		font-style: normal;
 		font-weight: 600;
 		line-height: 23.2px; /* 115.079% */
+		margin-top: 0;
 	}
 
 	b {
@@ -17,5 +18,26 @@ section {
 		font-style: normal;
 		font-weight: 600;
 		line-height: normal;
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		margin: 16px 0;
+		padding: 16px;
+		border-radius: 8px;
+		border: 1px solid var(--border-color-alternative);
+	}
+
+	::ng-deep .content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p {
+			margin: 0 0 8px !important;
+		}
 	}
 }

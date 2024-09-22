@@ -10,6 +10,15 @@ import {
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 
+/**
+ * Componente BreadcrumbComponent é responsável por exibir a navegação de breadcrumb.
+ * Ele escuta eventos de navegação do Angular Router e constrói a trilha de navegação dinamicamente.
+ * @example
+ * <app-breadcrumb></app-breadcrumb>
+ *
+ * @public
+ * {@link https://www.gov.br/ds/components/breadcrumb?tab=desenvolvedor|Documentação oficial}
+ */
 @Component({
 	selector: 'app-breadcrumb',
 	standalone: true,
@@ -24,15 +33,23 @@ import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbComponent implements AfterViewInit, OnInit {
+	/** Instância do componente BRBreadcrumb */
 	instance: unknown;
+	/** Lista de breadcrumbs a serem exibidos */
 	crumbs: Array<{ label: string; url: string; home?: boolean; active?: boolean }> = [];
+	/** Sinal para controlar a exibição do breadcrumb */
 	showBreadcrumb = signal<boolean>(false);
 
+	/** Instância do Angular Router */
 	router = inject(Router);
+	/** Instância do ActivatedRoute para acessar informações da rota */
 	route = inject(ActivatedRoute);
 
 	constructor() {}
 
+	/**
+	 * @internal
+	 */
 	ngOnInit(): void {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
@@ -62,10 +79,18 @@ export class BreadcrumbComponent implements AfterViewInit, OnInit {
 		});
 	}
 
+	/**
+	 * Cria uma nova instância do componente BRBreadcrumb.
+	 * @internal
+	 */
 	setNewInstance(): void {
 		this.instance = new BRBreadcrumb('br-breadcrumb', document.querySelector('.br-breadcrumb'));
 	}
 
+	/**
+	 * Constrói a trilha de navegação de breadcrumbs recursivamente com base na rota ativa.
+	 * @internal
+	 */
 	buildBreadcrumbs(route: ActivatedRoute, url: string = '') {
 		if (route.snapshot.routeConfig) {
 			const routePath = route.snapshot.routeConfig.path;
@@ -88,6 +113,11 @@ export class BreadcrumbComponent implements AfterViewInit, OnInit {
 		}
 	}
 
+	/**
+	 * Método do ciclo de vida do Angular chamado após a visualização ser inicializada.
+	 * Cria uma nova instância do componente BRBreadcrumb.
+	 * @internal
+	 */
 	ngAfterViewInit(): void {
 		this.setNewInstance();
 	}

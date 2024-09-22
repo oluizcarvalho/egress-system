@@ -1,6 +1,12 @@
 import { booleanAttribute, Directive, ElementRef, inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { SizeOptions } from '../types/size.type';
 
+/**
+ * Diretiva para estilizar botões com várias opções.
+ *
+ * @selector button[br-button], a[br-button]
+ * @standalone true
+ */
 @Directive({
 	selector: 'button[br-button], a[br-button]',
 	host: {
@@ -24,17 +30,81 @@ import { SizeOptions } from '../types/size.type';
 	standalone: true,
 })
 export class ButtonDirective implements OnInit {
+	/**
+	 * Cor do botão.
+	 * @type {'primary' | 'secondary' | 'tertiary'}
+	 * @default 'primary'
+	 */
 	@Input() color: 'primary' | 'secondary' | 'tertiary' = 'primary';
+
+	/**
+	 * Tamanho do botão.
+	 * @type {SizeOptions}
+	 * @default 'medium'
+	 */
 	@Input() size: SizeOptions = 'medium';
-	@Input() icon = '';
-	@Input() fontSet = 'fas';
+
+	/**
+	 * Classe do ícone para o botão.
+	 * @type {string}
+	 */
+	@Input() icon: string = '';
+
+	/**
+	 * Conjunto de fontes para o ícone.
+	 * @type {string}
+	 * @default 'fas'
+	 */
+	@Input() fontSet: string = 'fas';
+
+	/**
+	 * Posição do ícone em relação ao texto do botão.
+	 * @type {'before' | 'after'}
+	 * @default 'before'
+	 */
 	@Input() positionIcon: 'before' | 'after' = 'before';
-	@Input({ transform: booleanAttribute }) disabled = false;
-	@Input({ transform: booleanAttribute }) block = false;
-	@Input({ transform: booleanAttribute }) loading = false;
-	@Input({ transform: booleanAttribute }) active = false;
-	@Input({ transform: booleanAttribute }) circle = false;
-	@Input({ transform: booleanAttribute }) inverted = false;
+
+	/**
+	 * Indica se o botão está desabilitado.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) disabled: boolean = false;
+
+	/**
+	 * Indica se o botão deve ser exibido como um elemento de bloco.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) block: boolean = false;
+
+	/**
+	 * Indica se o botão está em estado de carregamento.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) loading: boolean = false;
+
+	/**
+	 * Indica se o botão está ativo.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) active: boolean = false;
+
+	/**
+	 * Indica se o botão deve ser exibido como um círculo.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) circle: boolean = false;
+
+	/**
+	 * Indica se o botão deve ser exibido no modo escuro.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) inverted: boolean = false;
 
 	public el = inject(ElementRef);
 	public renderer = inject(Renderer2);

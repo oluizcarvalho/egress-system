@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 
+/**
+ * Componente FooterComponent é responsável por exibir o rodapé da aplicação.
+ * @example
+ * <app-footer></app-footer>
+ * @public
+ * {@link https://www.gov.br/ds/components/footer?tab=desenvolvedor|Documentação oficial}
+ */
 @Component({
 	selector: 'app-footer',
 	standalone: true,

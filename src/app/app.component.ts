@@ -1,13 +1,13 @@
+import { NgClass } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { MenuComponent } from './shared/components/menu/menu.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { BreadcrumbComponent } from './shared/components/breadcrump/breadcrumb.component';
-import { AlertComponent } from './shared/components/alert/alert.component';
-import { LoadingComponent } from './shared/components/loading/loading.component';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { MenuComponent } from '@shared/components/menu/menu.component';
+import { FooterComponent } from '@shared/components/footer/footer.component';
+import { BreadcrumbComponent } from '@shared/components/breadcrump/breadcrumb.component';
+import { AlertComponent } from '@shared/components/alert/alert.component';
+import { LoadingComponent } from '@shared/components/loading/loading.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { NgClass } from '@angular/common';
 import { AuthService } from './core/auth/services/auth.service';
 import { CheckUpdateService } from './core/update/check-update.service';
 

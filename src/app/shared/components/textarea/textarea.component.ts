@@ -11,6 +11,15 @@ import {
 } from '@angular/forms';
 import { SizeOptions } from '../../types/size.type';
 
+/**
+ * Componente TextareaComponent é responsável por exibir um campo de texto multilinha.
+ * Implementa a interface ControlValueAccessor para integração com formulários Angular.
+ * @example
+ * <app-textarea [label]="'Digite algo'" [id]="'textarea1'" [(ngModel)]="text"></app-textarea>
+ *
+ * @public
+ * {@link https://www.gov.br/ds/components/textarea?tab=desenvolvedor|Documentação oficial}
+ */
 @Component({
 	selector: 'app-textarea',
 	standalone: true,
@@ -20,39 +29,124 @@ import { SizeOptions } from '../../types/size.type';
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TextareaComponent), multi: true }],
 })
 export class TextareaComponent implements ControlValueAccessor, Validator {
-	@Input({ required: true }) label = '';
+	/**
+	 * Rótulo do campo de texto.
+	 * @type {string}
+	 * @required
+	 */
+	@Input({ required: true }) label: string = '';
+
+	/**
+	 * ID do campo de texto.
+	 * @type {string}
+	 * @required
+	 */
 	@Input({ required: true }) id: string;
-	@Input() name = '';
+
+	/**
+	 * Nome do campo de texto.
+	 * @type {string}
+	 */
+	@Input() name: string = '';
+
+	/**
+	 * Tamanho do campo de texto.
+	 * @type {SizeOptions}
+	 * @default 'medium'
+	 */
 	@Input() size: SizeOptions = 'medium';
-	@Input() placeholder = '';
-	@Input() hint = '';
-	@Input({ transform: booleanAttribute }) disabled = false;
-	@Input({ transform: booleanAttribute }) readonly = false;
-	@Input({ transform: booleanAttribute }) showLimit = true;
-	@Input({ transform: booleanAttribute }) showCounter = true;
+
+	/**
+	 * Placeholder do campo de texto.
+	 * @type {string}
+	 */
+	@Input() placeholder: string = '';
+
+	/**
+	 * Dica de uso para o campo de texto.
+	 * @type {string}
+	 */
+	@Input() hint: string = '';
+
+	/**
+	 * Indica se o campo de texto está desabilitado.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) disabled: boolean = false;
+
+	/**
+	 * Indica se o campo de texto é somente leitura.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) readonly: boolean = false;
+
+	/**
+	 * Indica se o limite de caracteres deve ser exibido.
+	 * @type {boolean}
+	 * @default true
+	 */
+	@Input({ transform: booleanAttribute }) showLimit: boolean = true;
+
+	/**
+	 * Indica se o contador de caracteres deve ser exibido.
+	 * @type {boolean}
+	 * @default true
+	 */
+	@Input({ transform: booleanAttribute }) showCounter: boolean = true;
+
+	/**
+	 * Comprimento máximo do campo de texto.
+	 * @type {number}
+	 */
 	@Input({ transform: numberAttribute }) maxLength: number;
 
+	/**
+	 * Obtém se o campo de texto é obrigatório.
+	 * @type {boolean}
+	 */
 	get required(): boolean {
 		return this._required ?? this.control?.hasValidator(Validators.required) ?? false;
 	}
 
+	/**
+	 * Define se o campo de texto é obrigatório.
+	 * @type {boolean}
+	 */
 	@Input({ transform: booleanAttribute })
 	set required(value: boolean) {
 		this._required = value;
 	}
 
-	protected _required: boolean | undefined;
+	/**
+	 * Evento emitido quando o valor do campo de texto muda.
+	 * @type {EventEmitter<string>}
+	 */
+	@Output() change: EventEmitter<string> = new EventEmitter<string>();
 
-	@Output() change = new EventEmitter<string>();
-
+	/**
+	 * Controle do formulário associado ao campo de texto.
+	 * @type {AbstractControl}
+	 */
 	public control?: AbstractControl;
+
+	protected _required: boolean | undefined;
 
 	protected _value = '';
 
+	/**
+	 * Obtém o valor do campo de texto.
+	 * @type {string}
+	 */
 	get value(): string {
 		return this._value;
 	}
 
+	/**
+	 * Define o valor do campo de texto.
+	 * @type {string}
+	 */
 	set value(val: string) {
 		if (this.disabled) return;
 		this._value = val;

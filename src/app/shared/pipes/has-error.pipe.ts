@@ -1,6 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
+/**
+ * Pipe HasErrorPipe é responsável por verificar se um campo possui erro.
+ * @example
+ * <div *ngIf="form.get('campo') | hasError : 'required'">Campo obrigatório</div>
+ * @standalone
+ */
 @Pipe({
 	name: 'hasError',
 	standalone: true,

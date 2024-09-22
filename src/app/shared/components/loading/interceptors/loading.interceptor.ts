@@ -1,11 +1,28 @@
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { LoadingService } from '../services/loading.service';
 import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-export const KEY_NO_LOADING = 'noLoading';
+/**
+ * Chave para indicar que a requisição não deve exibir o overlay de carregamento.
+ * @type {string}
+ * @example
+ * const params = new HttpParams().set(KEY_NO_LOADING, 'true');
+ * this.http.get('https://api.com', { params });
+ */
+export const KEY_NO_LOADING: string = 'noLoading';
 
-export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
+/**
+ * Interceptor que exibe o overlay de carregamento quando uma requisição está em andamento.
+ * @param req {HttpRequest<any>} Requisição HTTP
+ * @param next {HttpHandlerFn} Manipulador HTTP
+ * @returns {Observable<HttpEvent<any>>}
+ */
+export const loadingInterceptor: HttpInterceptorFn = (
+	req: HttpRequest<unknown>,
+	next: HttpHandlerFn
+): Observable<HttpEvent<unknown>> => {
 	let clonedRequest = req;
 	const loadingService = inject(LoadingService);
 

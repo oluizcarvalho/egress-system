@@ -21,6 +21,15 @@ export const TYPE_DATE_PICKER = {
 
 export type TypesDatePicker = keyof typeof TYPE_DATE_PICKER;
 
+/**
+ * Componente DateTimePickerComponent é responsável por exibir um seletor de data e hora.
+ * Implementa a interface ControlValueAccessor para integração com formulários Angular.
+ * @example
+ * <app-date-time-picker [label]="'Data e Hora'" [id]="'datetimepicker1'" [(ngModel)]="selectedDate"></app-date-time-picker>
+ *
+ * @public
+ * {@link https://www.gov.br/ds/components/datetimepicker?tab=desenvolvedor|Documentação oficial}
+ */
 @Component({
 	selector: 'app-date-time-picker',
 	standalone: true,
@@ -29,50 +38,129 @@ export type TypesDatePicker = keyof typeof TYPE_DATE_PICKER;
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DateTimePickerComponent), multi: true }],
 })
 export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-	@Input({ required: true }) label = '';
-	@Input({ required: true }) id: string;
-	@Input({ transform: booleanAttribute }) range = false;
-	@Input({ transform: booleanAttribute }) disabled = false;
-	@Input() minDate: Date | string;
-	@Input() maxDate: Date | string;
-	@Input() placeholder = '';
-	@Input() hint = '';
+	/**
+	 * Rótulo do componente DateTimePicker.
+	 * @type {string}
+	 * @required
+	 */
+	@Input({ required: true }) label: string = '';
 
+	/**
+	 * ID do componente DateTimePicker.
+	 * @type {string}
+	 * @required
+	 */
+	@Input({ required: true }) id: string;
+
+	/**
+	 * Indica se o componente deve permitir seleção de intervalo.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) range: boolean = false;
+
+	/**
+	 * Indica se o componente está desabilitado.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) disabled: boolean = false;
+
+	/**
+	 * Data mínima permitida para seleção.
+	 * @type {Date | string}
+	 */
+	@Input() minDate: Date | string;
+
+	/**
+	 * Data máxima permitida para seleção.
+	 * @type {Date | string}
+	 */
+	@Input() maxDate: Date | string;
+
+	/**
+	 * Placeholder do campo de entrada.
+	 * @type {string}
+	 */
+	@Input() placeholder: string = '';
+
+	/**
+	 * Dica de uso para o campo de entrada.
+	 * @type {string}
+	 */
+	@Input() hint: string = '';
+
+	/**
+	 * Obtém o tipo de seletor de data/hora.
+	 * @type {string}
+	 */
 	get type(): string {
 		return TYPE_DATE_PICKER[this._type];
 	}
 
+	/**
+	 * Define o tipo de seletor de data/hora.
+	 * @type {TypesDatePicker}
+	 */
 	@Input()
 	set type(value: TypesDatePicker) {
 		this._type = value;
 	}
 
+	/**
+	 * Tipo de seletor de data/hora.
+	 * @type {TypesDatePicker}
+	 * @default 'date'
+	 * @private
+	 */
 	private _type: TypesDatePicker = 'date';
 
+	/**
+	 * Obtém se o campo de entrada é obrigatório.
+	 * @type {boolean}
+	 */
 	get required(): boolean {
 		return this._required ?? this.control?.hasValidator(Validators.required) ?? false;
 	}
 
+	/**
+	 * Define se o campo de entrada é obrigatório.
+	 * @type {boolean}
+	 */
 	@Input({ transform: booleanAttribute })
 	set required(value: boolean) {
 		this._required = value;
 	}
 
-	public control?: AbstractControl;
-
-	protected _required: boolean | undefined;
-
+	/**
+	 * Valor do campo de entrada.
+	 * @type {string}
+	 * @protected
+	 */
 	protected _value: string;
 
+	/**
+	 * Obtém o valor do campo de entrada.
+	 * @type {string}
+	 */
 	get value(): string {
 		return this._value;
 	}
 
+	/**
+	 * Define o valor do campo de entrada.
+	 * @type {string}
+	 */
 	set value(val: string) {
 		if (this.disabled) return;
 		this._value = val;
 		this._change(val);
 	}
+
+	/** Controle abstrato do Angular Forms. */
+	public control?: AbstractControl;
+
+	protected _required: boolean | undefined;
 
 	protected _touched: () => void = () => void undefined;
 
@@ -85,6 +173,11 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 
 	constructor() {}
 
+	/**
+	 * Método do ciclo de vida do Angular chamado após a visualização ser inicializada.
+	 * Inicializa a instância do componente BRDateTimePicker.
+	 * @internal
+	 */
 	ngAfterViewInit(): void {
 		let dates = {};
 		if (this.maxDate) {
@@ -107,6 +200,12 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 		);
 	}
 
+	/**
+	 * Normaliza a data para o formato 'DD/MM/YYYY'.
+	 * @param date - A data a ser normalizada.
+	 * @returns A data normalizada no formato 'DD/MM/YYYY'.
+	 * @internal
+	 */
 	normalizeDate(date: string | Date): string {
 		if (date instanceof Date) {
 			return dayjs(date).format('DD/MM/YYY');
@@ -116,10 +215,17 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 		return dayjs(`${year}-${month}-${day}`).format('DD/MM/YYYY');
 	}
 
+	/**
+	 * @internal
+	 */
 	ngOnInit(): void {
 		this.mountPlaceholder();
 	}
 
+	/**
+	 * Configura o placeholder do campo de entrada com base no tipo e se é um intervalo.
+	 * @internal
+	 */
 	mountPlaceholder() {
 		if (this.placeholder) return;
 
@@ -153,7 +259,7 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 		this._touched = fn;
 	}
 
-	public onBlur(): void {
+	onBlur(): void {
 		this._touched();
 	}
 }
