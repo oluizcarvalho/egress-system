@@ -1,6 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { SelectOption } from '../models/select.model';
 
+/**
+ * Pipe OptionLabelPipe é responsável por retornar o label de uma opção.
+ * @example
+ * <div>{{ value | optionLabel : options }}</div>
+ * @standalone
+ */
 @Pipe({
 	name: 'optionLabel',
 	standalone: true,
