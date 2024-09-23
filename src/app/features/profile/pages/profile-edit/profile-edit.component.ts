@@ -24,6 +24,7 @@ export class ProfileEditComponent {
 	constructor() {
 		this.form = new FormGroup({
 			name: new FormControl({ value: this.data.name, disabled: true }, Validators.required),
+			socialName: new FormControl({ value: this.data.socialName, disabled: false }, Validators.required),
 			cpf: new FormControl({ value: this.data.cpf, disabled: true }, Validators.required),
 			email: new FormControl({ value: this.data.email, disabled: true }, [Validators.required, Validators.email]),
 			secondaryEmail: new FormControl(this.data.secondaryEmail, [Validators.email]),

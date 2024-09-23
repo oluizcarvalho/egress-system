@@ -6,6 +6,7 @@ import { profileMock } from './mocks/profile.mock';
 
 export interface Profile {
 	name: string;
+	socialName: string;
 	cpf: string;
 	email: string;
 	secondaryEmail: string;

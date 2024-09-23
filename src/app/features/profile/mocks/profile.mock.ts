@@ -1,5 +1,8 @@
-export const profileMock = {
+import { Profile } from '@app/features/profile/profile.component';
+
+export const profileMock: Profile = {
 	name: 'José da Silva Pereira',
+	socialName: 'José da Silva',
 	cpf: '123.456.789-00',
 	email: 'josesilvapereira@email.com',
 	secondaryEmail: 'josesilvapereira01@email.com',
