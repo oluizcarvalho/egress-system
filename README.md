@@ -6,7 +6,7 @@ Este projeto utiliza **Angular 18** e organiza o código de forma modular para p
 
 ### Descrição das Pastas
 
-```md
+```text
 src/
 └── app/
 ├── core/
@@ -18,12 +18,10 @@ src/
 │ ├── coordinator/
 │ │ ├── announcements/
 │ │ ├── graduates/
-│ │ └── coordinator.routes.ts
 │ ├── graduates/
 │ │ ├── academic-information/
 │ │ ├── professional-information/
 │ │ ├── testimonials/
-│ │ └── graduates.routes.ts
 │ ├── dashboard/
 │ ├── home/
 │ ├── login/
@@ -66,14 +64,12 @@ A pasta **features** é responsável por agrupar as telas e funcionalidades espe
 
   - **announcements**: Módulo para gerenciamento de anúncios.
   - **graduates**: Subfuncionalidades relacionadas aos graduados, organizadas e acessíveis apenas por coordenadores.
-  - **coordinator.routes.ts**: Arquivo de rotas específicas para coordenadores/diretores.
 
 - **graduates**: Funcionalidades acessíveis pelos graduados (egressos). Contém:
 
   - **academic-information**: Tela para gestão de informações acadêmicas.
   - **professional-information**: Tela para informações profissionais.
   - **testimonials**: Seção para depoimentos de egressos.
-  - **graduates.routes.ts**: Arquivo de rotas específico para os egressos.
 
 - **dashboard**: Contém componentes e telas compartilhadas por todos os perfis, como a tela inicial (dashboard).
 

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { provideRouter, TitleStrategy } from '@angular/router';
 
-import { routes } from './app.routes';
+import { routes } from '@app/app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
@@ -20,7 +20,6 @@ import { registerLocaleData } from '@angular/common';
 import { CustomPageTitleStrategy } from './core/strategy/title.strategy';
 import localePt from '@angular/common/locales/pt';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
-import { NgxEditorConfig } from 'ngx-editor';
 
 registerLocaleData(localePt);
 
