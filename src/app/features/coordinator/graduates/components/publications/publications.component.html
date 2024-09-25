@@ -1,0 +1,39 @@
+@if (data.length) {
+	@for (publication of data; track publication.id; let first = $first) {
+		<app-collapse-item [label]="'Publicação ' + publication.id" [id]="publication.id.toString()" [expanded]="first">
+			<ng-container *ngTemplateOutlet="templateRef; context: { $implicit: publication }"></ng-container>
+		</app-collapse-item>
+		@if (!$last) {
+			<hr class="divider" />
+		}
+	}
+} @else {
+	@if (data.length === 1) {
+		<ng-container *ngTemplateOutlet="templateRef; context: { $implicit: data[0] }"></ng-container>
+	} @else {
+		<p>Nenhuma publicação cadastrada.</p>
+	}
+}
+
+<ng-template #templateRef let-publication>
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<app-item-info label="Título da Publicação" [value]="publication.title"></app-item-info>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-item-info label="Nome do Autor" [value]="publication.authorName"></app-item-info>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-item-info label="Ano da Publicação" [value]="publication.year.toString()"></app-item-info>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-item-info label="Veículo" [value]="publication.journal"></app-item-info>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-item-info label="Curso" [value]="publication.relatedAcademicInfo"></app-item-info>
+		</div>
+		<div class="col-12 col-lg-3">
+			<app-item-info label="Identificador" [value]="publication.identifier"></app-item-info>
+		</div>
+	</div>
+</ng-template>

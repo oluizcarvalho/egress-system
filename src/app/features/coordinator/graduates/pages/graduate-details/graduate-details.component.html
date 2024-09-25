@@ -20,6 +20,11 @@
 				<app-graduate-testimonials></app-graduate-testimonials>
 			}
 		}
+		@case (GraduateTabs.Publications) {
+			@defer (when activeTab === GraduateTabs.Publications) {
+				<app-graduate-publications></app-graduate-publications>
+			}
+		}
 		@default {
 			<app-graduate-personal-data></app-graduate-personal-data>
 		}
