@@ -52,7 +52,7 @@ export class FeedbackDirective implements AfterViewInit, OnDestroy {
 	}
 
 	private setState(): void {
-		if (!this.noPropagateState) this.node.classList.add(this.state);
+		if (!this.noPropagateState && this.node) this.node.classList.add(this.state);
 		this.renderer.addClass(this.el.nativeElement, this.state);
 	}
 

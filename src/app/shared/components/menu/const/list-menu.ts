@@ -1,5 +1,5 @@
 import { IMenu } from '../types/menu.type';
-import { Role } from '../../../../features/login/models/credentials.model';
+import { Role } from '@app/features/login/models/credentials.model';
 
 export const LIST_MENU_STUDENT: IMenu[] = [
 	{
@@ -26,6 +26,11 @@ export const LIST_MENU_STUDENT: IMenu[] = [
 		label: 'Depoimentos',
 		icon: 'fa-comments',
 		url: '/depoimentos',
+	},
+	{
+		label: 'Publicações',
+		icon: 'fa-bars',
+		url: '/publicacoes',
 	},
 	{
 		label: 'Perfil',

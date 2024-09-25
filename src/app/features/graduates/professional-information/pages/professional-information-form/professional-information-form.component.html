@@ -83,7 +83,11 @@
 					id="relatedAcademicInfo"
 					label="Curso Relacionado"
 					formControlName="relatedAcademicInfo"
-				></app-select>
+				>
+					@if (form.get('relatedAcademicInfo') | hasError) {
+						<span br-feedback state="danger">Campo obrigatório</span>
+					}
+				</app-select>
 			}
 		</div>
 		<div

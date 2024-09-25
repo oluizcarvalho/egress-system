@@ -61,7 +61,7 @@ export class ProfessionalInformationFormComponent {
 			endDate: new FormControl(null),
 			salary: new FormControl(null),
 			function: new FormControl(null),
-			relatedAcademicInfo: new FormControl(null),
+			relatedAcademicInfo: new FormControl(null, [Validators.required]),
 		});
 
 		this.route.paramMap.subscribe(params => {

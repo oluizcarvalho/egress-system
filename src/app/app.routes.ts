@@ -183,6 +183,43 @@ const routesGraduates = [
 			},
 		],
 	},
+	{
+		path: 'publicacoes',
+		canActivate: [authGuardStudent],
+		title: 'Publicações',
+		data: {
+			breadCrumb: 'Publicações',
+		},
+		children: [
+			{
+				path: '',
+				loadComponent: () =>
+					import('./features/graduates/publications/publications.component').then(m => m.PublicationsComponent),
+			},
+			{
+				path: 'nova',
+				loadComponent: () =>
+					import('./features/graduates/publications/pages/publications-form/publications-form.component').then(
+						m => m.PublicationsFormComponent
+					),
+				title: 'Nova Publicação',
+				data: {
+					breadCrumb: 'Nova Publicação',
+				},
+			},
+			{
+				path: 'editar/:id',
+				loadComponent: () =>
+					import('./features/graduates/publications/pages/publications-form/publications-form.component').then(
+						m => m.PublicationsFormComponent
+					),
+				title: 'Editar Publicação',
+				data: {
+					breadCrumb: 'Editar Publicação',
+				},
+			},
+		],
+	},
 ];
 
 export const routes: Routes = [

@@ -1,0 +1,61 @@
+<h1>{{ mode() === 'create' ? 'Cadastrar' : 'Editar' }} Publicação</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-edit">
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<app-input id="title" label="Título da Publicação" formControlName="title">
+				@if (form.get('title') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
+		</div>
+
+		<div class="col-12 col-lg-3">
+			<app-input id="authorName" label="Nome do Autor" formControlName="authorName">
+				@if (form.get('authorName') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
+		</div>
+
+		<div class="col-12 col-lg-3">
+			<app-input type="number" id="year" label="Ano da Publicação" mask="0000" formControlName="year">
+				@if (form.get('year') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-lg-3">
+			<app-input id="journal" label="Veículo" formControlName="journal">
+				@if (form.get('journal') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
+		</div>
+
+		<div class="col-12 col-lg-5">
+			@if (relatedAcademicInfoOptions.length > 1) {
+				<app-select
+					[options]="relatedAcademicInfoOptions"
+					id="relatedAcademicInfo"
+					label="Curso Relacionado"
+					formControlName="relatedAcademicInfo"
+				>
+					@if (form.get('relatedAcademicInfo') | hasError) {
+						<span br-feedback state="danger">Campo obrigatório</span>
+					}
+				</app-select>
+			}
+		</div>
+		<div
+			class="col-12 col-lg-4 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0 gap-3"
+		>
+			@if (mode() === 'edit') {
+				<button br-button color="secondary" (click)="onDelete()">Excluir</button>
+			}
+			<button br-button color="primary">Salvar</button>
+		</div>
+	</div>
+</form>
