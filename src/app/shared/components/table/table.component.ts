@@ -3,6 +3,8 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { DatePipe, NgClass } from '@angular/common';
 import { NgxMaskPipe } from 'ngx-mask';
 import { SizeOptions } from '../../types/size.type';
+import { CdkMenuModule } from '@angular/cdk/menu';
+import { ButtonDirective } from '@shared/directives/button.directive';
 
 export interface Columns {
 	columnDef: string;
@@ -11,6 +13,11 @@ export interface Columns {
 	type?: 'text' | 'date' | 'link' | 'function' | 'icon';
 	cell: Function;
 	value?: Function;
+}
+
+export interface TableAction {
+	label: string;
+	action: Function;
 }
 
 /**
@@ -24,7 +31,7 @@ export interface Columns {
 @Component({
 	selector: 'app-table',
 	standalone: true,
-	imports: [DatePipe, NgxMaskPipe, CdkTableModule, NgClass],
+	imports: [DatePipe, NgxMaskPipe, CdkTableModule, NgClass, CdkMenuModule, ButtonDirective],
 	templateUrl: './table.component.html',
 	styleUrl: './table.component.scss',
 })
@@ -60,6 +67,26 @@ export class TableComponent implements OnInit {
 	 * <app-table [hovered]="true"></app-table>
 	 */
 	@Input({ transform: booleanAttribute }) hovered: boolean = false;
+
+	/**
+	 * Title of the table.
+	 * @type {string}
+	 * @default ''
+	 */
+	@Input({ alias: 'title-table' }) title: string = '';
+
+	/**
+	 * Ações disponíveis na tabela.
+	 * @type {Array<TableAction>}
+	 */
+	@Input() actions: Array<TableAction> = [];
+
+	/**
+	 * Indica se o cabeçalho da tabela deve ser exibido.
+	 * @type {boolean}
+	 * @default false
+	 */
+	@Input({ transform: booleanAttribute }) showHeader: boolean = false;
 
 	public displayedColumns: string[] = [];
 

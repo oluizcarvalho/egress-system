@@ -1,11 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FilterComponent } from '@app/features/coordinator/graduates/components/filter/filter.component';
-import { Columns, TableComponent } from '@shared/components/table/table.component';
+import { Columns, TableAction, TableComponent } from '@shared/components/table/table.component';
 import { PAGINATION_GRADUATES_MOCK } from '@app/features/coordinator/graduates/mocks/graduates.mock';
 import { Graduate } from '@app/features/coordinator/graduates/models/graduate.model';
 import { PageEvent, PaginatorComponent } from '@shared/components/paginator/paginator.component';
-import { StudentTestimony } from '@app/features/dashboard/models/titration.model';
-import { Dialog } from '@angular/cdk/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -61,11 +59,21 @@ export class GraduatesComponent {
 	graduatePagination = PAGINATION_GRADUATES_MOCK;
 	dataPaginated = PAGINATION_GRADUATES_MOCK.data.slice(0, PAGINATION_GRADUATES_MOCK.pageSize);
 	router = inject(Router);
+	actions: TableAction[] = [
+		{
+			label: 'Exportar',
+			action: () => this.onExport(),
+		},
+	];
 
 	onPageChange(pageEvent: PageEvent) {
 		const start = (pageEvent.pageIndex - 1) * pageEvent.pageSize;
 		const end = start + pageEvent.pageSize;
 		this.dataPaginated = this.graduatePagination.data.slice(start, end);
+	}
+
+	onExport() {
+		console.log('Exporting data');
 	}
 
 	private redirectDetails(id: number) {
