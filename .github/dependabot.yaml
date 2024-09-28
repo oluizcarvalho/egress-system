@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "deps(prod)"
+      prefix-development: "deps(dev)"
+    groups:
+      angular-version:
+        applies-to: version-updates
+        patterns:
+          - "@angular*"
+        update-types:
+          - "patch"
+      angular-security:
+        applies-to: security-updates
+        patterns:
+          - "@angular*"
+        update-types:
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
+    labels:
+      - "dependencies"
+      - "deploy-preview"
