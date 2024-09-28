@@ -17,12 +17,16 @@ jobs:
       - name: npm install
         run: npm install
 
+      - name: npm test
+        run: npm run test:coverage
+
       - uses: ArtiomTr/jest-coverage-report-action@v2
         id: coverage
         with:
           output: report-markdown
-          skip-step: install
-          test-script: npm run test:coverage
+          coverage-file: report.json
+          skip-step: all
+          package-manager: npm
 
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
