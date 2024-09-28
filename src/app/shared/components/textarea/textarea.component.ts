@@ -123,7 +123,7 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
 	 * Evento emitido quando o valor do campo de texto muda.
 	 * @type {EventEmitter<string>}
 	 */
-	@Output() change: EventEmitter<string> = new EventEmitter<string>();
+	@Output() textChange: EventEmitter<string> = new EventEmitter<string>();
 
 	/**
 	 * Controle do formulário associado ao campo de texto.
@@ -186,7 +186,7 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
 
 	onChange(event: Event) {
 		if (!this.disabled && (event.target as HTMLTextAreaElement).value) {
-			this.change.emit(this.value);
+			this.textChange.emit(this.value);
 		}
 	}
 
