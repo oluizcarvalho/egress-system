@@ -27,14 +27,14 @@ const config: Config = {
 	// The directory where Jest should output its coverage files
 	coverageDirectory: 'coverage',
 
-	// coverageThreshold: {
-	//   global: {
-	//     branches: 0,
-	//     functions: 0,
-	//     lines: 0,
-	//     statements: 0,
-	//   },
-	// },
+	coverageThreshold: {
+		global: {
+			branches: 0,
+			functions: 0,
+			lines: 0,
+			statements: 0,
+		},
+	},
 
 	// Indicates which provider should be used to instrument code for coverage
 	coverageProvider: 'v8',
@@ -53,7 +53,7 @@ const config: Config = {
 
 	// The default configuration for fake timers
 	// fakeTimers: {
-	//   "enableGlobally": false
+	// 	enableGlobally: true,
 	// },
 
 	// Force coverage collection from ignored files using an array of glob patterns
@@ -147,7 +147,7 @@ const config: Config = {
 	// testEnvironmentOptions: {},
 
 	// Adds a location field to test results
-	// testLocationInResults: false,
+	// testLocationInResults: true,
 
 	// The glob patterns Jest uses to detect test files
 	// testMatch: [
