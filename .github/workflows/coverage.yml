@@ -27,7 +27,11 @@ jobs:
       - uses: ArtiomTr/jest-coverage-report-action@v2
         id: coverage
         with:
-          output: comment
+          output: report-markdown
           skip-step: install
           test-script: npm run test:coverage
           package-manager: npm
+
+      - uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: ${{ steps.coverage.outputs.report }}
