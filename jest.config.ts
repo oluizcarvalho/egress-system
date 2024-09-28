@@ -41,7 +41,7 @@ const config: Config = {
 
 	rootDir: 'src',
 	// A list of reporter names that Jest uses when writing coverage reports
-	coverageReporters: ['text'],
+	coverageReporters: ['text', 'json'],
 
 	// An object that configures minimum threshold enforcement for coverage results
 
