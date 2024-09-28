@@ -96,7 +96,7 @@ export class TabsComponent implements OnInit {
 	@Output() activeTabChange: EventEmitter<string | number> = new EventEmitter<string | number>();
 
 	ngOnInit(): void {
-		if (this.activeTab === undefined) this.activeTab = this.tabs.find(tab => tab.active)?.id || this.tabs[0].id;
+		if (this.activeTab === undefined) this.activeTab = this.tabs.find(tab => tab.active)?.id || this.tabs[0]?.id;
 	}
 
 	selectedTab(tab: TabItem) {
