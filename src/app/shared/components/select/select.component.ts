@@ -49,7 +49,7 @@ export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 	 * @type {string}
 	 * @default 'Selecione o item'
 	 */
-	@Input() placeholder = 'Selecione o item';
+	@Input() placeholder: string = 'Selecione o item';
 
 	/**
 	 * Dica de uso para o campo de entrada.
@@ -74,7 +74,7 @@ export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 	 * Evento emitido quando o valor do seletor muda.
 	 * @type {EventEmitter<string>}
 	 */
-	@Output() selectedEvent = new EventEmitter<string>();
+	@Output() selectedEvent: EventEmitter<string> = new EventEmitter<string>();
 
 	/** Instância do componente BRSelect. */
 	instance: any;
