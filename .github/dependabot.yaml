@@ -29,3 +29,11 @@ updates:
         update-types: [ "version-update:semver-major" ]
     labels:
       - "dependencies"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps(actions)"
+    labels:
+      - "actions dependencies"

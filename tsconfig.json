@@ -7,8 +7,10 @@
 		"baseUrl": "src",
 		"paths": {
 			"@app/*": ["app/*"],
-			"@assets/*": ["app/assets/*"],
-			"@shared/*": ["app/shared/*"]
+			"@shared/*": ["app/shared/*"],
+			"@core/*": ["app/core/*"],
+			"@features/*": ["app/features/*"],
+			"@clients/*": ["app/clients/*"]
 		},
 		"strict": false,
 		"noImplicitOverride": true,

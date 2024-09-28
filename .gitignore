@@ -43,3 +43,4 @@ Thumbs.db
 !.husky/
 
 /documentation/
+/src/coverage/
