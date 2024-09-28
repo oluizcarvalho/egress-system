@@ -1,6 +1,6 @@
 name: 'Coverage'
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
 jobs:
@@ -20,8 +20,7 @@ jobs:
       - uses: ArtiomTr/jest-coverage-report-action@v2
         id: coverage
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          output: report-markdown
+          output: comment, report-markdown
           skip-step: install
           test-script: npm run test:coverage
           package-manager: npm
