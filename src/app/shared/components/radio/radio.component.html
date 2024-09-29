@@ -29,6 +29,7 @@
 			[id]="'op-' + option.value"
 			type="radio"
 			name="radio"
+			[attr.aria-checked]="option.value === value"
 			[checked]="option.value === value"
 			[value]="option.value"
 		/>

@@ -15,6 +15,7 @@ import { LoadingService } from './services/loading.service';
 	standalone: true,
 	imports: [],
 	host: { '[class.overlay-loader]': 'showLoading()', '[class.d-none]': '!showLoading()' },
+	providers: [LoadingService],
 	templateUrl: './loading.component.html',
 	styleUrl: './loading.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
