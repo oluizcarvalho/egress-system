@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { GetIconByStatePipe } from '../../pipes/get-icon-by-state.pipe';
+import { GetIconByStatePipe } from '@shared/pipes/get-icon-by-state';
 import { AlertEvent, AlertService } from './alert.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 

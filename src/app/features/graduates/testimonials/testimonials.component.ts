@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
 import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { TESTIMONIALS_MOCK } from './mocks/testimonials.mock';
 import { Testimonial } from './models/testimonials.model';
 import { GetPrivacyDescriptionPipe } from '@app/features/graduates/testimonials/pipes/get-privacy-description.pipe';

@@ -6,7 +6,7 @@ import { InputComponent } from '@shared/components/input/input.component';
 import { SelectComponent } from '@shared/components/select/select.component';
 import { AlertService } from '@shared/components/alert/alert.service';
 import { SelectOptions } from '@shared/models/select.model';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import {
 	CATEGORY_OPTIONS_MOCK,
 	JOB_LEVEL_OPTIONS_MOCK,

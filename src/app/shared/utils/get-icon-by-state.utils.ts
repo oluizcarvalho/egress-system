@@ -1,4 +1,4 @@
-const ICONS_BY_STATE = {
+export const ICONS_BY_STATE = {
 	success: 'fa-check-circle',
 	danger: 'fa-times-circle',
 	warning: 'fa-exclamation-triangle',

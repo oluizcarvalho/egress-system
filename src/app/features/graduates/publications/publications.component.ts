@@ -3,7 +3,7 @@ import { ItemInfoComponent } from '@shared/components/item-info/item-info.compon
 import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
 import { PUBLICATION_MOCK } from '@app/features/graduates/publications/mocks/publications.mock';
 import { RouterLink } from '@angular/router';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 
 @Component({
 	selector: 'app-publications',

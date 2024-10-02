@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { profileMock } from './mocks/profile.mock';
 
 export interface Profile {

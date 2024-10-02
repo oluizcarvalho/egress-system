@@ -4,7 +4,7 @@ import { SelectComponent } from '@shared/components/select/select.component';
 import { MultiSelectComponent } from '@shared/components/multi-select/multi-select.component';
 import { ACADEMIC_SEMESTER_OPTIONS_MOCK } from '../../data/options.mock';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { ControlsOf } from '@shared/types/controls-of.type';
 import { FilterModel } from '../../models/filter.model';
 import { CAMPUS_OPTIONS_MOCK, COURSE_LEVEL_OPTIONS_MOCK } from '@shared/mocks';

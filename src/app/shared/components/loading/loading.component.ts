@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { LoadingService } from './services/loading.service';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {LoadingService} from './services/loading.service';
 
 /**
  * Componente LoadingComponent é responsável por exibir um overlay de carregamento.

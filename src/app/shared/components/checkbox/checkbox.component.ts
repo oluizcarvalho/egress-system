@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import {booleanAttribute, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 
 /**
  * Componente CheckboxComponent é responsável por exibir um checkbox com estado e rótulo.
