@@ -8,8 +8,8 @@ import { BreadcrumbComponent } from '@shared/components/breadcrump/breadcrumb.co
 import { AlertComponent } from '@shared/components/alert/alert.component';
 import { LoadingComponent } from '@shared/components/loading/loading.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AuthService } from './core/auth/services/auth.service';
-import { CheckUpdateService } from './core/update/check-update.service';
+import { AuthService } from '@core/auth/services/auth.service';
+import { CheckUpdateService } from '@core/update/check-update.service';
 
 @Component({
 	selector: 'app-root',

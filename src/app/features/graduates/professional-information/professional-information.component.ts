@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CollapseItemComponent } from '../../../shared/components/collapse-item/collapse-item.component';
-import { ItemInfoComponent } from '../../../shared/components/item-info/item-info.component';
+import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
+import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
 import { PROFESSIONAL_INFO_MOCK } from './mocks/professional-information.mock';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -8,7 +8,7 @@ import { GetJobLevelDescriptionPipe } from './pipes/get-job-level-description.pi
 import { GetLocationDescriptionPipe } from './pipes/get-location-description.pipe';
 import { GetJobTypeDescriptionPipe } from './pipes/get-job-type-description.pipe';
 import { GetCategoryDescriptionPipe } from './pipes/get-category-description.pipe';
-import { ButtonDirective } from '../../../shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes/title-collapse-professional-information.pipe';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CheckboxComponent } from '@shared/components/checkbox/checkbox.component';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({

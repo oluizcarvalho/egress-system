@@ -1,4 +1,4 @@
-import { SelectOptions } from '../models/select.model';
+import {SelectOptions} from '../models/select.model';
 
 /**
  * Função responsável por retornar o label de uma opção.

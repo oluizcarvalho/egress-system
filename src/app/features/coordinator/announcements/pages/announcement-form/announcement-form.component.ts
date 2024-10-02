@@ -10,7 +10,7 @@ import { CheckboxComponent } from '@shared/components/checkbox/checkbox.componen
 import { TypeRecipientsEnum } from '@app/features/coordinator/announcements/models/announcements.model';
 import { COURSE_LEVEL_OPTIONS_MOCK, COURSE_OPTIONS_MOCK } from '@shared/mocks';
 import { FeedbackDirective } from '@shared/directives/feedback.directive';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import {
 	DialogConfirmComponent,
 	DialogConfirmInputs,
