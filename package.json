@@ -34,7 +34,7 @@
 		"@angular/router": "^18.2.6",
 		"@angular/service-worker": "^18.2.6",
 		"@fortawesome/fontawesome-free": "^5.15.4",
-		"@govbr-ds/core": "^3.5.1",
+		"@govbr-ds/core": "^3.6.0",
 		"chart.js": "^4.3.0",
 		"dayjs": "^1.11.12",
 		"express": "^4.18.2",
