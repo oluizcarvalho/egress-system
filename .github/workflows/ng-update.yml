@@ -1,5 +1,6 @@
 name: Update Angular Action
 on:
+  workflow_dispatch:
   schedule:
     - cron: '30 5 * * 6'
 
