@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '30 5 * * 6'
 
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
 jobs:
   ngxUptodate:
     runs-on: ubuntu-latest
