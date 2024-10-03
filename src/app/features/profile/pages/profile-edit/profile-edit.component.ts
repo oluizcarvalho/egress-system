@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
 import { InputComponent } from '@shared/components/input/input.component';
 import { ButtonDirective } from '@shared/directives/button';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { FeedbackDirective } from '@shared/directives/feedback';
 import { AlertService } from '@shared/components/alert/alert.service';
 import { profileMock } from '../../mocks/profile.mock';
 

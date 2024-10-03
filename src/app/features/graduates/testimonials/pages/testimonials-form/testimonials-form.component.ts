@@ -11,7 +11,7 @@ import { SelectOptions } from '@shared/models/select.model';
 import { PRIVACY_OPTIONS, TESTIMONIALS_MOCK } from '../../mocks/testimonials.mock';
 import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks/related-academic-info.mock';
 import { RadioComponent } from '@shared/components/radio/radio.component';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { FeedbackDirective } from '@shared/directives/feedback';
 import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
 import { Dialog } from '@angular/cdk/dialog';
 import { ConsentDialogComponent } from '@app/features/graduates/testimonials/dialogs/consent-dialog/consent-dialog.component';
