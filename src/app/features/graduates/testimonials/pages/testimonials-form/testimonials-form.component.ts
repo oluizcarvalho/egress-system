@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertService } from '@shared/components/alert/alert.service';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { DateTimePickerComponent } from '@shared/components/date-time-picker/date-time-picker.component';
 import { InputComponent } from '@shared/components/input/input.component';
 import { TextareaComponent } from '@shared/components/textarea/textarea.component';
@@ -11,14 +11,9 @@ import { SelectOptions } from '@shared/models/select.model';
 import { PRIVACY_OPTIONS, TESTIMONIALS_MOCK } from '../../mocks/testimonials.mock';
 import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks/related-academic-info.mock';
 import { RadioComponent } from '@shared/components/radio/radio.component';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { FeedbackDirective } from '@shared/directives/feedback';
 import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
 import { Dialog } from '@angular/cdk/dialog';
-import {
-	DialogConfirmComponent,
-	DialogConfirmInputs,
-} from '@shared/components/dialog-confirm/dialog-confirm.component';
-import { TypeRecipientsEnum } from '@app/features/coordinator/announcements/models/announcements.model';
 import { ConsentDialogComponent } from '@app/features/graduates/testimonials/dialogs/consent-dialog/consent-dialog.component';
 
 @Component({

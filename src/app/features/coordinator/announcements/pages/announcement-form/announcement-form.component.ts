@@ -9,8 +9,8 @@ import { MultiSelectComponent } from '@shared/components/multi-select/multi-sele
 import { CheckboxComponent } from '@shared/components/checkbox/checkbox.component';
 import { TypeRecipientsEnum } from '@app/features/coordinator/announcements/models/announcements.model';
 import { COURSE_LEVEL_OPTIONS_MOCK, COURSE_OPTIONS_MOCK } from '@shared/mocks';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { FeedbackDirective } from '@shared/directives/feedback';
+import { ButtonDirective } from '@shared/directives/button';
 import {
 	DialogConfirmComponent,
 	DialogConfirmInputs,

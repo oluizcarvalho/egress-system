@@ -4,7 +4,7 @@ import { DatePipe, NgClass } from '@angular/common';
 import { NgxMaskPipe } from 'ngx-mask';
 import { SizeOptions } from '../../types/size.type';
 import { CdkMenuModule } from '@angular/cdk/menu';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 
 export interface Columns {
 	columnDef: string;

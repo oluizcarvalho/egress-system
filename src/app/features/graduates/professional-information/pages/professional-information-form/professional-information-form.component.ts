@@ -6,7 +6,7 @@ import { InputComponent } from '@shared/components/input/input.component';
 import { SelectComponent } from '@shared/components/select/select.component';
 import { AlertService } from '@shared/components/alert/alert.service';
 import { SelectOptions } from '@shared/models/select.model';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import {
 	CATEGORY_OPTIONS_MOCK,
 	JOB_LEVEL_OPTIONS_MOCK,
@@ -15,7 +15,7 @@ import {
 	PROFESSIONAL_INFO_MOCK,
 } from '../../mocks/professional-information.mock';
 import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { FeedbackDirective } from '@shared/directives/feedback';
 import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { Columns, TableComponent } from '@shared/components/table/table.component';
 import { Announcement } from '@app/features/coordinator/announcements/models/announcements.model';
 import { PAGINATION_ANNOUNCEMENTS_MOCK } from '@app/features/coordinator/announcements/mocks/announcements.mock';

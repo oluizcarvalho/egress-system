@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { ButtonDirective } from '../../shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { RouterLink } from '@angular/router';
 
 @Component({

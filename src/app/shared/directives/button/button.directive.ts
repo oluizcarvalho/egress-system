@@ -1,5 +1,5 @@
 import { booleanAttribute, Directive, ElementRef, inject, Input, OnInit, Renderer2 } from '@angular/core';
-import { SizeOptions } from '../types/size.type';
+import { SizeOptions } from '../../types/size.type';
 
 /**
  * Diretiva para estilizar botões com várias opções.

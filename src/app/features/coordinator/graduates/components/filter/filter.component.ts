@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonDirective } from '@shared/directives/button.directive';
+import { ButtonDirective } from '@shared/directives/button';
 import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
 import { MultiSelectComponent } from '@shared/components/multi-select/multi-select.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';

@@ -8,8 +8,8 @@ import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AlertService } from '@shared/components/alert/alert.service';
-import { ButtonDirective } from '@shared/directives/button.directive';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { ButtonDirective } from '@shared/directives/button';
+import { FeedbackDirective } from '@shared/directives/feedback';
 
 @Component({
 	selector: 'app-publications-form',

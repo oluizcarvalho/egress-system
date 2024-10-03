@@ -8,7 +8,7 @@ import {
 	OnDestroy,
 	Renderer2,
 } from '@angular/core';
-import { getIconByStateUtils, StateType } from '../utils/get-icon-by-state.utils';
+import { getIconByStateUtils, StateType } from '../../utils/get-icon-by-state.utils';
 
 /**
  * Diretiva FeedbackDirective é responsável por exibir um feedback visual de estado.
@@ -47,8 +47,10 @@ export class FeedbackDirective implements AfterViewInit, OnDestroy {
 	ngAfterViewInit(): void {
 		this.node = this.renderer.parentNode(this.el.nativeElement) as HTMLDivElement;
 
-		this.setState();
-		this.setIcon();
+		if (this.state) {
+			this.setState();
+			this.setIcon();
+		}
 	}
 
 	private setState(): void {

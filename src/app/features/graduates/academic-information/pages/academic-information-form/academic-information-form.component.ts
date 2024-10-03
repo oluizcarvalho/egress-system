@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { ButtonDirective } from '@shared/directives/button.directive';
-import { FeedbackDirective } from '@shared/directives/feedback.directive';
+import { ButtonDirective } from '@shared/directives/button';
+import { FeedbackDirective } from '@shared/directives/feedback';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputComponent } from '@shared/components/input/input.component';
 import { EDUCATION_HISTORY_MOCK } from '../../mocks/academic-information.mock';
