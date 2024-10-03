@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { InputComponent } from '../../shared/components/input/input.component';
+import { InputComponent } from '@shared/components/input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonDirective } from '@shared/directives/button';
 import { getUserMock } from './mocks/users.mock';
-import { AlertService } from '../../shared/components/alert/alert.service';
+import { AlertService } from '@shared/components/alert/alert.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/auth/services/auth.service';
+import { AuthService } from '@core/auth/services/auth.service';
 import { Role } from './models/credentials.model';
-import { FeedbackDirective } from '../../shared/directives/feedback.directive';
+import { FeedbackDirective } from '@shared/directives/feedback';
 
 @Component({
 	selector: 'app-login',
