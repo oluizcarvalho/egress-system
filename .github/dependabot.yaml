@@ -9,24 +9,10 @@ updates:
     commit-message:
       prefix: "deps(prod)"
       prefix-development: "deps(dev)"
-    groups:
-      angular-version:
-        applies-to: version-updates
-        patterns:
-          - "@angular*"
-        update-types:
-          - "patch"
-          - "minor"
-      angular-security:
-        applies-to: security-updates
-        patterns:
-          - "@angular*"
-        update-types:
-          - "patch"
-          - "minor"
     ignore:
       - dependency-name: "*"
         update-types: [ "version-update:semver-major" ]
+      - dependency-name: "@angular*"
     labels:
       - "dependencies"
   - package-ecosystem: "github-actions"
