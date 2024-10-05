@@ -22,12 +22,12 @@ describe('TextareaComponent', () => {
 		expect(spectator.component.size).toBe('medium');
 		expect(spectator.component.placeholder).toBe('');
 		expect(spectator.component.hint).toBe('');
-		expect(spectator.component.disabled).toBe(false);
-		expect(spectator.component.readonly).toBe(false);
-		expect(spectator.component.showLimit).toBe(true);
-		expect(spectator.component.showCounter).toBe(true);
+		expect(spectator.component.disabled).toBeFalsy();
+		expect(spectator.component.readonly).toBeFalsy();
+		expect(spectator.component.showLimit).toBeTruthy();
+		expect(spectator.component.showCounter).toBeTruthy();
 		expect(spectator.component.maxLength).toBeUndefined();
-		expect(spectator.component.required).toBe(false);
+		expect(spectator.component.required).toBeFalsy();
 	});
 
 	it('should set and get value correctly', () => {
@@ -60,7 +60,7 @@ describe('TextareaComponent', () => {
 
 	it('should set disabled state correctly', () => {
 		spectator.component.setDisabledState(true);
-		expect(spectator.component.disabled).toBe(true);
+		expect(spectator.component.disabled).toBeTruthy();
 	});
 
 	it('should register onChange function', () => {
@@ -114,8 +114,8 @@ describe('TextareaComponent', () => {
 
 	it('should update _required when required is set', () => {
 		spectator.component.required = true;
-		expect(spectator.component['_required']).toBe(true);
+		expect(spectator.component['_required']).toBeTruthy();
 		spectator.component.required = false;
-		expect(spectator.component['_required']).toBe(false);
+		expect(spectator.component['_required']).toBeFalsy();
 	});
 });

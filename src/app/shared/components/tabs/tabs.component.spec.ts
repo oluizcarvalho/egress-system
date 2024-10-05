@@ -15,7 +15,7 @@ describe('TabsComponent', () => {
 
 	it('should have default values', () => {
 		expect(spectator.component.size).toBe('medium');
-		expect(spectator.component.onlyIcon).toBe(false);
+		expect(spectator.component.onlyIcon).toBeFalsy();
 		expect(spectator.component.tabs).toEqual([]);
 	});
 

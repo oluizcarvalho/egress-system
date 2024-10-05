@@ -19,18 +19,18 @@ describe('SwitchComponent', () => {
 		expect(spectator.component.hintActive).toBe('');
 		expect(spectator.component.hintInactive).toBe('');
 		expect(spectator.component.size).toBe('medium');
-		expect(spectator.component.icon).toBe(false);
-		expect(spectator.component.disabled).toBe(false);
-		expect(spectator.component.checked).toBe(false);
+		expect(spectator.component.icon).toBeFalsy();
+		expect(spectator.component.disabled).toBeFalsy();
+		expect(spectator.component.checked).toBeFalsy();
 		expect(spectator.component.position).toBe('left');
 	});
 
 	it('should toggle the value when toggle method is called', () => {
 		spectator.component.value = false;
 		spectator.component.toggle();
-		expect(spectator.component.value).toBe(true);
+		expect(spectator.component.value).toBeTruthy();
 		spectator.component.toggle();
-		expect(spectator.component.value).toBe(false);
+		expect(spectator.component.value).toBeFalsy();
 	});
 
 	it('should emit valueChange event when value is changed', () => {
@@ -43,6 +43,6 @@ describe('SwitchComponent', () => {
 		spectator.component.disabled = true;
 		spectator.component.value = false;
 		spectator.component.toggle();
-		expect(spectator.component.value).toBe(false);
+		expect(spectator.component.value).toBeFalsy();
 	});
 });

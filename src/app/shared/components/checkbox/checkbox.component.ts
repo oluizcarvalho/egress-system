@@ -1,4 +1,4 @@
-import {booleanAttribute, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 /**
  * Componente CheckboxComponent é responsável por exibir um checkbox com estado e rótulo.
@@ -13,6 +13,11 @@ import {booleanAttribute, Component, EventEmitter, HostBinding, Input, Output} f
 	selector: 'app-checkbox',
 	standalone: true,
 	imports: [],
+	host: {
+		class: 'br-checkbox',
+		'[class.valid]': 'state === "valid"',
+		'[class.invalid]': 'state === "invalid"',
+	},
 	templateUrl: './checkbox.component.html',
 })
 export class CheckboxComponent {
@@ -47,9 +52,6 @@ export class CheckboxComponent {
 	 * @type {boolean}
 	 */
 	@Input({ transform: booleanAttribute }) checked: boolean = false;
-
-	/** Classe CSS do checkbox. */
-	@HostBinding('class') class = 'br-checkbox' + (this.state ? ` ${this.state}` : '');
 
 	/** Classe CSS para o estado desabilitado. */
 	@HostBinding('class.disabled') get disabledClass() {
