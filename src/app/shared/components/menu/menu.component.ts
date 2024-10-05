@@ -57,7 +57,7 @@ export class MenuComponent implements AfterViewInit {
 	}
 
 	closeMenu() {
-		if (this._brMenu) this._brMenu.nativeElement.querySelector('[data-dismiss="menu"]').click();
+		if (this._brMenu) this._brMenu.nativeElement.querySelector('[data-dismiss="menu"]')?.click();
 	}
 
 	closeMenuIfMobile() {

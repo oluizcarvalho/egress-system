@@ -1,9 +1,7 @@
-import { isPlatformBrowser } from '@angular/common';
-
 export abstract class StorageBase {
 	protected ourStorage!: Storage;
 
-	protected constructor(private platformId: Object) {}
+	constructor() {}
 
 	/**
 	 * It takes a key and a value, and then it sets the value in the storage
@@ -11,8 +9,6 @@ export abstract class StorageBase {
 	 * @param {unknown} value - The value to store.
 	 */
 	setItem(key: string, value: unknown): void {
-		if (!isPlatformBrowser(this.platformId)) return;
-
 		if (typeof value == 'string') {
 			this.ourStorage.setItem(key, value);
 		} else {
@@ -26,8 +22,6 @@ export abstract class StorageBase {
 	 * @returns The value of the key in the storage.
 	 */
 	getItem(key: string): string | null {
-		if (!isPlatformBrowser(this.platformId)) return null;
-
 		return this.ourStorage.getItem(key);
 	}
 
@@ -37,8 +31,6 @@ export abstract class StorageBase {
 	 * @returns The value of the key in the localStorage.
 	 */
 	getParseItem<T = unknown>(key: string): T | null {
-		if (!isPlatformBrowser(this.platformId)) return null;
-
 		const data = this.getItem(key);
 
 		if (data) {
@@ -52,8 +44,6 @@ export abstract class StorageBase {
 	 * @param {string} key - The key of the item you want to remove.
 	 */
 	removeItem(key: string): void {
-		if (!isPlatformBrowser(this.platformId)) return;
-
 		this.ourStorage.removeItem(key);
 	}
 
@@ -63,8 +53,6 @@ export abstract class StorageBase {
 	 * @returns A boolean value.
 	 */
 	hasItem(key: string): boolean {
-		if (!isPlatformBrowser(this.platformId)) return false;
-
 		return this.ourStorage.hasOwnProperty(key);
 	}
 
@@ -72,8 +60,6 @@ export abstract class StorageBase {
 	 * It clears the local storage.
 	 */
 	clear(): void {
-		if (!isPlatformBrowser(this.platformId)) return;
-
 		this.ourStorage.clear();
 	}
 }
