@@ -67,7 +67,7 @@ describe('PaginatorComponent', () => {
 	it('should set expanded attribute when toggling size options to true', () => {
 		const element = document.createElement('div');
 		spectator.component.toggleSizeOptions(element);
-		expect(element.hasAttribute('expanded')).toBe(true);
+		expect(element.hasAttribute('expanded')).toBeTruthy();
 	});
 
 	it('should call closeAll when toggling size options', () => {
@@ -79,7 +79,7 @@ describe('PaginatorComponent', () => {
 
 	it('should not set expanded attribute if element is null', () => {
 		spectator.component.toggleSizeOptions(null);
-		expect(spectator.component.expandedOptions).toBe(true);
+		expect(spectator.component.expandedOptions).toBeTruthy();
 	});
 
 	it('should set pageIndex to totalPages - 1 if totalPages is less than pageIndex', () => {

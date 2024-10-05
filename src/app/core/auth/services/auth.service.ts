@@ -1,8 +1,7 @@
-import { computed, Inject, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
-import { LocalStorageService } from '../../../shared/services/storage';
-import { Credentials, Role } from '../../../features/login/models/credentials.model';
-import { isPlatformBrowser } from '@angular/common';
+import { LocalStorageService } from '@shared/services/storage';
+import { Credentials, Role } from '@features/login/models/credentials.model';
 import { toObservable } from '@angular/core/rxjs-interop';
 
 const KEY_STORAGE = 'credentials';
@@ -19,10 +18,8 @@ export class AuthService {
 	isCoordinator = computed(() => this.credentials()?.role === Role.COORDINATOR);
 	isPublic = computed(() => !this.credentials() || this.credentials()?.role === Role.PUBLIC);
 
-	constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-		if (isPlatformBrowser(this.platformId)) {
-			this.credentials.set(this.localStorage.getParseItem<Credentials>(KEY_STORAGE));
-		}
+	constructor() {
+		this.credentials.set(this.localStorage.getParseItem<Credentials>(KEY_STORAGE));
 	}
 
 	setCredentials(credentials: Credentials): void {

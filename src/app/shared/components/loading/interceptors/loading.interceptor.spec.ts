@@ -34,25 +34,25 @@ describe('loadingInterceptor', () => {
 		const loadingService = spectator.inject(LoadingService);
 		spectator.service.get('/test-url').subscribe();
 		spectator.controller.expectOne('/test-url').flush({});
-		expect(loadingService.loadingSignal()).toBe(false);
+		expect(loadingService.loadingSignal()).toBeFalsy();
 	});
 
 	it('should not set loading to true if KEY_NO_LOADING is present', () => {
 		const loadingService = spectator.inject(LoadingService);
 		spectator.service.getNoLoading(`/test-url`).subscribe();
-		expect(loadingService.loadingSignal()).toBe(false);
+		expect(loadingService.loadingSignal()).toBeFalsy();
 		spectator.controller.expectOne('/test-url?noLoading=true').flush({});
-		expect(loadingService.loadingSignal()).toBe(false);
+		expect(loadingService.loadingSignal()).toBeFalsy();
 	});
 
 	it('should handle multiple requests correctly', () => {
 		const loadingService = spectator.inject(LoadingService);
 		spectator.service.get('/test-url-1').subscribe();
 		spectator.service.get('/test-url-2').subscribe();
-		expect(loadingService.loadingSignal()).toBe(true);
+		expect(loadingService.loadingSignal()).toBeTruthy();
 		spectator.controller.expectOne('/test-url-1').flush({});
-		expect(loadingService.loadingSignal()).toBe(true);
+		expect(loadingService.loadingSignal()).toBeTruthy();
 		spectator.controller.expectOne('/test-url-2').flush({});
-		expect(loadingService.loadingSignal()).toBe(false);
+		expect(loadingService.loadingSignal()).toBeFalsy();
 	});
 });
