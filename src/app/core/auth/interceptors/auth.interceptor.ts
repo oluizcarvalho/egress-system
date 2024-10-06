@@ -27,7 +27,7 @@ export const authInterceptor: HttpInterceptorFn = (
 	} else if (authService.isAuthenticated && !clonedRequest.url.includes('assets')) {
 		clonedRequest = clonedRequest.clone({
 			setHeaders: {
-				Authorization: `Bearer ${authService.credentials?.accessToken}`,
+				Authorization: `Bearer ${authService.credentials()?.accessToken}`,
 			},
 		});
 	}
