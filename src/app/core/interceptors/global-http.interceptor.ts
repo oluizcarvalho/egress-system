@@ -9,31 +9,16 @@ import {
 import { inject } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { AlertService } from '../../shared/components/alert/alert.service';
-import { StateType } from '../../shared/utils/get-icon-by-state.utils';
-import { AuthService } from '../auth/services/auth.service';
+import { AlertService } from '@shared/components/alert/alert.service';
+import { StateType } from '@shared/utils/get-icon-by-state.utils';
 
 export const KEY_HIDE_NOTIFICATION = 'hideNotification';
-export const KEY_NO_AUTH = 'noAuth';
 
 export const globalInterceptor: HttpInterceptorFn = (
 	req: HttpRequest<any>,
 	next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
 	let clonedRequest = req;
-	const authService = inject(AuthService);
-
-	if (clonedRequest.params.has(KEY_NO_AUTH)) {
-		clonedRequest = clonedRequest.clone({
-			params: clonedRequest.params.delete(KEY_NO_AUTH),
-		});
-	} else if (authService.isAuthenticated && !clonedRequest.url.includes('assets')) {
-		clonedRequest = clonedRequest.clone({
-			setHeaders: {
-				Authorization: `Bearer ${authService.credentials()?.accessToken}`,
-			},
-		});
-	}
 
 	if (clonedRequest.params.has(KEY_HIDE_NOTIFICATION)) {
 		clonedRequest = clonedRequest.clone({
