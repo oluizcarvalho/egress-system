@@ -29,7 +29,7 @@ jobs:
         with:
           output: report-markdown
           skip-step: install
-          test-script: npm run test:coverage
+          test-script: npm run test:ci
           package-manager: npm
 
       - uses: marocchino/sticky-pull-request-comment@v2
