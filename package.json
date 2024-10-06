@@ -14,7 +14,7 @@
 		"compodoc:serve": "compodoc -s",
 		"doc": "compodoc -p tsconfig.doc.json -n \"Sistema de Egressos UFU\" --language pt-BR --disableCoverage --disableInternal --disableLifeCycleHooks --customLogo ./public/favicon/apple-touch-icon.png --customFavicon ./public/favicon/favicon.ico --output ./documentation",
 		"test": "ng test",
-		"test:ci": "ng test --ci",
+		"test:coverage-local": "ng test --coverage --coverage-directory coverage",
 		"test:coverage": "ng test --ci --json --coverage --test-location-in-results --output-file report.json",
 		"test:watch": "ng test --watch"
 	},

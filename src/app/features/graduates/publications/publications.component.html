@@ -5,7 +5,7 @@
 <h1>Publicações</h1>
 
 @for (publication of data; track publication.id; let first = $first) {
-	<app-collapse-item [label]="'Publicação ' + publication.id" [id]="publication.id.toString()" [expanded]="first">
+	<app-collapse-item [label]="publication.title" [id]="publication.id.toString()" [expanded]="first">
 		<div class="btn-edit">
 			<button
 				size="small"

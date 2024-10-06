@@ -7,3 +7,4 @@ declare module '@govbr-ds/core/dist/components/input/input';
 declare module '@govbr-ds/core/dist/components/datetimepicker/datetimepicker';
 declare module '@govbr-ds/core/dist/components/message/message';
 declare module '@govbr-ds/core/dist/components/checkbox/checkbox';
+declare module '@govbr-ds/core/dist/components/cookiebar/cookiebar';

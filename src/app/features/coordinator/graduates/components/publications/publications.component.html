@@ -1,6 +1,6 @@
 @if (data.length) {
 	@for (publication of data; track publication.id; let first = $first) {
-		<app-collapse-item [label]="'Publicação ' + publication.id" [id]="publication.id.toString()" [expanded]="first">
+		<app-collapse-item [label]="publication.title" [id]="publication.id.toString()" [expanded]="first">
 			<ng-container *ngTemplateOutlet="templateRef; context: { $implicit: publication }"></ng-container>
 		</app-collapse-item>
 		@if (!$last) {
