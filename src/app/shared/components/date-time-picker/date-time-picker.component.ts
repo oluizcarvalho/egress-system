@@ -8,10 +8,10 @@ import {
 	Input,
 	OnInit,
 } from '@angular/core';
-import BRDateTimePicker from '@govbr-ds/core/dist/components/datetimepicker/datetimepicker';
-import dayjs from 'dayjs';
 import { NgClass } from '@angular/common';
 import { AbstractControl, ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import dayjs from 'dayjs';
+import BRDateTimePicker from '@govbr-ds/core/dist/components/datetimepicker/datetimepicker';
 
 export const TYPE_DATE_PICKER = {
 	date: 'text',
@@ -208,7 +208,7 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 	 */
 	normalizeDate(date: string | Date): string {
 		if (date instanceof Date) {
-			return dayjs(date).format('DD/MM/YYY');
+			return dayjs(date).format('DD/MM/YYYY');
 		}
 		if (!date) return date;
 		const [day, month, year] = date.split('/');
