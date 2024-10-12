@@ -69,7 +69,7 @@ export class MultiSelectComponent implements AfterViewInit, ControlValueAccessor
 	 * Dados de opções do seletor múltiplo.
 	 * @type {SelectOption[]}
 	 */
-	@Input() data: SelectOption[] = [];
+	@Input() options: SelectOption[] = [];
 
 	/**
 	 * Evento emitido quando os itens selecionados mudam.

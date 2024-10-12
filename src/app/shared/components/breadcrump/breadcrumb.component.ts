@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
+import { NgClass } from '@angular/common';
 
 /**
  * Componente BreadcrumbComponent é responsável por exibir a navegação de breadcrumb.
@@ -22,7 +23,7 @@ import BRBreadcrumb from '@govbr-ds/core/dist/components/breadcrumb/breadcrumb';
 @Component({
 	selector: 'app-breadcrumb',
 	standalone: true,
-	imports: [RouterLink],
+	imports: [RouterLink, NgClass],
 	host: {
 		class: 'br-breadcrumb',
 		'[class.d-none]': '!showBreadcrumb()',
@@ -63,7 +64,7 @@ export class BreadcrumbComponent implements AfterViewInit, OnInit {
 
 				this.showBreadcrumb.set(false);
 
-				const firstChild = this.route.root.firstChild;
+				const firstChild = this.route.root?.firstChild;
 				if (firstChild) {
 					this.buildBreadcrumbs(firstChild);
 
