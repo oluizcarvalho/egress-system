@@ -16,7 +16,7 @@ import {
 } from '../../mocks/professional-information.mock';
 import { RELATED_ACADEMIC_INFO_OPTIONS } from '@shared/mocks';
 import { FeedbackDirective } from '@shared/directives/feedback';
-import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
+import { HasErrorPipe } from '@shared/pipes';
 
 @Component({
 	selector: 'app-professional-information-form',

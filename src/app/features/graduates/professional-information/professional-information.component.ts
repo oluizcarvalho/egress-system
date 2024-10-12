@@ -4,12 +4,14 @@ import { ItemInfoComponent } from '@shared/components/item-info/item-info.compon
 import { PROFESSIONAL_INFO_MOCK } from './mocks/professional-information.mock';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { GetJobLevelDescriptionPipe } from './pipes/get-job-level-description.pipe';
-import { GetLocationDescriptionPipe } from './pipes/get-location-description.pipe';
-import { GetJobTypeDescriptionPipe } from './pipes/get-job-type-description.pipe';
-import { GetCategoryDescriptionPipe } from './pipes/get-category-description.pipe';
 import { ButtonDirective } from '@shared/directives/button';
-import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes/title-collapse-professional-information.pipe';
+import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes';
+import {
+	GetCategoryDescriptionPipe,
+	GetJobLevelDescriptionPipe,
+	GetJobTypeDescriptionPipe,
+	GetLocationDescriptionPipe,
+} from '@features/graduates/professional-information/pipes';
 
 @Component({
 	selector: 'app-professional-information',

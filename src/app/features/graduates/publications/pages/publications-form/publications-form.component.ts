@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { DateTimePickerComponent } from '@shared/components/date-time-picker/date-time-picker.component';
-import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
+import { HasErrorPipe } from '@shared/pipes';
 import { InputComponent } from '@shared/components/input/input.component';
 import { SelectComponent } from '@shared/components/select/select.component';
 import { PUBLICATION_MOCK } from '@app/features/graduates/publications/mocks/publications.mock';
