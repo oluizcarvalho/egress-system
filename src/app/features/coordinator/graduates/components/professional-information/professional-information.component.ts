@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
 import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
 import { CurrencyPipe, DatePipe, NgTemplateOutlet } from '@angular/common';
-import { GetCategoryDescriptionPipe } from '@app/features/graduates/professional-information/pipes/get-category-description.pipe';
-import { GetJobTypeDescriptionPipe } from '@app/features/graduates/professional-information/pipes/get-job-type-description.pipe';
-import { GetLocationDescriptionPipe } from '@app/features/graduates/professional-information/pipes/get-location-description.pipe';
-import { GetJobLevelDescriptionPipe } from '@app/features/graduates/professional-information/pipes/get-job-level-description.pipe';
 import { PROFESSIONAL_INFO_MOCK } from '@app/features/graduates/professional-information/mocks/professional-information.mock';
-import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes/title-collapse-professional-information.pipe';
+import { TitleCollapseProfessionalInformationPipe } from '@shared/pipes';
+import {
+	GetCategoryDescriptionPipe,
+	GetJobLevelDescriptionPipe,
+	GetJobTypeDescriptionPipe,
+	GetLocationDescriptionPipe,
+} from '@features/graduates/professional-information/pipes';
 
 @Component({
 	selector: 'app-graduate-professional-information',

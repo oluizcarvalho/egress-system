@@ -9,7 +9,7 @@ import { AlertService } from '@shared/components/alert/alert.service';
 import { DateTimePickerComponent } from '@shared/components/date-time-picker/date-time-picker.component';
 import { SelectComponent } from '@shared/components/select/select.component';
 import { COURSE_LEVEL_OPTIONS_MOCK, INSTITUTION_TYPE_OPTIONS_MOCK } from '@shared/mocks';
-import { HasErrorPipe } from '@shared/pipes/has-error.pipe';
+import { HasErrorPipe } from '@shared/pipes';
 
 @Component({
 	selector: 'app-academic-information-form',

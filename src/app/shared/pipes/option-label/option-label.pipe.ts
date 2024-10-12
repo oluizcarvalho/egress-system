@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SelectOption } from '../models/select.model';
+import { SelectOption } from '@shared/models/select.model';
 
 /**
  * Pipe OptionLabelPipe é responsável por retornar o label de uma opção.

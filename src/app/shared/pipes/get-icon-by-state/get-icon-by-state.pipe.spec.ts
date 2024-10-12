@@ -1,5 +1,5 @@
 import { createPipeFactory, SpectatorPipe } from '@ngneat/spectator/jest';
-import { GetIconByStatePipe } from './get-icon-by-state.pipe';
+import { GetIconByStatePipe } from '@shared/pipes';
 import { ICONS_BY_STATE } from '../../utils/get-icon-by-state.utils';
 
 describe('GetIconByStatePipe', () => {
