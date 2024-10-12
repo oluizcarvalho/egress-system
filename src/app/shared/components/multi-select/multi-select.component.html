@@ -13,7 +13,7 @@
 				<label for="{{ id + '-all' }}">Selecionar Todos</label>
 			</div>
 		</div>
-		@for (option of data; let i = $index; track option.value) {
+		@for (option of options; let i = $index; track option.value) {
 			<div class="br-item" tabindex="-1" (click)="setSelected()">
 				<div class="br-checkbox">
 					<input id="{{ id + i }}" type="checkbox" value="{{ option.value }}" />

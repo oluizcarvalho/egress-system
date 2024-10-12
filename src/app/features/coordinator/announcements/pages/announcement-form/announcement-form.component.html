@@ -16,14 +16,14 @@
 			}
 		</div>
 		<div class="col-12 col-lg-4">
-			<app-multi-select [data]="coursesOptions" id="courses" label="Cursos" formControlName="courses">
+			<app-multi-select [options]="coursesOptions" id="courses" label="Cursos" formControlName="courses">
 				@if (form.controls.courses.invalid && !form.controls.courses.untouched) {
 					<span br-feedback state="warning"> Selecione um ou mais cursos </span>
 				}
 			</app-multi-select>
 		</div>
 		<div class="col-12 col-lg-4">
-			<app-multi-select [data]="levelsOptions" id="levels" label="Níveis do curso" formControlName="levels">
+			<app-multi-select [options]="levelsOptions" id="levels" label="Níveis do curso" formControlName="levels">
 				@if (form.controls.levels.invalid && !form.controls.levels.untouched) {
 					<span br-feedback state="warning"> Selecione um ou mais níveis </span>
 				}

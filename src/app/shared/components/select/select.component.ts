@@ -99,7 +99,7 @@ export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 	protected _change: (value: string) => void = () => void undefined;
 
 	/** Elemento BRSelect injetado. */
-	brSelect = inject(ElementRef);
+	private brSelect = inject(ElementRef);
 	/** Renderer2 injetado para manipulação do DOM. */
 	renderer = inject(Renderer2);
 
@@ -132,6 +132,7 @@ export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 	}
 
 	setSelected() {
+		if (this.disabled) return;
 		this.value = this.instance.selectedValue;
 	}
 
