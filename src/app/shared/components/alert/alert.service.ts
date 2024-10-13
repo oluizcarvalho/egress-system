@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StateType } from '../../utils/get-icon-by-state.utils';
+import { StateType } from '@shared/utils';
 import { Subject } from 'rxjs';
 
 /**

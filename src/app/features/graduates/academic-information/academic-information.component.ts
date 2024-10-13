@@ -5,7 +5,7 @@ import { ButtonDirective } from '@shared/directives/button';
 import { ItemInfoComponent } from '@shared/components/item-info/item-info.component';
 import { CollapseItemComponent } from '@shared/components/collapse-item/collapse-item.component';
 import { EDUCATION_HISTORY_MOCK } from './mocks/academic-information.mock';
-import { OptionLabelPipe, TitleCollapseProfessionalInformationPipe } from '@shared/pipes';
+import { OptionLabelPipe, TitleCollapseAcademicInformationPipe } from '@shared/pipes';
 import {
 	GetCourseLevelDescriptionPipe,
 	GetInstitutionTypeDescriptionPipe,
@@ -23,7 +23,7 @@ import {
 		OptionLabelPipe,
 		GetInstitutionTypeDescriptionPipe,
 		GetCourseLevelDescriptionPipe,
-		TitleCollapseProfessionalInformationPipe,
+		TitleCollapseAcademicInformationPipe,
 	],
 	templateUrl: './academic-information.component.html',
 	styleUrl: './academic-information.component.scss',
