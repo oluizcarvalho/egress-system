@@ -9,16 +9,22 @@
 			</app-input>
 		</div>
 
-		<div class="col-12 col-lg-3">
-			<app-input id="authorName" label="Nome do Autor" formControlName="authorName">
-				@if (form.get('authorName') | hasError) {
+		<div class="col-12 col-lg-6">
+			<app-input
+				id="authors"
+				label="Autores"
+				placeholder="Ex: João Pereira; Maria Santos"
+				hint="Insira os nomes dos autores no formato 'Nome Sobrenome', separados por ponto e vírgula. Mantenha a ordem de autoria original."
+				formControlName="authors"
+			>
+				@if (form.get('authors') | hasError) {
 					<span br-feedback state="danger">Campo obrigatório</span>
 				}
 			</app-input>
 		</div>
 
 		<div class="col-12 col-lg-3">
-			<app-input type="number" id="year" label="Ano da Publicação" mask="0000" formControlName="year">
+			<app-input inputmode="numeric" type="text" id="year" label="Ano da Publicação" mask="0000" formControlName="year">
 				@if (form.get('year') | hasError) {
 					<span br-feedback state="danger">Campo obrigatório</span>
 				}
@@ -35,7 +41,15 @@
 			</app-input>
 		</div>
 
-		<div class="col-12 col-lg-5">
+		<div class="col-12 col-lg-3">
+			<app-input inputmode="url" id="url" label="URL da Publicação" formControlName="url">
+				@if (form.get('url') | hasError) {
+					<span br-feedback state="danger">Campo obrigatório</span>
+				}
+			</app-input>
+		</div>
+
+		<div class="col-12 col-lg-3">
 			@if (relatedAcademicInfoOptions.length > 1) {
 				<app-select
 					[options]="relatedAcademicInfoOptions"
@@ -50,7 +64,7 @@
 			}
 		</div>
 		<div
-			class="col-12 col-lg-4 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0 gap-3"
+			class="col-12 col-lg-3 d-flex align-items-end justify-content-lg-end justify-content-center mt-4 mt-md-0 gap-3 h-auto"
 		>
 			@if (mode() === 'edit') {
 				<button br-button color="secondary" (click)="onDelete()">Excluir</button>

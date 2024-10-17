@@ -32,22 +32,23 @@ export class PublicationsFormComponent {
 	mode = signal<'create' | 'edit'>('create');
 	id?: string;
 	data = PUBLICATION_MOCK;
-	relatedAcademicInfoOptions = RELATED_ACADEMIC_INFO_OPTIONS;
+	readonly relatedAcademicInfoOptions = RELATED_ACADEMIC_INFO_OPTIONS;
 
-	route = inject(ActivatedRoute);
-	router = inject(Router);
-	alertService = inject(AlertService);
+	private _route = inject(ActivatedRoute);
+	private _router = inject(Router);
+	private _alertService = inject(AlertService);
 
 	constructor() {
 		this.form = new FormGroup({
 			title: new FormControl('', [Validators.required]),
-			authorName: new FormControl('', [Validators.required]),
+			authors: new FormControl('', [Validators.required]),
 			year: new FormControl('', [Validators.required]),
 			journal: new FormControl('', [Validators.required]),
 			relatedAcademicInfo: new FormControl('', [Validators.required]),
+			url: new FormControl('', [Validators.required]),
 		});
 
-		this.route.paramMap.subscribe(params => {
+		this._route.paramMap.subscribe(params => {
 			const id = params.get('id');
 
 			this.mode.set(id ? 'edit' : 'create');
@@ -64,13 +65,13 @@ export class PublicationsFormComponent {
 
 	onSubmit() {
 		if (this.form.invalid) {
-			this.alertService.showAlert('warning', 'Preencha todos os campos obrigatórios.', 'Atenção.');
+			this._alertService.showAlert('warning', 'Preencha todos os campos obrigatórios.', 'Atenção.');
 			this.form.markAllAsTouched();
 			return;
 		}
 
-		this.alertService.showAlert('success', 'Publicação salva com sucesso!', 'Sucesso.');
-		this.router.navigate(['/publicacoes']);
+		this._alertService.showAlert('success', 'Publicação salva com sucesso!', 'Sucesso.');
+		this._router.navigate(['/publicacoes']);
 	}
 
 	onDelete() {
