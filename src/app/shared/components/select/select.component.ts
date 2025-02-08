@@ -124,10 +124,19 @@ export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 	 * @internal
 	 */
 	private _populateItemSelected(): void {
+		const optionSelected = this.brSelect.nativeElement.querySelector('.br-item.selected');
+
+		if (optionSelected) {
+			this.renderer.removeClass(optionSelected, 'selected');
+			const input = optionSelected.querySelector('input[type="radio"]');
+			if (input) this.renderer.removeAttribute(input, 'checked');
+		}
+
 		if (this.value) {
 			const optionValue = this.brSelect.nativeElement.querySelector(`div.br-item[data-value="${this.value}`);
 			if (optionValue) this.renderer.addClass(optionValue, 'selected');
 		}
+
 		document.body.click();
 	}
 
@@ -138,6 +147,11 @@ export class SelectComponent implements AfterViewInit, ControlValueAccessor {
 
 	writeValue(value: string): void {
 		this.value = value;
+
+		if (this.instance) {
+			this._populateItemSelected();
+			this.instance.resetOptionsList();
+		}
 	}
 
 	setDisabledState(disabled: boolean): void {

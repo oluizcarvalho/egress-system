@@ -127,6 +127,8 @@ export class MultiSelectComponent implements AfterViewInit, ControlValueAccessor
 	 */
 	private _populateItensSelected(): void {
 		const values = this.value;
+		this._resetOptions();
+
 		if (Array.isArray(values) && values.length > 0) {
 			values.forEach(value => {
 				if (value)
@@ -137,7 +139,20 @@ export class MultiSelectComponent implements AfterViewInit, ControlValueAccessor
 					);
 			});
 		}
+
 		document.body.click();
+	}
+
+	private _resetOptions(): void {
+		const items = this.brSelect.nativeElement.querySelectorAll('.br-item');
+		items.forEach((item: HTMLElement) => {
+			this.renderer.removeClass(item, 'selected');
+		});
+
+		const checkboxes = this.brSelect.nativeElement.querySelectorAll('input[type="checkbox"]');
+		checkboxes.forEach((checkbox: HTMLInputElement) => {
+			this.renderer.removeAttribute(checkbox, 'checked');
+		});
 	}
 
 	setSelected() {
@@ -147,6 +162,11 @@ export class MultiSelectComponent implements AfterViewInit, ControlValueAccessor
 
 	writeValue(value: Array<string>): void {
 		this.value = value;
+
+		if (this.instance) {
+			this._populateItensSelected();
+			this.instance.resetOptionsList();
+		}
 	}
 
 	setDisabledState(disabled: boolean): void {
