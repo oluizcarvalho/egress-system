@@ -9,8 +9,8 @@
 	<div class="pagination-per-page">
 		<div class="br-select">
 			<div class="br-input" (click)="toggleSizeOptions(listOptionsSize); $event.stopPropagation()">
-				<label for="per-page-selection">Exibir</label>
-				<input id="per-page-selection" readonly [value]="pageSize" type="text" placeholder=" " />
+				<label for="per-page-selection-{{ uuid }}">Exibir</label>
+				<input id="per-page-selection-{{ uuid }}" readonly [value]="pageSize" type="text" placeholder=" " />
 				<button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
 					<i class="fas fa-angle-down" aria-hidden="true"></i>
 				</button>
@@ -21,13 +21,13 @@
 						<div class="br-radio">
 							<input
 								(click)="setPageSize(option); $event.stopPropagation()"
-								id="per-page-{{ option }}"
+								id="per-page-{{ option }}-{{ uuid }}"
 								type="radio"
-								name="per-page-{{ option }}"
+								name="per-page-{{ option }}-{{ uuid }}"
 								[value]="option"
 								[checked]="pageSize === option"
 							/>
-							<label for="per-page-{{ option }}">{{ option }}</label>
+							<label for="per-page-{{ option }}-{{ uuid }}">{{ option }}</label>
 						</div>
 					</div>
 				}
@@ -44,8 +44,8 @@
 	<div class="pagination-go-to-page d-none d-sm-flex ml-auto">
 		<div class="br-select">
 			<div class="br-input" (click)="toggleSizeOptions(listOptionsPage); $event.stopPropagation()">
-				<label for="go-to-selection">Página</label>
-				<input id="go-to-selection" readonly [value]="pageIndex" type="text" placeholder=" " />
+				<label for="go-to-selection-{{ uuid }}">Página</label>
+				<input id="go-to-selection-{{ uuid }}" readonly [value]="pageIndex" type="text" placeholder=" " />
 				<button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
 					<i class="fas fa-angle-down" aria-hidden="true"></i>
 				</button>
@@ -60,13 +60,13 @@
 					>
 						<div class="br-radio">
 							<input
-								id="per-page-{{ option }}"
+								id="per-page-{{ option }}-{{ uuid }}"
 								type="radio"
-								name="per-page-{{ option }}"
+								name="per-page-{{ option }}-{{ uuid }}"
 								[value]="option"
 								[checked]="pageIndex === option"
 							/>
-							<label for="per-page-{{ option }}">{{ option }}</label>
+							<label for="per-page-{{ option }}-{{ uuid }}">{{ option }}</label>
 						</div>
 					</div>
 				}

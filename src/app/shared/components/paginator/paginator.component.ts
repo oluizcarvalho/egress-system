@@ -95,6 +95,7 @@ export class PaginatorComponent implements OnChanges {
 	totalPages: number;
 	pageIndexOptions: number[] = [];
 	previousPageIndex: number;
+	readonly uuid = Math.random().toString(36).substring(6);
 
 	private brPaginator = inject(ElementRef);
 
