@@ -1,6 +1,8 @@
+import { AbstractControl } from '@angular/forms';
+
 export interface FilterModel {
-	academicSemester: string;
-	course: string;
-	titration: string;
-	campus: string;
+	academicSemester: AbstractControl<string>;
+	course: AbstractControl<Array<string>>;
+	titration: AbstractControl<Array<string>>;
+	campus: AbstractControl<Array<string>>;
 }

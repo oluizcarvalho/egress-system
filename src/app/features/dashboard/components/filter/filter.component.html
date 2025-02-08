@@ -29,7 +29,7 @@
 			label="Campus"
 		></app-multi-select>
 		<div class="col-12 d-flex justify-content-end gap-3 mt-4">
-			<button br-button type="reset" color="secondary">Limpar</button>
+			<button br-button type="reset" (click)="onReset()" color="secondary">Limpar</button>
 			<button br-button type="submit" color="primary">Pesquisar</button>
 		</div>
 	</form>

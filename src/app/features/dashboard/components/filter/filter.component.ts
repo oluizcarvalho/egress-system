@@ -5,7 +5,6 @@ import { MultiSelectComponent } from '@shared/components/multi-select/multi-sele
 import { ACADEMIC_SEMESTER_OPTIONS_MOCK } from '../../data/options.mock';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonDirective } from '@shared/directives/button';
-import { ControlsOf } from '@shared/types/controls-of.type';
 import { FilterModel } from '../../models/filter.model';
 import { CAMPUS_OPTIONS_MOCK, COURSE_LEVEL_OPTIONS_MOCK } from '@shared/mocks';
 import { COURSE_OPTIONS_MOCK } from '@shared/mocks/course.mock';
@@ -33,14 +32,18 @@ export class FilterComponent {
 	courseLevelOptions = COURSE_LEVEL_OPTIONS_MOCK;
 	campusOptions = CAMPUS_OPTIONS_MOCK;
 
-	formGroupFilter = new FormGroup<ControlsOf<FilterModel>>({
+	formGroupFilter = new FormGroup<FilterModel>({
 		academicSemester: new FormControl(ACADEMIC_SEMESTER_OPTIONS_MOCK[0].value.toString()),
-		course: new FormControl(''),
-		titration: new FormControl(''),
-		campus: new FormControl(''),
+		course: new FormControl([]),
+		titration: new FormControl([]),
+		campus: new FormControl([CAMPUS_OPTIONS_MOCK[0].value.toString()]),
 	});
 
 	submit() {
 		console.log(this.formGroupFilter.value);
+	}
+
+	onReset() {
+		this.formGroupFilter.reset();
 	}
 }
