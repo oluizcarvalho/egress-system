@@ -75,8 +75,8 @@ export class ProfessionalInformationFormComponent {
 				if (data) {
 					this.form.patchValue({
 						...data,
-						startDate: new Date(data.startDate).toLocaleDateString(),
-						endDate: new Date(data.endDate).toLocaleDateString(),
+						startDate: data.startDate ? new Date(data.startDate).toLocaleDateString() : '',
+						endDate: data.endDate ? new Date(data.endDate).toLocaleDateString() : '',
 					});
 				}
 			}
