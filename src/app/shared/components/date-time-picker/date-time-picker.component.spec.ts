@@ -134,8 +134,8 @@ describe('DateTimePickerComponent', () => {
 	});
 
 	it('should write value correctly', () => {
-		spectator.component.writeValue('2024-02-02');
-		expect(spectator.component.value).toBe('2024-02-02');
+		spectator.component.writeValue('02/02/2024');
+		expect(spectator.component.value).toBe('02/02/2024');
 	});
 
 	it('should set disabled state correctly', () => {

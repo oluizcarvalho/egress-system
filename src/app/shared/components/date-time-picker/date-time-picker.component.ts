@@ -212,7 +212,7 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 		}
 		if (!date) return date;
 		const [day, month, year] = date.split('/');
-		return dayjs(`${year}-${month}-${day}`).format('DD/MM/YYYY');
+		return dayjs(`${year}-${day}-${month}`).format('DD/MM/YYYY');
 	}
 
 	/**
@@ -244,7 +244,7 @@ export class DateTimePickerComponent implements OnInit, AfterViewInit, ControlVa
 	}
 
 	writeValue(value: string): void {
-		this.value = value;
+		this.value = this.normalizeDate(value);
 	}
 
 	setDisabledState(disabled: boolean): void {
