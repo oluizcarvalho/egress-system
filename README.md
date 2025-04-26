@@ -1,8 +1,25 @@
 # Sistema de Egressos UFU
 
+
+
 ## Visão Geral
 
 Este projeto utiliza **Angular 18** e organiza o código de forma modular para permitir escalabilidade e facilitar a manutenção. A estrutura principal está agrupada em três pastas principais: **core**, **features**, e **shared**.
+
+## Acesse o sistema:
+[Egressos UFU](https://kind-tree-06e47270f.5.azurestaticapps.net/)
+
+👨‍🎓 Como logar como egresso
+
+Login: aluno
+
+Senha: 12345
+
+👩‍🏫 Como logar como coordenador
+
+Login: coordenador
+
+Senha: 12345
 
 ### Descrição das Pastas
 
